@@ -1,3 +1,5 @@
 baseURL: http://example.org/
 languageCode: eo
+DefaultContentLanguage: eo
 title: Vortejo
+theme: book

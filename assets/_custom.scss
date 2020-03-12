@@ -1,0 +1,14 @@
+/* You can add custom styles here. */
+
+// @import "plugins/numbered";
+
+dl.vortlisto {
+  dt {
+    display: inline;
+    margin: 0;
+  }
+  dd {
+    display: none;
+    margin: 0;
+  }
+}
