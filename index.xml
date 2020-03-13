@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Introduction on Vortejo</title>
+    <link>https://undeconstructed.github.io/vortejo/</link>
+    <description>Recent content in Introduction on Vortejo</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>eo</language>
+    <lastBuildDate>Wed, 11 Mar 2020 22:56:13 +0000</lastBuildDate>
+    
+	<atom:link href="https://undeconstructed.github.io/vortejo/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Principoj</title>
+      <link>https://undeconstructed.github.io/vortejo/docs/vortaro/principoj/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://undeconstructed.github.io/vortejo/docs/vortaro/principoj/</guid>
+      <description>Principoj La ĉefaj principoj:
+  Ĝeneralaj vortoj estu uzebla por ĝenerala parolo. Eble ili ne havas tute precizajn signifojn, sed tio ne gravas ĉar ili estas por komuniki ideojn. Foje oni devos kunmeti vortojn, aŭ uzi pli ol unu, sed tio estas per la spirito de Esperanto.
+  Fakaj vortoj havu precizajn signifojn, kiujn ĉiu en la fako devas antaŭe scii por bone kompreni. Ofte ili havos pli de precizecon ol estas bezonata por ĝenerala parolo, sed oni povas uzi ilin se ĉiu en la konversacio komprenos.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://undeconstructed.github.io/vortejo/docs/konsilo/fono/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://undeconstructed.github.io/vortejo/docs/konsilo/fono/</guid>
+      <description>Fono Lingvo celas esti utila kaj uzebla rimedo por komuniki. Esperanto havas apartan celan, ĉar ĝi celas esti tiel por ĉiu en la mondo, ne nur por homoj kiu havas similajn vivspertojn.
+Pluse, Esperanto celas esti facile lernebla por ĉiuj. Tio donas aliajn malfacilaĵojn. Precipe, kiel oni povas havi lingvon en kiu la vortaro estas sufiĉe simpla por lerni, kaj ankaŭ sufiĉe preciza por esti uzebla en preciza komuniko.
+Mi legis /La bona lingvo/ de Claude Piron.</description>
+    </item>
+    
+    <item>
+      <title>Serĉilo</title>
+      <link>https://undeconstructed.github.io/vortejo/docs/vortaro/ser%C4%89ilo/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://undeconstructed.github.io/vortejo/docs/vortaro/ser%C4%89ilo/</guid>
+      <description>Vortaro  let radikoj = null let elektitaFako = null function montruEraro(e) { console.log(e) montruTeksto(&#39;stato&#39;, &#39;err: &#39; + e) } function montruTeksto(e, t) { document.getElementById(e).textContent = t } function montruFako(e, n, p) { if (radikoj == null) { return } if (elektitaFako) { elektitaFako.classList.remove(&#39;active&#39;) } e.classList.add(&#39;active&#39;) elektitaFako = e montruTeksto(&#39;pri&#39;, p) let c = document.getElementById(&#39;radikoj&#39;) c.removeChild(c.firstChild) let l = document.createElement(&#39;ul&#39;) for (let r of radikoj) { if (r.fakoj.includes(n)) { let ero = document.</description>
+    </item>
+    
+    <item>
+      <title>Problemoj</title>
+      <link>https://undeconstructed.github.io/vortejo/docs/vortaro/problemoj/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://undeconstructed.github.io/vortejo/docs/vortaro/problemoj/</guid>
+      <description>Problemoj Mankoj  Multaj ĥemia elementoj &amp;hellip;  </description>
+    </item>
+    
+    <item>
+      <title>Vortoj</title>
+      <link>https://undeconstructed.github.io/vortejo/docs/konsilo/vortoj/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://undeconstructed.github.io/vortejo/docs/konsilo/vortoj/</guid>
+      <description>Vortoj Eta priskribo pri kiel kunmeti vortojn, pri kiun vorton oni metu lasta, ktp.
+Signifo Eta rediro de la fono, kaj la ideo de difinebleco.
+Io pri la konfuzo pri ĉu radiko estas verba, substantiva ktp. Me volas diri ke se estas ĝenerala radiko, oni ne devas maltranviliĝi pri tio. Kelkaj radikoj eble estas pli verba, pli adjektiva. Simile fojo ne videblas ĉu oni devas uzi aĵo por krei substantivo, aŭ ado por signifi ago.</description>
+    </item>
+    
+    <item>
+      <title>Frazoj</title>
+      <link>https://undeconstructed.github.io/vortejo/docs/konsilo/frazoj/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://undeconstructed.github.io/vortejo/docs/konsilo/frazoj/</guid>
+      <description>Frazoj Tre mallonga priskribo de gramatiko. Kiel aranĝi vortojn per prepozicioj ktp.
+Strukturo Mi volas skribi ion pri verboj, kiel ili difinas frazojn, kaj kiel ni dependas aliajn vortojn de ili. Mi esperas ke ĝenerale ĉiu scios, sed eble ne tute konscie. Mia celo estas ke kun tiu scio klare en la menso estu pli facile uzi lingvon klare ĝenerale.
+Aranĝado Konjunkcioj ktp.
+Stilo Aktiva, pasiva, ktp. Se mi decidas ke tiaj aferoj estas sufiĉe grava.</description>
+    </item>
+    
+    <item>
+      <title>Unu</title>
+      <link>https://undeconstructed.github.io/vortejo/posts/unu/</link>
+      <pubDate>Wed, 11 Mar 2020 22:56:13 +0000</pubDate>
+      
+      <guid>https://undeconstructed.github.io/vortejo/posts/unu/</guid>
+      <description>Jen ideo &amp;hellip;</description>
+    </item>
+    
+  </channel>
+</rss>
