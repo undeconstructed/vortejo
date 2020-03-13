@@ -60,7 +60,7 @@
     montruTeksto('stato', '')
   }
 
-  fetch('/vortejo/vortaro/fakoj.json').
+  fetch('/vortaro/fakoj.json').
   then(
     rez => rez.json(),
     montruEraro).
@@ -68,7 +68,7 @@
     metuFakoj,
     montruEraro)
 
-  fetch('/vortejo/vortaro/radikoj.json').
+  fetch('/vortaro/radikoj.json').
   then(
     rez => rez.json(),
     montruEraro).
