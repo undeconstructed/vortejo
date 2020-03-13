@@ -3,3 +3,5 @@ languageCode: eo
 DefaultContentLanguage: eo
 title: Vortejo
 theme: book
+params:
+  booktoc: false

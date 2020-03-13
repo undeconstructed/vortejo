@@ -1,0 +1,94 @@
+
+<script>
+  let radikoj = null
+  let elektitaFako = null
+
+  function montruEraro(e) {
+    console.log(e)
+    montruTeksto('stato', 'err: ' + e)
+  }
+
+  function montruTeksto(e, t) {
+    document.getElementById(e).textContent = t
+  }
+
+  function montruFako(e, n, p) {
+    if (radikoj == null) {
+      return
+    }
+    if (elektitaFako) {
+      elektitaFako.classList.remove('active')
+    }
+    e.classList.add('active')
+    elektitaFako = e
+
+    montruTeksto('pri', p)
+
+    let c = document.getElementById('radikoj')
+    c.removeChild(c.firstChild)
+
+    let l = document.createElement('ul')
+    for (let r of radikoj) {
+      if (r.fakoj.includes(n)) {
+        let ero = document.createElement('li')
+        ero.textContent = r.radiko
+        let titolo = `${r.fakoj} - ${r.en}`
+        if (r.vidu) {
+          titolo += ' - vidu: ' + r.vidu
+        }
+        ero.title = titolo
+        l.appendChild(ero)
+      }
+    }
+
+    c.appendChild(l)
+  }
+
+  function metuFakoj(fj) {
+    let l = document.getElementById("fakoj")
+    for (let f of fj) {
+      let e = document.createElement("li")
+      e.textContent = f.nomo
+      e.title = f.pri
+      e.onclick = () => montruFako(e, f.nomo, f.pri)
+      l.appendChild(e)
+    }
+  }
+
+  function metuRadikoj(rj) {
+    radikoj = rj
+    montruTeksto('stato', '')
+  }
+
+  fetch('/fakoj.json').
+  then(
+    rez => rez.json(),
+    montruEraro).
+  then(
+    metuFakoj,
+    montruEraro)
+
+  fetch('/radikoj.json').
+  then(
+    rez => rez.json(),
+    montruEraro).
+  then(
+    metuRadikoj,
+    montruEraro)
+</script>
+
+<div id="stato">
+  pretiĝanta
+</div>
+
+<h2>Fakoj</h2>
+
+<ul id="fakoj">
+</ul>
+
+<h2>Radikoj</h2>
+
+<p id="pri"></p>
+
+<div id="radikoj">
+</div>
