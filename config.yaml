@@ -5,3 +5,4 @@ title: Vortejo
 theme: book
 params:
   booktoc: false
+  vortaroURL: /vortejo/vortaro
