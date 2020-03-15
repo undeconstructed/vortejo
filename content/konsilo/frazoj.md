@@ -1,11 +1,6 @@
 ---
 title: Frazoj
 weight: 30
-#bookFlatSection: true
-#bookToc: true
-# bookHidden: false
-# bookCollapseSection: false
-# bookComments: true
 ---
 
 # Frazoj

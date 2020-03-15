@@ -1,0 +1,20 @@
+{{ define "title" }}
+  {{ .Site.Title }}/{{ .CurrentSection.Title }}/{{ .Title }}
+{{ end }}
+
+{{ define "main" }}
+<main aria-role="main">
+  {{ .Content }}
+
+  <div class="links">
+    {{ with .NextInSection }}
+      <a href="{{ .RelPermalink }}">&lt; Reen</a>
+    {{ else }}
+      <span></span>
+    {{ end }}
+    {{ with .PrevInSection }}
+      <a href="{{ .RelPermalink }}">Antaŭen &gt;</a>
+    {{ end }}
+  </div>
+</main>
+{{ end }}

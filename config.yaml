@@ -2,12 +2,11 @@ baseURL: https://undeconstructed.github.io/vortejo/
 languageCode: eo
 DefaultContentLanguage: eo
 title: Vortejo
-theme: book
+disableKinds: [ "taxonomy", "taxonomyTerm", "RSS", "sitemap", "robotsTXT" ]
 menu:
   after:
   - name: Datumoj
     url: https://undeconstructed.github.io/vortaro/
     weight: -110
 params:
-  booktoc: false
   vortaroURL: /vortejo/vortaro

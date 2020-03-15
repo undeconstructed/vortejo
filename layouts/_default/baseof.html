@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="{{ .Site.Language.Lang }}">
+
+<head>
+  <meta charset="utf-8">
+  <title>{{ block "title" . }}{{ .Site.Title }}{{ end }}</title>
+
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  {{- $styles := resources.Get "main.scss" | resources.ExecuteAsTemplate "main.scss" . | resources.ToCSS | resources.Minify | resources.Fingerprint }}
+  <link rel="stylesheet" href="{{ $styles.RelPermalink }}" integrity="{{ $styles.Data.Integrity }}">
+
+  <link rel="icon" href="icon.png">
+
+  {{- $mainJS := resources.Get "main.js" | resources.ExecuteAsTemplate "main.js" . | resources.Minify | resources.Fingerprint }}
+  <script defer src="{{ $mainJS.RelPermalink }}" integrity="{{ $mainJS.Data.Integrity }}"></script>
+
+</head>
+
+<body class="{{ if .IsHome }}home{{ end }}">
+
+  <div id="ŝirmilo" hidden>
+    <div class="montrilo">
+      testset
+    </div>
+  </div>
+
+  {{ if not .IsHome }}
+    <header>
+      <h1>
+        <a href="{{ .Site.BaseURL | relLangURL }}">
+          <span>{{ .Site.Title }}</span>
+        </a>
+      </h1>
+    </header>
+  {{ end }}
+
+  {{ block "main" . }}
+    default text
+  {{ end }}
+
+  <footer>
+    <span><a href="{{ .Site.Params.vortaroURL }}">Vortara datumaro</a></span>
+  </footer>
+
+</body>
+
+</html>

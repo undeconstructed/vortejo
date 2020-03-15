@@ -1,0 +1,9 @@
+{{ define "title" }}
+  {{ .Site.Title }}/{{ .CurrentSection.Title }}/{{ .Title }}
+{{ end }}
+
+{{ define "main" }}
+<main aria-role="main">
+  <h2>{{ .Page.Title }}</h2>
+</main>
+{{ end }}

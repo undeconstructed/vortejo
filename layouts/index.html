@@ -1,0 +1,25 @@
+{{ define "main" }}
+<header class="header">
+  <h1>{{ .Title }}</h1>
+</header>
+
+<main aria-role="main" class="home">
+  <div class="content">
+    {{ .Content }}
+  </div>
+  <div class="sections">
+    {{ range .Pages }}
+      <div>
+        <header>{{ .Title }}</header>
+        <main>
+          {{ range .Pages }}
+            <ul>
+              <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
+            </ul>
+          {{ end }}
+        </main>
+      </div>
+    {{ end }}
+  </div>
+</main>
+{{ end }}
