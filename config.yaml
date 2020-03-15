@@ -3,6 +3,11 @@ languageCode: eo
 DefaultContentLanguage: eo
 title: Vortejo
 theme: book
+menu:
+  after:
+  - name: Datumoj
+    url: https://undeconstructed.github.io/vortaro/
+    weight: -110
 params:
   booktoc: false
   vortaroURL: /vortejo/vortaro
