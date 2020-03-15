@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="eo">
+
+<head>
+  <meta charset="utf-8">
+  <title>
+  Vortejo/Vortaro/Vortoj
+</title>
+
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="/vortejo/main.min.f4260b7116d48c12a517c3423670b64756b02c0aaf3f61fdfffafd7e5ef2c656.css" integrity="sha256-9CYLcRbUjBKlF8NCNnC2R1awLAqvP2H9//r9fl7yxlY=">
+
+  <link rel="icon" href="icon.png">
+  <script defer src="/vortejo/main.min.8d8dc15a98cd320dd7010e7e56a65fd491f16dc6f62b4f05c6d914df7632ecf9.js" integrity="sha256-jY3BWpjNMg3XAQ5&#43;VqZf1JHxbcb2K08FxtkU33Yy7Pk="></script>
+
+</head>
+
+<body class="">
+
+  <div id="ŝirmilo" hidden>
+    <div class="montrilo">
+      testset
+    </div>
+  </div>
+
+  
+    <header>
+      <h1>
+        <a href="/vortejo">
+          <span>Vortejo</span>
+        </a>
+      </h1>
+    </header>
+  
+
+  
+<main aria-role="main">
+  <h1 id="vortoj-radikoj">Vortoj (radikoj)</h1>
+
+<div class="vortaro">
+
+  <div class="stato">
+    pretiĝanta
+  </div>
+
+  <h2>Fakoj</h2>
+
+  <div class="fakoj">
+  </div>
+
+  <h2>Radikoj</h2>
+
+  <p class="pri"></p>
+
+  <div class="radikoj">
+  </div>
+
+  <div class="lavorto" hidden>
+    <p>Radiko: <span f="r"></span></p>
+    <p>Fakoj: <span f="f"></span></p>
+    <p>Vidu: <span f="v"></span></p>
+    <p>Angle: <span f="a"></span></p>
+  </div>
+
+</div>
+
+<script defer>
+(function() {
+  let radikoj = null
+  let elektitaFako = null
+
+  let e0 = document.querySelector(".vortaro")
+  let eS = e0.querySelector(".stato")
+  let eF = e0.querySelector(".fakoj")
+  let eP = e0.querySelector(".pri")
+  let eR = e0.querySelector(".radikoj")
+
+  function montruEraro(e) {
+    console.log(e)
+    montruTeksto(eS, 'err: ' + e)
+  }
+
+  function montruTeksto(e, t) {
+    e.textContent = t
+  }
+
+  function montruFako(e, n, p) {
+    if (radikoj == null) {
+      return
+    }
+    if (elektitaFako) {
+      elektitaFako.classList.remove('active')
+    }
+    e.classList.add('active')
+    elektitaFako = e
+
+    montruTeksto(eP, p)
+
+    eR.removeChild(eR.firstChild)
+
+    let l = document.createElement('ul')
+    for (let r of radikoj) {
+      if (r.fakoj.includes(n)) {
+        let ero = document.createElement('li')
+        ero.textContent = r.radiko
+        let titolo = `${r.fakoj} - ${r.en}`
+        if (r.vidu) {
+          titolo += ' - vidu: ' + r.vidu
+        }
+        ero.title = titolo
+        ero.addEventListener('click', () => montruRadiko(r))
+        l.appendChild(ero)
+      }
+    }
+    eR.appendChild(l)
+  }
+
+  function montruRadiko(r) {
+    let x = document.querySelector('.lavorto')
+    x.querySelector('[f=r]').textContent = r.radiko
+    x.querySelector('[f=f]').textContent = r.fakoj
+    x.querySelector('[f=v]').textContent = r.vidu
+    x.querySelector('[f=a]').textContent = r.en
+    x.hidden = false
+    montru(x)
+  }
+
+  function metuFakoj(fj) {
+    let l = document.createElement('ul')
+    for (let f of fj) {
+      let e = document.createElement("li")
+      e.textContent = f.nomo
+      e.title = f.pri
+      e.addEventListener('click', () => montruFako(e, f.nomo, f.pri))
+      l.appendChild(e)
+    }
+    eF.appendChild(l)
+  }
+
+  function metuRadikoj(rj) {
+    radikoj = rj
+    montruTeksto(eS, '')
+  }
+
+  const fonto = '\/vortaro'
+
+  fetch(fonto + '/fakoj.json').
+  then(
+    rez => rez.json(),
+    montruEraro).
+  then(
+    metuFakoj,
+    montruEraro)
+
+  fetch(fonto + '/radikoj.json').
+  then(
+    rez => rez.json(),
+    montruEraro).
+  then(
+    metuRadikoj,
+    montruEraro)
+})()
+</script>
+
+
+
+  <div class="links">
+    
+      <a href="/vortejo/vortaro/ekzemploj/">&lt; Reen</a>
+    
+    
+      <a href="/vortejo/vortaro/problemoj/">Antaŭen &gt;</a>
+    
+  </div>
+</main>
+
+
+  <footer>
+    <span><a href="/vortaro">Vortara datumaro</a></span>
+  </footer>
+
+</body>
+
+</html>
