@@ -1,6 +1,3 @@
-[submodule "themes/book"]
-	path = themes/book
-	url = https://github.com/alex-shpak/hugo-book
 [submodule "static/vortaro"]
 	path = static/vortaro
 	url = https://github.com/undeconstructed/vortaro
