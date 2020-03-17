@@ -10,10 +10,13 @@
     {{ with .NextInSection }}
       <a href="{{ .RelPermalink }}">&lt; Reen</a>
     {{ else }}
-      <span></span>
+      <span>&nbsp;</span>
     {{ end }}
+    <a href="{{ .Site.BaseURL }}">Hejmen</a>
     {{ with .PrevInSection }}
       <a href="{{ .RelPermalink }}">Antaŭen &gt;</a>
+    {{ else }}
+      <span>&nbsp;</span>
     {{ end }}
   </div>
 </main>

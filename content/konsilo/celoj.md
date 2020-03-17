@@ -1,15 +1,15 @@
 ---
-title: Fono
+title: Celoj
 weight: 10
 ---
 
-# Fono
+# Celoj
 
 Lingvo celas esti utila kaj uzebla rimedo por komuniki. Esperanto havas apartan celan, ĉar ĝi celas esti tiel por ĉiu en la mondo, ne nur por homoj kiu havas similajn vivspertojn.
 
 Pluse, Esperanto celas esti facile lernebla por ĉiuj. Tio donas aliajn malfacilaĵojn. Precipe, kiel oni povas havi lingvon en kiu la vortaro estas sufiĉe simpla por lerni, kaj ankaŭ sufiĉe preciza por esti uzebla en preciza komuniko.
 
-Mi legis /La bona lingvo/ de Claude Piron. Dum mi ne konsentis pri ĉio en ĝi, ĝi inspiris min pri ĝiaj ideoj pri la naturo de lingvo. Ĝi diris ofte estas neebla ke vortoj signifas nur unu preciza afero. Ofte vortoj signifas punkto en "mapo" de ideoj, kaj oni devas esplori la apudaj regionoj, kun la helpo de la kunteksto, por bone kompreni ilian sencon.
+Mi legis _La bona lingvo_ de Claude Piron. Dum mi ne konsentis pri ĉio en ĝi, ĝi inspiris min pri ĝiaj ideoj pri la naturo de lingvo. Ĝi diris ofte estas neebla ke vortoj signifas nur unu preciza afero. Ofte vortoj signifas punkto en "mapo" de ideoj, kaj oni devas esplori la apudaj regionoj, kun la helpo de la kunteksto, por bone kompreni ilian sencon.
 
 Sed ankaŭ mi pensas ke gravas ke multaj vortoj ja havas precizajn signifojn. Fakte kelkajn vortojn eble havas pli ol unu precizan signifon, depende de la fako aŭ la kunteksto.
 

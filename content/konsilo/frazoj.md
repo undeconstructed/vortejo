@@ -1,30 +1,108 @@
 ---
-title: Frazoj
+title: Pri frazoj
 weight: 30
 ---
 
-# Frazoj
+# Pri frazoj
 
-Tre mallonga priskribo de gramatiko. Kiel aranĝi vortojn per prepozicioj ktp.
+La kerno de frazo estas "propozicio", tio estas io kiu povas esti vera aŭ nevera. Por fari tion, oni uzas verbon. De la verbo oni pendigas aliajn vortojn, sed kiel klarigi kiel la aliaj vortoj rilatas as la verbo?
 
-## Strukturo
+## Verboj
 
-Mi volas skribi ion pri verboj, kiel ili difinas frazojn, kaj kiel ni dependas aliajn vortojn de ili. Mi esperas ke ĝenerale ĉiu scios, sed eble ne tute konscie. Mia celo estas ke kun tiu scio klare en la menso estu pli facile uzi lingvon klare ĝenerale.
+{{< ekz `neĝas` >}}
+Verbo povas esti frazo sole.
+{{< /ekz >}}
+
+## Ne
+
+{{< ekz `ne neĝas` >}}
+"Ne" povas indiki le nean de io ajn vorto.
+{{< /ekz >}}
+
+## Substantivoj
+
+{{< ekz `mi kuras` >}}
+Nominativa substantivo estas la agulo, tiu kiu faras la verbon.
+{{< /ekz >}}
+
+{{< ekz `tason mi havas` >}}
+Akuzativa substantivo estas tiel klare ligita al la verbo, ke oni ne bezonas prepozicio por enkonduki ĝin.
+{{< /ekz >}}
 
 ## Prepozicioj
 
-Estas por enkonduki substantivojn, dinifi la rolon kiun la substantivo rolas.
+{{< ekz `mi kuras en parko` >}}
+Substantivo post prepozicio rilatas al la verbo laŭ la signifo de la prepozicio.
+{{< /ekz >}}
 
-"de" estas iom aparte, ĉar oni uzas ĝin ĉiam por enkonduki la aganto de pasiva verbo. Ĉu tio bonas? Kion fari kiam "de" ankaŭ estas bezonata por aliaj rolanto pri la pasiva verbo .. ?
+{{< ekz `mi kuras en parko por ekzerco de arbo al fontano je lundo` >}}
+Ĉiu prepozicio havas propran signifon.
+{{< /ekz >}}
 
-## La akuzativo
+{{< ekz `mi manĝis kukon mardon` `warn` >}}
+Pli ol unu akuzativoj? La parolanto devas pensi ke estas tute klare kiel ĉiu rilatas al la verbon. Estu zorgema.
+{{< /ekz >}}
 
-Signifas ke ne estas taŭge, aŭ dezirebla, prepozicio. Ofte tio signifas ke la substantivo estas tiom forte ligita al la verbo ke oni ne povas pli bone enkonduki ĝin, t.e. ĝi estas la rekta komplemento/objekto de la verbo.
+## Adjektivoj
 
-## Aranĝado
+{{< ekz `mi havas bonan tason` >}}
+Adjektivo donas informon substantivo. Kiu? Oni devas pensi pri la kazo, kaj pri ĉu ĝi estas post prepozicio.
+{{< /ekz >}}
 
-Konjunkcioj ktp.
+{{< ekz `malrapida kato muson rapidan ne kaptas` >}}
+La akuzitivon klarigis kiuj adjektivoj rilatas al kiu substantivo, sed estas pli facile komprenabla kiam adjektivoj estas apud iliaj substantivoj.
+{{< /ekz >}}
 
-## Stilo
+## Adverboj
 
-Aktiva, pasiva, ktp. Se mi decidas ke tiaj aferoj estas sufiĉe grava.
+{{< ekz `forte neĝas` >}}
+Adverboj donas informon pri kiel verbo okazas.
+{{< /ekz >}}
+
+{{< ekz `mi havas tre bonan tason` >}}
+Adverbo povas ankaŭ priskribi adjektivon, se ĝi estas rekte antaŭ la adjektivon.
+{{< /ekz >}}
+
+{{< ekz `mi havus vole bonan tason` >}}
+Se estas adverbo proksime de kaj adjektivo kaj substantivo? Estu zorgema.
+{{< /ekz >}}
+
+{{< ekz `mi kuras en la parko rapide` `warn` >}}
+Se estas adverbo kiu estas for de ĉio? Probable estas pri la verbo, sed estu zorgema.
+{{< /ekz >}}
+
+## Konjunkcioj
+
+{{< ekz `mi havas tason kaj teleron` >}}
+Konjunkcio povas ligi elementojn de la sama speco.
+{{< /ekz >}}
+
+{{< ekz `mi havas tason kaj mi volas teleron` >}}
+Foje Konjunkcio ligis du prepoziciojn.
+{{< /ekz >}}
+
+{{< ekz `mi havas tason kaj volas teleron` >}}
+Se oni volas, oni povas eviti rediri aferojn. Ĉu la aŭdanto komprenos ke ambaŭ verboj ĉi tie rilatas al la sama persono? Probable, sed estu zorgema.
+{{< /ekz >}}
+
+{{< ekz `mi ne havas sed volas teleron por uzi` >}}
+Ĉi tie ni havas du propoziciojn, kaj ambaŭ rilatas al la samaj aferoj. Probable. Ĉu ĝi estas sufiĉe klara?
+{{< /ekz >}}
+
+{{< ekz `mi estas malseka ĉar pluvas forte` >}}
+Kelkaj konjunkcioj ligas du propoziciojn kaj ankaŭ difinias kiel unu rilatas al la alia. La propozicio post "ĉar" estas la kialo por la alia.
+{{< /ekz >}}
+
+{{< ekz `ĉar pluvas forte, mi estas malseka` `warn` >}}
+Kiam la konjunkcio ne estas inter la propozicioj, oni devas pensi pri ĉu estas klara kie unu finiĝas kaj la alia komenciĝas.
+{{< /ekz >}}
+
+# Ke
+
+{{< ekz `mi iros por ke vi ne devos` >}}
+La vorto "ke" permesas al ni ligi propoziciojn por niaj propraj kialoj. Ekzemple, uzanta prepozicion.
+{{< /ekz >}}
+
+{{< ekz `mi volas ke vi iru` >}}
+Aŭ uzanta verbon.
+{{< /ekz >}}

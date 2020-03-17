@@ -5,7 +5,7 @@ weight: 20
 
 # Problemoj
 
-## Mankoj
-
-* Multaj ĥemia elementoj
-* ...
+* Multaj vortoj havas ne-Esperantaj "afiksoj", ekz. "mono/", "/graf/", "/log/", "/skop/".
+* Estas granda grupo de "???" vortoj kiun mi ne jam enkategorigis.
+* Multaj ĥemiaj elementoj mankas
+* Mi ignoras multajn fakojn uzojn de ĝeneralaj vortoj.

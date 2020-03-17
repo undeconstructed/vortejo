@@ -1,26 +1,38 @@
 ---
-title: Vortoj
+title: Pri vortoj
 weight: 20
 ---
 
-# Vortoj
-
-Eta priskribo pri kiel kunmeti vortojn, pri kiun vorton oni metu lasta, ktp.
+# Pri vortoj
 
 ## Signifo
 
-Eta rediro de la fono, kaj la ideo de difinebleco.
+Ne ĉiu Esperanto radiko estas precize difinita, kaj tio estas kial ili estas tiel utila. Ĉiu ĝenerala radiko enhavas unu ideon, kaj la kuntekso permasas ke ni prenu de tio la informon kiun ne bezonas.
 
-Io pri la konfuzo pri ĉu radiko estas verba, substantiva ktp. Me volas diri ke se estas ĝenerala radiko, oni ne devas maltranviliĝi pri tio. Kelkaj radikoj eble estas pli verba, pli adjektiva. Simile fojo ne videblas ĉu oni devas uzi aĵo por krei substantivo, aŭ ado por signifi ago. Mi dirus ke la ĝuste sistemo estas pensi ke la radiko povas esti ian vorton, kaj la sufikso povas estas uzata se ne estas klara.
+Foje estas konfuzo pri ĉu radiko estas verba, substantiva ktp. Me volas diri ke se estas ĝenerala radiko, oni ne devas maltranviliĝi pri tio. Kelkaj radikoj eble estas pli verba, aŭ pli adjektiva. Simile foje ne videblas ĉu oni devas uzi aĵo por krei substantivo, aŭ ado por signifi ago. Mi dirus ke la ĝuste sistemo estas pensi ke la radiko povas esti ian vorton, kaj la sufikso povas estas uzata se ne estas klara. Jen ekzemploj:
 
-Ekzemple, se mi diras "mi iras al la teatro", ne estas klare ĉu mi volas diri pri la ejo, aŭ la aĵo, sed ĝenerale oni divenus ke mi volas diri .. ambaŭ. Mi iros al la teatrejo por spekti teatraĵon.
+{{< ekz `mi iras al la teatro` >}}
+Ne estas klare ĉu mi volas diri pri la ejo, aŭ la aĵo, sed ĝenerale oni divenus ke mi volas diri .. ambaŭ. Mi iros al la teatrejo por spekti teatraĵon.
+{{< /ekz >}}
 
-Se mi parolas mi "mia kolekto de io", eble mi parolas pri la ago de kolekti, aŭ eble pri la rezulto. Ĝenerele, tio ne gravas, ĉar oni komprenus de kion mi dirus sekve. Se mi volas esti pli klara, mi dirus "mia kolektado" aŭ eble "mia kolektaĵo", sed tio estas mia elekto.
-
-## Kunteksto
-
-Kiel bone komuniki ideojn uzanta la kunteksto por doni alian informon pri ĉiu vorto.
+{{< ekz `mia kolekto de io` >}}
+Eble mi parolas pri la ago de kolekti, aŭ eble pri la rezulto. Ĝenerele, tio ne gravas, ĉar oni komprenus de kion mi dirus sekve. Se mi volas esti pli klara, mi dirus "mia kolektado" aŭ eble "mia kolektaĵo", sed tio estas mia elekto.
+{{< /ekz >}}
 
 ## Kunmetado
 
 La ideo de kunmetada kontraste de ordinara uzo.
+
+{{< ekz `karota kuko` >}}
+Tio estas kuko kiu havas en si iom de la ideo "karot". Plej probable tiu signifas ke estas karoto en la kuko, sed ankaŭ eblas ke ĝi estas kuko en la formo de karoto.
+{{< /ekz >}}
+
+{{< ekz `karotkuko` >}}
+Tio estas kuko kiu estas difinita per "karot". La plej grava fakto ke mi volas komuniki pri ĉi tiu vorto estas pri karotoj. Probable tiu estas konata speco de kuko.
+{{< /ekz >}}
+
+## Oftaj afiksoj
+
+{{< ekz `...` >}}
+hmm
+{{< /ekz >}}
