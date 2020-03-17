@@ -51,11 +51,11 @@ Prepozicioj ebligas ke oni aldonu pli da informo ol aliaj vorto.
 
 {{< ekz `io de mi` >}}
 "io" estas difinita per ĝia rilato al "mi"
-{{ /ekz }}
+{{< /ekz >}}
 
 {{< ekz `plena je akvo` >}}
 La adjektivo "plena" ne precizas kio estas la plenanto, do ni uzas prepozicio por enkoduki pli detalojn.
-{{ /ekz }}
+{{< /ekz >}}
 
 ## Kunmetado
 
