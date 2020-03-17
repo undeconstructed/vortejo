@@ -19,6 +19,44 @@ Ne estas klare ĉu mi volas diri pri la ejo, aŭ la aĵo, sed ĝenerale oni dive
 Eble mi parolas pri la ago de kolekti, aŭ eble pri la rezulto. Ĝenerele, tio ne gravas, ĉar oni komprenus de kion mi dirus sekve. Se mi volas esti pli klara, mi dirus "mia kolektado" aŭ eble "mia kolektaĵo", sed tio estas mia elekto.
 {{< /ekz >}}
 
+## Vortspecoj
+
+Substantivo, Adjektivo, Adverbo, Prepozicio, Verbo, Konjunkcio, Pronomo ...
+
+## Pronomoj
+
+Pronomo rolas kiel substantivo. Kiu substantivo estas tute relativa, kaj ĉiu en la konversacio devas scii antaŭe pri kiu aŭ kio la vortoj kiel "mi" kaj "ĝi" rilatas.
+
+{{< ekz `mi amas vin` >}}
+Ĉi tio estas klare, ĉu?
+{{< /ekz >}}
+
+{{< ekz `mi amas lin` `warn` >}}
+Ĉi tio ne estas kompreneble al iu kiu ne scias kiu estas "li".
+{{< /ekz >}}
+
+{{< ekz `mia afero` >}}
+Adjektivaj pronomoj kutime signifas posedado. Ĉi tiu afero estas difinita per ĝia rilato al mi.
+{{< /ekz >}}
+
+La pronomo "si" estas iome malsame, ĉar ĝi povas rilati al nenio krom la subjekto la verbo. Notu ke verbecaj formoj ne estas verboj.
+
+{{< ekz `ŝi vidas sin` >}}
+Ŝi estas kaj subjekto kaj objekto, probable ŝi rigardas en spegulo.
+{{< /ekz >}}
+
+## Prepozicioj
+
+Prepozicioj ebligas ke oni aldonu pli da informo ol aliaj vorto.
+
+{{< ekz `io de mi` >}}
+"io" estas difinita per ĝia rilato al "mi"
+{{ /ekz }}
+
+{{< ekz `plena je akvo` >}}
+La adjektivo "plena" ne precizas kio estas la plenanto, do ni uzas prepozicio por enkoduki pli detalojn.
+{{ /ekz }}
+
 ## Kunmetado
 
 La ideo de kunmetada kontraste de ordinara uzo.
@@ -31,11 +69,17 @@ Tio estas kuko kiu havas en si iom de la ideo "karot". Plej probable tiu signifa
 Tio estas kuko kiu estas difinita per "karot". La plej grava fakto ke mi volas komuniki pri ĉi tiu vorto estas pri karotoj. Probable tiu estas konata speco de kuko.
 {{< /ekz >}}
 
+{{< ekz `akvoplena` >}}
+Tio signifas la saman kiel "plena je akvo". Kial uzi? Ĉar ĝi estas pli mallonga kaj eble ĝi sonas pli interesa?
+{{< /ekz >}}
+
 {{< ekz `nelaŭtigebla` `warn` >}}
 Mi trovis ĉi tiun kunmetaĵon en libro, kaj ĝi konfuzis min. Ĉu la "ne" rilatas al "laŭt" aŭ al la tuto? Mi povis diveni de la kunteksto, sed ĝi plimalfaciligis mian legadon.
 {{< /ekz >}}
 
 ## Oftaj afiksoj
+
+Kelkaj sufiksoj helpas al ni ŝanĝi la sencon kaj ankaŭ la specon de vorton.
 
 {{< ekz `...` >}}
 hmm

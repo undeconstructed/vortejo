@@ -7,7 +7,7 @@ weight: 30
 
 La kerno de frazo estas "propozicio", tio estas io kiu povas esti vera aŭ nevera. Por fari tion, oni uzas verbon. De la verbo oni pendigas aliajn vortojn, sed kiel klarigi kiel la aliaj vortoj rilatas as la verbo?
 
-## Verboj
+## Propozicioj
 
 {{< ekz `neĝas` >}}
 Verbo povas esti frazo sole.
@@ -32,7 +32,11 @@ Akuzativa substantivo estas tiel klare ligita al la verbo, ke oni ne bezonas pre
 ## Prepozicioj
 
 {{< ekz `mi kuras en parko` >}}
-Substantivo post prepozicio rilatas al la verbo laŭ la signifo de la prepozicio.
+La substantivo post prepozicio rilatas al la verbo laŭ la signifo de la prepozicio.
+{{< /ekz >}}
+
+{{< ekz `mi kuras rapide en parko` `warn` >}}
+Prepozicio ankaŭ povas ligi vorton al adverbo. Ĉu ĉi tiu ekzemplo estas klara? Probable, ĉar ne tro gravas ĉu "en parko" rilatas al "kuras" aŭ al "rapide", la senco estas klara.
 {{< /ekz >}}
 
 {{< ekz `mi kuras en parko por ekzerco de arbo al fontano je lundo` >}}
