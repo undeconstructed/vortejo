@@ -7,7 +7,7 @@ weight: 20
 
 ## Signifo
 
-Ne ĉiu Esperanto radiko estas precize difinita, kaj tio estas kial ili estas tiel utila. Ĉiu ĝenerala radiko enhavas unu ideon, kaj la kuntekso permasas ke ni prenu de tio la informon kiun ne bezonas.
+Ne ĉiu Esperanto radiko estas precize difinita, kaj tio estas kial ili estas tiel utila. Ĉiu ĝenerala radiko enhavas unu ideon, kaj la kunteksto permasas ke ni prenu de tio la informon kiun ne bezonas.
 
 Foje estas konfuzo pri ĉu radiko estas verba, substantiva ktp. Me volas diri ke se estas ĝenerala radiko, oni ne devas maltranviliĝi pri tio. Kelkaj radikoj eble estas pli verba, aŭ pli adjektiva. Simile foje ne videblas ĉu oni devas uzi aĵo por krei substantivo, aŭ ado por signifi ago. Mi dirus ke la ĝuste sistemo estas pensi ke la radiko povas esti ian vorton, kaj la sufikso povas estas uzata se ne estas klara. Jen ekzemploj:
 
@@ -29,6 +29,10 @@ Tio estas kuko kiu havas en si iom de la ideo "karot". Plej probable tiu signifa
 
 {{< ekz `karotkuko` >}}
 Tio estas kuko kiu estas difinita per "karot". La plej grava fakto ke mi volas komuniki pri ĉi tiu vorto estas pri karotoj. Probable tiu estas konata speco de kuko.
+{{< /ekz >}}
+
+{{< ekz `nelaŭtigebla` `warn` >}}
+Mi trovis ĉi tiun kunmetaĵon en libro, kaj ĝi konfuzis min. Ĉu la "ne" rilatas al "laŭt" aŭ al la tuto? Mi povis diveni de la kunteksto, sed ĝi plimalfaciligis mian legadon.
 {{< /ekz >}}
 
 ## Oftaj afiksoj
