@@ -43,7 +43,7 @@ Estos tempo, dum kiu mi intencis ke la lernado estos finita.
 
 ## Verbecaj vortoj
 
-Aliaj vortojn povis agi kiel verboj, havante adverbojn, prepoziciojn ktp, sed ili ne estas "veraj" verboj. Ili inkluzivas la aktivaj kaj pasivaj particpojn,
+Aliaj vortojn povis agi kiel verboj, havante adverbojn, prepoziciojn ktp, sed ili ne estas "veraj" verboj. Ili inkluzivas la aktivaj kaj pasivaj particpojn.
 
 {{< ekz `mi estis farinta la taskon` >}}
 Ĉiu "verba" formo agas kiel verbo, ekz. pri la akuzativo.

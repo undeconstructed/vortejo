@@ -7,6 +7,9 @@ weight: 7
 
 Ĉi tie estos ekzemplaj frazaj uzanta la ĝenerala vortaro.
 
+{{< ekz `la muso estas granda` >}}
+{{< /ekz >}}
+
 {{< ekz `la ĉielo bluiĝis, kaj nun ĝi estas blua; ĝi eble bluas.` >}}
 Laŭ mi, "blu" estas nature adjektiva, do mi uzos "iĝ" por indiki ŝanĝo al bluo. Blu povas ankaŭ esti verb, sed ĝi estas sufiĉa grava al mi ke ĝi estu la kerno de frazo.
 {{< /ekz >}}

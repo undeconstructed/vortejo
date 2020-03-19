@@ -7,7 +7,7 @@ weight: 20
 
 ## Signifo
 
-Ne ĉiu Esperanto radiko estas precize difinita, kaj tio estas kial ili estas tiel utila. Ĉiu ĝenerala radiko enhavas unu ideon, kaj la kunteksto permasas ke ni prenu de tio la informon kiun ne bezonas.
+Ne ĉiu Esperanta radiko estas precize difinita, kaj tio estas kial ili estas tiel utila. Ĉiu ĝenerala radiko enhavas unu ideon, kaj la kunteksto permasas ke ni prenu de tio la informon kiun ne bezonas.
 
 Foje estas konfuzo pri ĉu radiko estas verba, substantiva ktp. Me volas diri ke se estas ĝenerala radiko, oni ne devas maltranviliĝi pri tio. Kelkaj radikoj eble estas pli verba, aŭ pli adjektiva. Simile foje ne videblas ĉu oni devas uzi aĵo por krei substantivo, aŭ ado por signifi ago. Mi dirus ke la ĝuste sistemo estas pensi ke la radiko povas esti ian vorton, kaj la sufikso povas estas uzata se ne estas klara. Jen ekzemploj:
 
@@ -21,7 +21,23 @@ Eble mi parolas pri la ago de kolekti, aŭ eble pri la rezulto. Ĝenerele, tio n
 
 ## Vortspecoj
 
-Substantivo, Adjektivo, Adverbo, Prepozicio, Verbo, Konjunkcio, Pronomo ...
+Oni povas kunstrui substantivoj, adjektivoj, adverboj, kaj verboj el radikoj per nur la aldono de finaĵo. La ĝenerala senco de la vortoj estas ĉiam same, sed kun apartaj nuancoj ĉar ili devas rilati malsame al la aliaj vortoj.
+
+{{< ekz `ĝi estas turo` >}}
+Efektive, ĝi estas turo.
+{{< /ekz >}}
+
+{{< ekz `ĝi estas tura` >}}
+Ĝi estas kiel turo, sed ne ĝuste estas turo.
+{{< /ekz >}}
+
+{{< ekz `ĝi ture staras` >}}
+Ĝi faras la agon de la verbo (staras) kiel turo, sed ne ĝuste estas turo.
+{{< /ekz >}}
+
+{{< ekz `ĝi turas` >}}
+Ĝi faras kiel turo, kaj tiu estas grava.
+{{< /ekz >}}
 
 ## Pronomoj
 
