@@ -29,6 +29,8 @@ La "-us" kaj "-u" formoj estas pri eĉ pli neprecizaj ideoj.
 
 La "-i" formo, nu, ...
 
+## Inifinitivoj
+
 ## Participoj
 
 La frazo havas ĝian propran tempon, kaj la uzo de particpo ebligas al ni paroli pri evento rilate de tiu tempo.

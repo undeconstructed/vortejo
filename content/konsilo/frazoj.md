@@ -83,6 +83,10 @@ Prepozicio ankaŭ povas ligi vorton al adverbo. Ĉu ĉi tiu ekzemplo estas klara
 Pli ol unu akuzativoj? La parolanto devas pensi ke estas tute klare kiel ĉiu rilatas al la verbon. Estu zorgema.
 {{< /ekz >}}
 
+{{< ekz `ĝi estas kaŭze de tiu afero` >}}
+Adverbo kun "de" tre similas prepozicion.
+{{< /ekz >}}
+
 ## Konjunkcioj
 
 {{< ekz `mi havas tason kaj teleron` >}}
@@ -90,7 +94,7 @@ Konjunkcio povas ligi elementojn de la sama speco.
 {{< /ekz >}}
 
 {{< ekz `mi havas tason kaj mi volas teleron` >}}
-Foje Konjunkcio ligis du prepoziciojn.
+Foje konjunkcio ligis du propoziciojn.
 {{< /ekz >}}
 
 {{< ekz `mi havas tason kaj volas teleron` >}}
@@ -119,15 +123,46 @@ La vorto "ke" permesas al ni ligi propoziciojn por niaj propraj kialoj. Ekzemple
 Aŭ uzanta verbon.
 {{< /ekz >}}
 
-## Inifinitivoj
+{{< ekz `mi faras ĝin pro ke vi postulas` `warn` >}}
+"pro ke" havas saman signifon kiel "ĉar", kaj "ĉar" estas pli normala.
+{{< /ekz >}}
 
-...
+## Infinitivoj
 
-## Demandoj
+La "-i" formo de verbo estas ie inter verbo kaj substantivo.
 
-Ĉu => jes/ne
-Ki- => ...
+{{< ekz `helpi estas bone` >}}
+Oficiale oni devas uzi adverbojn por priskribi infinitivo, ĉar ĝi estas verbo, sed parole la diferenco inter "-a" kaj "-e" ofte ne estas rimarkinda - "helpo estas bona" signifas same, do ne gravas se oni eraras iomete.
+{{< /ekz >}}
+
+{{< ekz `ŝi volas helpi al li movi sin` `warn` >}}
+Kiam oni uzas infinitivon kiel objeckton, oni povas elekti alia subjekto, kaj tio ŝanĝas la signifon de "si".
+{{< /ekz >}}
 
 ## Korelativoj
 
-Ĉu uzas t/k paroj?
+Korelativoj permasas ke oni uzas novan propozicion por priskribi ion. Ofte oni uzas ilin en parojn, por indiki kaj la rolon en la ĉefa propozicio, kaj la rolon en la alia.
+
+{{< ekz `mi volas (tion,) kion vi havas` >}}
+La "tion" ne estas tre grava ĉar estas oni povas kompreni ke la tuta dua parto de la frazo agas kiel la objekto de la unua. Eble estas bone uzi la "tion" por esti klare, sed ebla ĝi ne sonas tiel bone?
+{{< /ekz >}}
+
+{{< ekz `(tio,) kion vi havas, estas bona` >}}
+Oni eble elektus uzi la "tio" ĉi tie ĉar ĝi helpas emfazi pri kio oni parolas.
+{{< /ekz >}}
+
+# Neplenaj frazoj
+
+Ofte ni diras ion kiun ne perfekte sekvas la regulojn de la lingvo, sed la rezulto estas tute komprenabla. Ofte estas ĉar ni ne diras vortojn kiam ni atendas ke la aŭdanto povas dinveni ilin.
+
+{{< ekz `mi volas la grandan (aferon)` >}}
+"la grandan" ne estas substantivo, do ne fakte ne povas esti la objekto de la verbo, sed la substantivo ne estas tre grava ĉi tie, do ne estas problemo por la aŭdanto.
+{{< /ekz >}}
+
+{{< ekz `ĉu vi volas daŭri (esti ludanta)? / ĉu vi volas daŭrigi (la ludon)?` >}}
+Ne multe gravas ĉu uzi la "-ig-" formon, dum la aŭdanto povas diveni taŭgan finon de la frazo.
+{{< /ekz >}}
+
+{{< ekz `vi devas moviĝi / vi devas movi (vin)` >}}
+Kaj denove, eble la "-iĝ-" formo estas pli prava, sed oni povas lasi al la aŭdanto plenigi la truon.
+{{< /ekz >}}

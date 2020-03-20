@@ -73,30 +73,10 @@ Prepozicioj ebligas ke oni aldonu pli da informo ol aliaj vorto.
 La adjektivo "plena" ne precizas kio estas la plenanto, do ni uzas prepozicio por enkoduki pli detalojn.
 {{< /ekz >}}
 
-## Kunmetado
+## Um
 
-La ideo de kunmetada kontraste de ordinara uzo.
+Dum uzado de "um" eble ne estas tre dezirinda en skribita lingvo, ĝi povas esti tre utila parole.
 
-{{< ekz `karota kuko` >}}
-Tio estas kuko kiu havas en si iom de la ideo "karot". Plej probable tiu signifas ke estas karoto en la kuko, sed ankaŭ eblas ke ĝi estas kuko en la formo de karoto.
-{{< /ekz >}}
-
-{{< ekz `karotkuko` >}}
-Tio estas kuko kiu estas difinita per "karot". La plej grava fakto ke mi volas komuniki pri ĉi tiu vorto estas pri karotoj. Probable tiu estas konata speco de kuko.
-{{< /ekz >}}
-
-{{< ekz `akvoplena` >}}
-Tio signifas la saman kiel "plena je akvo". Kial uzi? Ĉar ĝi estas pli mallonga kaj eble ĝi sonas pli interesa?
-{{< /ekz >}}
-
-{{< ekz `nelaŭtigebla` `warn` >}}
-Mi trovis ĉi tiun kunmetaĵon en libro, kaj ĝi konfuzis min. Ĉu la "ne" rilatas al "laŭt" aŭ al la tuto? Mi povis diveni de la kunteksto, sed ĝi plimalfaciligis mian legadon.
-{{< /ekz >}}
-
-## Oftaj afiksoj
-
-Kelkaj sufiksoj helpas al ni ŝanĝi la sencon kaj ankaŭ la specon de vorton.
-
-{{< ekz `...` >}}
-hmm
+{{< ekz `donu al mi la umon - ne, la plej uman - mi devas umi la umon` >}}
+Sed tute ne atendu ke iu ekster la konversacio komprenus ion.
 {{< /ekz >}}
