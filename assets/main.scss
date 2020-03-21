@@ -167,3 +167,24 @@ body > {
     background-color: #eee;
   }
 }
+
+/* 888888888 */
+
+.kontrolilo {
+  form {
+    textarea {
+      width: 100%;
+    }
+  }
+  .rezulto {
+    margin: 1em 0;
+    span {
+      padding: .3em;
+      border-radius: .3em;
+      white-space: nowrap;
+    }
+    span.warn {
+      border: 1px solid orange;
+    }
+  }
+}

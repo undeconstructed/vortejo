@@ -1,0 +1,261 @@
+
+<div class="kontrolilo">
+
+  <div class="stato">
+    pretiĝanta
+  </div>
+
+  <h2>En</h2>
+
+  <form class="formo" hidden>
+    <textarea name="teksto" placeholder="enigi tekston ĉie tie"></textarea>
+    <button type="submit">ek</button>
+  </form>
+
+  <h2>El</h2>
+
+  <div class="rezulto" hidden>
+  </div>
+
+</div>
+
+<script defer>
+(function() {
+  let dividŜablono = /[^A-Za-zĉĝĥĵŝŭĈĜĤĴŜŬ]/
+
+  let radikoj = null
+
+  let e0 = document.querySelector(".kontrolilo")
+  let eS = e0.querySelector(".stato")
+  let eF = e0.querySelector("form")
+  let eT = eF.querySelector("[name=teksto]")
+  let eR = e0.querySelector(".rezulto")
+
+  function montruEraro(e) {
+    console.log(e)
+    montruTeksto(eS, 'err: ' + e)
+  }
+
+  function montruTeksto(e, t) {
+    e.textContent = t
+  }
+
+  eF.addEventListener('submit', e  => {
+    e.preventDefault()
+    let t = eT.value
+    komprenuTuton(t)
+  })
+
+  function komprenuTuton(teksto) {
+    eR.removeChild(eR.firstChild)
+
+    let e = document.createElement('div')
+    for (v of teksto.split(dividŜablono)) {
+      if (v.length == 0) {
+        continue
+      }
+      let vs = document.createElement('span')
+      let da = komprenuVorton(v.toLowerCase())
+      vs.textContent = da.vorto
+      if (da.eraro) {
+        vs.title = da.eraro.join(', ')
+        vs.classList.add('warn')
+      }
+      e.appendChild(vs)
+      e.appendChild(document.createTextNode(' '))
+    }
+    eR.appendChild(e)
+  }
+
+  function komprenuVorton(teksto) {
+    let v = provuDividi(teksto)
+
+    if (v) {
+      v.vorto = v.eroj.map(e => e.radiko).join("/")
+    } else {
+      v = {
+        eraro: [ 'ne komprenebla' ],
+        vorto: teksto
+      }
+    }
+
+    return v
+  }
+
+  function provuDividi(teksto) {
+    let metejo = []
+    dividu([], teksto, metejo)
+
+    let altj = metejo.map((a) => {
+      let pj = 0
+      let l = a.length
+      let eraro = []
+      let estAk = false
+      let estPl = false
+      let tipo = null
+      // kontrolu finaĵojn
+      let finoj = 0
+      for (let i = l-1; i >= 0; i--) {
+        let ero = a[i]
+        if (!ero.finaĵo) {
+          break
+        }
+        finoj++
+        if (ero.radiko === 'n') {
+          if (estAk || estPl || tipo) {
+            eraro.push('n ne ĉe la fino')
+            pj -= 10
+          } else {
+            estAk = true
+          }
+        } else if (ero.radiko === 'j') {
+          if (tipo) {
+            eraro.push('j antaŭ tipo')
+            pj -= 10
+          } else {
+            estPl = true
+          }
+        } else if (ero.radiko === 'a' || ero.radiko === 'o') {
+          if (tipo) {
+            eraro.push('duobla tipo: ' + ero.radiko)
+            pj -= 10
+          } else {
+            tipo = ero.radiko
+          }
+        } else if (ero.radiko === 'e') {
+          if (estAk || estPl || tipo) {
+            eraro.push('e finaĵo ne ĉe la fino')
+            pj -= 10
+          } else {
+            tipo = ero.radiko
+          }
+        } else if (ero.radiko === 'i' || ero.radiko === 'u' || ero.radiko === 'as' || ero.radiko === 'os' || ero.radiko === 'is' || ero.radiko === 'us') {
+          if (estAk || estPl || tipo) {
+            eraro.push('problema finaĵo: ' + ero.radiko)
+            pj -= 10
+          } else {
+            tipo = 'verbo'
+          }
+        } else {
+          console.log(ero)
+        }
+      }
+      for (let i = 0; i < a.length - finoj; i++) {
+        let ero = a[i]
+        if (ero.litero) {
+          eraro.push('uzo de liternomo: ' + ero.radiko)
+          pj -= 10
+        } else if (ero.radiko === 'a' || ero.radiko === 'e' || ero.radiko === 'o') {
+          // XXX - kontrolu ke estas nur unu kaj estas malantaŭ io
+        } else if (ero.finaĵo) {
+          eraro.push('neatenda finaĵo en vorto: ' + ero.radiko)
+          pj -= 10
+        }
+        if (!tipo && ero.tipo) {
+          tipo = ero.tipo
+        }
+      }
+      let lasta = a[a.length-1]
+      if (!tipo && !lasta.fina) {
+        eraro.push('nekonata tipo')
+        pj -= 20
+      }
+      // ...
+      return {
+        eroj: a,
+        akuzativo: estAk,
+        pluralo: estPl,
+        tipo: tipo,
+        poentoj: pj,
+        eraro: eraro.length > 0 ? eraro : null
+      }
+    })
+
+    altj.sort((a, b) => {
+      let d = b.poentoj - a.poentoj
+      if (d) {
+        return d
+      }
+      return a.eroj.length - b.eroj.length
+    })
+
+    return altj[0]
+  }
+
+  function dividu (komenco, cetero, metejo) {
+    for (let i = 1; i <= cetero.length; i++) {
+      let s = cetero.slice(0, i)
+      let r = radikoj.get(s)
+      if (r) {
+        let k = komenco.slice(0)
+        k.push(r)
+        let c = cetero.slice(s.length)
+        if (c.length > 0) {
+          dividu(k, c, metejo)
+        } else {
+          metejo.push(k)
+        }
+      }
+    }
+  }
+
+  function metuRadikoj(rj) {
+    let m = new Map()
+    for (let e of rj) {
+      if (e.fakoj.includes('litera')) {
+        continue
+      }
+      let r = e.radiko
+
+      let streko = r.indexOf('/')
+      let dashĈeKomenco = r.startsWith('-')
+      let dashĈeFino = r.endsWith('-')
+
+      let kj = {}
+      if (streko >= 0) {
+        kj.radiko = r.slice(0, streko)
+      } else if (dashĈeKomenco && !dashĈeFino) {
+        kj.radiko = r.slice(1)
+        kj.finaĵo = true
+      } else if (dashĈeKomenco && dashĈeFino) {
+        kj.radiko = r.slice(1).slice(0, -1)
+        kj.enfikso = true
+      } else {
+        kj.radiko = r
+        kj.fina = true
+      }
+      if (e.fakoj.includes('litera')) {
+        kj.litero = true
+      }
+      if (e.fakoj.includes('pronomo') || e.fakoj.includes('tabela')) {
+        kj.tipo = 'o'
+      }
+
+      // kuniĝis erojn kun sama radiko
+      let x = m.get(kj.radiko)
+      if (x) {
+        for (let p in x) {
+          kj[p] = x[p]
+        }
+      }
+      m.set(kj.radiko, kj)
+    }
+
+    radikoj = m
+
+    eF.hidden = false
+    eR.hidden = false
+    montruTeksto(eS, '')
+  }
+
+  const fonto = '{{ print .Site.Params.VortaroURL }}'
+
+  fetch(fonto + '/radikoj.json').
+  then(
+    rez => rez.json(),
+    montruEraro).
+  then(
+    metuRadikoj,
+    montruEraro)
+})()
+</script>
