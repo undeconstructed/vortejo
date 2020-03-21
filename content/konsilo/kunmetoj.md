@@ -29,6 +29,10 @@ Kelkaj sufiksoj helpas al ni ŝanĝi la sencon kaj ankaŭ la specon de vorton.
 "-ist-" ĝenerale signifas homo kiu faras ion aŭ profesie, aŭ bone, sed ne estas preciza. "-ul-" estas ankoraŭ malpli preciza, kaj nur indikas homo kiu estis iel karakteriza per io.
 {{< /ekz >}}
 
+{{< ekz `ne estas krokodilo, sed certe estas ia krokodilulo` >}}
+Fakte, ne ĉiu ulo estas homo.
+{{< /ekz >}}
+
 ## Kunmetado
 
 {{< ekz `karota kuko` >}}
