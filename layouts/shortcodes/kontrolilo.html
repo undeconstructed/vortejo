@@ -10,11 +10,15 @@
   <form class="formo" hidden>
     <textarea name="teksto" placeholder="enigi tekston ĉie tie"></textarea>
     <button type="submit">ek</button>
+    <button type="button" name="mp">malplenigi</button>
   </form>
 
   <h2>El</h2>
 
   <div class="rezulto" hidden>
+  </div>
+
+  <div class="lavorto" hidden>
   </div>
 
 </div>
@@ -25,11 +29,12 @@
 
   let radikoj = null
 
-  let e0 = document.querySelector(".kontrolilo")
-  let eS = e0.querySelector(".stato")
-  let eF = e0.querySelector("form")
-  let eT = eF.querySelector("[name=teksto]")
-  let eR = e0.querySelector(".rezulto")
+  let e0 = document.querySelector('.kontrolilo')
+  let eS = e0.querySelector('.stato')
+  let eF = e0.querySelector('form')
+  let eT = eF.querySelector('[name=teksto]')
+  let eR = e0.querySelector('.rezulto')
+  let eM = e0.querySelector('.lavorto')
 
   function montruEraro(e) {
     console.log(e)
@@ -42,12 +47,34 @@
 
   eF.addEventListener('submit', e  => {
     e.preventDefault()
-    let t = eT.value
-    komprenuTuton(t)
+    komprenuTuton(eT.value)
   })
+  eF.querySelector("[name=mp]").addEventListener('click', e  => {
+    eT.value = ''
+  })
+
+  function montruVorto(altj) {
+    eM.removeChild(eM.firstChild)
+    let l = document.createElement('ol')
+    for (let a of altj) {
+      let ero = document.createElement('li')
+      ero.textContent = a.vorto
+      if (a.eraro) {
+        ero.title = a.eraro.join(', ')
+      }
+      l.appendChild(ero)
+    }
+    eM.appendChild(l)
+    eM.hidden = false
+    montru(eM)
+  }
 
   function komprenuTuton(teksto) {
     eR.removeChild(eR.firstChild)
+
+    if (!radikoj) {
+      return
+    }
 
     let e = document.createElement('div')
     for (v of teksto.split(dividŜablono)) {
@@ -55,12 +82,17 @@
         continue
       }
       let vs = document.createElement('span')
-      let da = komprenuVorton(v.toLowerCase())
-      vs.textContent = da.vorto
-      if (da.eraro) {
-        vs.title = da.eraro.join(', ')
+      let altj = komprenuVorton(v.toLowerCase())
+      let unua = altj[0]
+      vs.textContent = unua.vorto
+      if (altj.length > 1) {
+        vs.textContent += ` (${altj.length})`
+      }
+      if (unua.eraro) {
+        vs.title = unua.eraro.join(', ')
         vs.classList.add('warn')
       }
+      vs.addEventListener('click', () => montruVorto(altj))
       e.appendChild(vs)
       e.appendChild(document.createTextNode(' '))
     }
@@ -68,25 +100,17 @@
   }
 
   function komprenuVorton(teksto) {
-    let v = provuDividi(teksto)
+    let vj = provuDividi(teksto)
 
-    if (v) {
-      v.vorto = v.eroj.map(e => e.radiko).join("/")
-    } else {
-      v = {
+    if (vj.length == 0) {
+      return ([{
+        vorto: teksto,
         eraro: [ 'ne komprenebla' ],
-        vorto: teksto
-      }
+        poentoj: -100
+      }])
     }
 
-    return v
-  }
-
-  function provuDividi(teksto) {
-    let metejo = []
-    dividu([], teksto, metejo)
-
-    let altj = metejo.map((a) => {
+    let altj = vj.map((a) => {
       let pj = 0
       let l = a.length
       let eraro = []
@@ -140,6 +164,7 @@
           console.log(ero)
         }
       }
+      // kontrolu antaŭ finaĵoj
       for (let i = 0; i < a.length - finoj; i++) {
         let ero = a[i]
         if (ero.litero) {
@@ -151,6 +176,9 @@
           eraro.push('neatenda finaĵo en vorto: ' + ero.radiko)
           pj -= 10
         }
+        if (ero.xxx) {
+          eraro.push(`xxx vorto: ${ero.radiko}, vidu: ${ero.vidu}`)
+        }
         if (!tipo && ero.tipo) {
           tipo = ero.tipo
         }
@@ -160,8 +188,16 @@
         eraro.push('nekonata tipo')
         pj -= 20
       }
+      if (!lasta.finaĵo && !lasta.fina) {
+        eraro.push('ne havas finaĵon')
+        pj -= 20
+      }
+      if (lasta.finaĵo) {
+        pj += 1
+      }
       // ...
       return {
+        vorto: a.map(e => e.radiko).join('/'),
         eroj: a,
         akuzativo: estAk,
         pluralo: estPl,
@@ -179,10 +215,16 @@
       return a.eroj.length - b.eroj.length
     })
 
-    return altj[0]
+    return altj
   }
 
-  function dividu (komenco, cetero, metejo) {
+  function provuDividi(teksto) {
+    let metejo = []
+    dividu([], teksto, metejo)
+    return metejo
+  }
+
+  function dividu(komenco, cetero, metejo) {
     for (let i = 1; i <= cetero.length; i++) {
       let s = cetero.slice(0, i)
       let r = radikoj.get(s)
@@ -229,6 +271,10 @@
       }
       if (e.fakoj.includes('pronomo') || e.fakoj.includes('tabela')) {
         kj.tipo = 'o'
+      }
+      if (e.fakoj.includes('xxx')) {
+        kj.xxx = true
+        kj.vidu = e.vidu
       }
 
       // kuniĝis erojn kun sama radiko

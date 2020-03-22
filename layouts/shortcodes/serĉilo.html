@@ -31,11 +31,12 @@
   let radikoj = null
   let elektitaFako = null
 
-  let e0 = document.querySelector(".vortaro")
-  let eS = e0.querySelector(".stato")
-  let eF = e0.querySelector(".fakoj")
-  let eP = e0.querySelector(".pri")
-  let eR = e0.querySelector(".radikoj")
+  let e0 = document.querySelector('.vortaro')
+  let eS = e0.querySelector('.stato')
+  let eF = e0.querySelector('.fakoj')
+  let eP = e0.querySelector('.pri')
+  let eR = e0.querySelector('.radikoj')
+  let eM = e0.querySelector('.lavorto')
 
   function montruEraro(e) {
     console.log(e)
@@ -78,19 +79,18 @@
   }
 
   function montruRadiko(r) {
-    let x = document.querySelector('.lavorto')
-    x.querySelector('[f=r]').textContent = r.radiko
-    x.querySelector('[f=f]').textContent = r.fakoj
-    x.querySelector('[f=v]').textContent = r.vidu
-    x.querySelector('[f=a]').textContent = r.en
-    x.hidden = false
-    montru(x)
+    eM.querySelector('[f=r]').textContent = r.radiko
+    eM.querySelector('[f=f]').textContent = r.fakoj
+    eM.querySelector('[f=v]').textContent = r.vidu
+    eM.querySelector('[f=a]').textContent = r.en
+    eM.hidden = false
+    montru(eM)
   }
 
   function metuFakoj(fj) {
     let l = document.createElement('ul')
     for (let f of fj) {
-      let e = document.createElement("li")
+      let e = document.createElement('li')
       e.textContent = f.nomo
       e.title = f.pri
       e.addEventListener('click', () => montruFako(e, f.nomo, f.pri))

@@ -172,6 +172,7 @@ body > {
 
 .kontrolilo {
   form {
+    margin-bottom: 1em;
     textarea {
       width: 100%;
     }
@@ -186,5 +187,15 @@ body > {
     span.warn {
       border: 1px solid orange;
     }
+    span:hover {
+      cursor: pointer;
+      background-color: #eee;
+    }
   }
+}
+
+// XXX - devus esti en .kontrolilo, sed dum ĝi estas videbla ĝi ne estas en tio
+.lavorto ol {
+  padding: 1em 1em 1em 2em;
+  margin: 0;
 }

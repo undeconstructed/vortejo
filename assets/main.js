@@ -3,8 +3,10 @@
   let eS = document.querySelector("#ŝirmilo")
   let eM = eS.querySelector(".montrilo")
 
-  eS.addEventListener("click", () => {
-    eS.hidden = true
+  eS.addEventListener("click", (e) => {
+    if (e.target == eS) {
+      eS.hidden = true
+    }
   })
 
   function montru(e) {
