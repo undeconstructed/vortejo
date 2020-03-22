@@ -9,10 +9,10 @@
 
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link rel="stylesheet" href="/vortejo/main.min.3c57c9d24d05693eeed5b1bd4f56503ff0c1cb23029f79c337c4481819807b97.css" integrity="sha256-PFfJ0k0FaT7u1bG9T1ZQP/DByyMCn3nDN8RIGBmAe5c=">
+  <link rel="stylesheet" href="/vortejo/main.min.9c66deaeb228a124f9336c58081722a322330168788f1fae0e48fc6ef6a7d4d4.css" integrity="sha256-nGberrIooST5M2xYCBcioyIzAWh4jx&#43;uDkj8bvan1NQ=">
 
   <link rel="icon" href="icon.png">
-  <script defer src="/vortejo/main.min.8d8dc15a98cd320dd7010e7e56a65fd491f16dc6f62b4f05c6d914df7632ecf9.js" integrity="sha256-jY3BWpjNMg3XAQ5&#43;VqZf1JHxbcb2K08FxtkU33Yy7Pk="></script>
+  <script defer src="/vortejo/main.min.72da15ee44001133496bbea8fd5426fe35a4ff083442926b89e5098288db4fe3.js" integrity="sha256-ctoV7kQAETNJa76o/VQm/jWk/wg0QpJrieUJgojbT&#43;M="></script>
 
 </head>
 
@@ -37,7 +37,9 @@
   
 <main aria-role="main">
   <h1 id="kontrolilo">Kontrolilo</h1>
-<p>Eta kaj iom stulta ilo por kontroli ĉu teksto enhavas neoficialajn vortojn.</p>
+<p>Eta kaj iom stulta ilo por kontroli ĉu teksto enhavas neoficialajn vortojn. Enmetu la tekston sube, premu la &ldquo;ek&rdquo; butonon. La rezulto estas la teksto, kun la vortoj partigitaj en subvortojn, laŭ la radikoj de la vortaro.</p>
+<p>Estas ofte multaj kieloj laŭ kiu oni povas partigi vorton, inkluzive de tiuj kiuj ne estas tute laŭregulaj, do la sistemo trovas ĉiujn kaj tiam elektis la plej verŝajne. La nombro post ĉiu vorto estas la kiomo de eblaj partigoj - alklaku vorton por vidi tiujn. Eblas ke la elektita ne estas la intenca.</p>
+<p>Vorto kun oranĝkolora bordo estas nekomprenebla uzanta la vortaro.</p>
 
 <div class="kontrolilo">
 
@@ -50,11 +52,15 @@
   <form class="formo" hidden>
     <textarea name="teksto" placeholder="enigi tekston ĉie tie"></textarea>
     <button type="submit">ek</button>
+    <button type="button" name="mp">malplenigi</button>
   </form>
 
   <h2>El</h2>
 
   <div class="rezulto" hidden>
+  </div>
+
+  <div class="lavorto" hidden>
   </div>
 
 </div>
@@ -65,11 +71,12 @@
 
   let radikoj = null
 
-  let e0 = document.querySelector(".kontrolilo")
-  let eS = e0.querySelector(".stato")
-  let eF = e0.querySelector("form")
-  let eT = eF.querySelector("[name=teksto]")
-  let eR = e0.querySelector(".rezulto")
+  let e0 = document.querySelector('.kontrolilo')
+  let eS = e0.querySelector('.stato')
+  let eF = e0.querySelector('form')
+  let eT = eF.querySelector('[name=teksto]')
+  let eR = e0.querySelector('.rezulto')
+  let eM = e0.querySelector('.lavorto')
 
   function montruEraro(e) {
     console.log(e)
@@ -82,12 +89,34 @@
 
   eF.addEventListener('submit', e  => {
     e.preventDefault()
-    let t = eT.value
-    komprenuTuton(t)
+    komprenuTuton(eT.value)
   })
+  eF.querySelector("[name=mp]").addEventListener('click', e  => {
+    eT.value = ''
+  })
+
+  function montruVorto(altj) {
+    eM.removeChild(eM.firstChild)
+    let l = document.createElement('ol')
+    for (let a of altj) {
+      let ero = document.createElement('li')
+      ero.textContent = a.vorto
+      if (a.eraro) {
+        ero.title = a.eraro.join(', ')
+      }
+      l.appendChild(ero)
+    }
+    eM.appendChild(l)
+    eM.hidden = false
+    montru(eM)
+  }
 
   function komprenuTuton(teksto) {
     eR.removeChild(eR.firstChild)
+
+    if (!radikoj) {
+      return
+    }
 
     let e = document.createElement('div')
     for (v of teksto.split(dividŜablono)) {
@@ -95,12 +124,17 @@
         continue
       }
       let vs = document.createElement('span')
-      let da = komprenuVorton(v.toLowerCase())
-      vs.textContent = da.vorto
-      if (da.eraro) {
-        vs.title = da.eraro.join(', ')
+      let altj = komprenuVorton(v.toLowerCase())
+      let unua = altj[0]
+      vs.textContent = unua.vorto
+      if (altj.length > 1) {
+        vs.textContent += ` (${altj.length})`
+      }
+      if (unua.eraro) {
+        vs.title = unua.eraro.join(', ')
         vs.classList.add('warn')
       }
+      vs.addEventListener('click', () => montruVorto(altj))
       e.appendChild(vs)
       e.appendChild(document.createTextNode(' '))
     }
@@ -108,25 +142,17 @@
   }
 
   function komprenuVorton(teksto) {
-    let v = provuDividi(teksto)
+    let vj = provuDividi(teksto)
 
-    if (v) {
-      v.vorto = v.eroj.map(e => e.radiko).join("/")
-    } else {
-      v = {
+    if (vj.length == 0) {
+      return ([{
+        vorto: teksto,
         eraro: [ 'ne komprenebla' ],
-        vorto: teksto
-      }
+        poentoj: -100
+      }])
     }
 
-    return v
-  }
-
-  function provuDividi(teksto) {
-    let metejo = []
-    dividu([], teksto, metejo)
-
-    let altj = metejo.map((a) => {
+    let altj = vj.map((a) => {
       let pj = 0
       let l = a.length
       let eraro = []
@@ -180,6 +206,7 @@
           console.log(ero)
         }
       }
+      
       for (let i = 0; i < a.length - finoj; i++) {
         let ero = a[i]
         if (ero.litero) {
@@ -191,6 +218,9 @@
           eraro.push('neatenda finaĵo en vorto: ' + ero.radiko)
           pj -= 10
         }
+        if (ero.xxx) {
+          eraro.push(`xxx vorto: ${ero.radiko}, vidu: ${ero.vidu}`)
+        }
         if (!tipo && ero.tipo) {
           tipo = ero.tipo
         }
@@ -200,8 +230,16 @@
         eraro.push('nekonata tipo')
         pj -= 20
       }
+      if (!lasta.finaĵo && !lasta.fina) {
+        eraro.push('ne havas finaĵon')
+        pj -= 20
+      }
+      if (lasta.finaĵo) {
+        pj += 1
+      }
       
       return {
+        vorto: a.map(e => e.radiko).join('/'),
         eroj: a,
         akuzativo: estAk,
         pluralo: estPl,
@@ -219,10 +257,16 @@
       return a.eroj.length - b.eroj.length
     })
 
-    return altj[0]
+    return altj
   }
 
-  function dividu (komenco, cetero, metejo) {
+  function provuDividi(teksto) {
+    let metejo = []
+    dividu([], teksto, metejo)
+    return metejo
+  }
+
+  function dividu(komenco, cetero, metejo) {
     for (let i = 1; i <= cetero.length; i++) {
       let s = cetero.slice(0, i)
       let r = radikoj.get(s)
@@ -269,6 +313,10 @@
       }
       if (e.fakoj.includes('pronomo') || e.fakoj.includes('tabela')) {
         kj.tipo = 'o'
+      }
+      if (e.fakoj.includes('xxx')) {
+        kj.xxx = true
+        kj.vidu = e.vidu
       }
 
       
