@@ -1,28 +1,23 @@
 
-<div class="vortaro">
+<div class="serĉilo">
 
   <div class="stato">
     pretiĝanta
   </div>
 
-  <h2>Fakoj</h2>
+  <form class="formo" hidden>
+    <input type="text" name="teksto" placeholder="radiko"/>
+    <button type="submit">ek</button>
+    <button type="button" name="mp">malplenigi</button>
+  </form>
 
-  <div class="fakoj">
+  <div class="rezulto">
   </div>
 
-  <h2>Radikoj</h2>
-
-  <p class="pri"></p>
-
-  <div class="radikoj">
-  </div>
-
-  <div class="lavorto" hidden>
-    <p>Radiko: <span f="r"></span></p>
-    <p>Fakoj: <span f="f"></span></p>
-    <p>Vidu: <span f="v"></span></p>
-    <p>Angle: <span f="a"></span></p>
-  </div>
+  <!--div class="ekz">
+    <p class="teksto">&#x00AB; ekzemplo &#x00BB;</p>
+    <p class="pri">detalo</p>
+  </div-->
 
 </div>
 
@@ -31,12 +26,11 @@
   let radikoj = null
   let elektitaFako = null
 
-  let e0 = document.querySelector('.vortaro')
+  let e0 = document.querySelector('.serĉilo')
   let eS = e0.querySelector('.stato')
-  let eF = e0.querySelector('.fakoj')
-  let eP = e0.querySelector('.pri')
-  let eR = e0.querySelector('.radikoj')
-  let eM = e0.querySelector('.lavorto')
+  let eF = e0.querySelector('form')
+  let eT = eF.querySelector('[name=teksto]')
+  let eR = e0.querySelector('.rezulto')
 
   function montruEraro(e) {
     console.log(e)
@@ -47,72 +41,50 @@
     e.textContent = t
   }
 
-  function montruFako(e, n, p) {
-    if (radikoj == null) {
+  eF.addEventListener('submit', e  => {
+    e.preventDefault()
+    serĉu(eT.value)
+  })
+  eF.querySelector("[name=mp]").addEventListener('click', e  => {
+    eT.value = ''
+  })
+  // eT.addEventListener('keyup', e => {
+  //   serĉu(eT.value)
+  // })
+
+  function serĉu(teksto) {
+    if (teksto.length == 0) {
       return
     }
-    if (elektitaFako) {
-      elektitaFako.classList.remove('active')
-    }
-    e.classList.add('active')
-    elektitaFako = e
-
-    montruTeksto(eP, p)
-
     eR.removeChild(eR.firstChild)
-
-    let l = document.createElement('ul')
+    let trovata = []
     for (let r of radikoj) {
-      if (r.fakoj.includes(n)) {
-        let ero = document.createElement('li')
-        ero.textContent = r.radiko
-        let titolo = `${r.fakoj} - ${r.en}`
-        if (r.vidu) {
-          titolo += ' - vidu: ' + r.vidu
-        }
-        ero.title = titolo
-        ero.addEventListener('click', () => montruRadiko(r))
-        l.appendChild(ero)
+      if (r.radiko.startsWith(teksto)) {
+        trovata.push(r)
       }
     }
-    eR.appendChild(l)
-  }
-
-  function montruRadiko(r) {
-    eM.querySelector('[f=r]').textContent = r.radiko
-    eM.querySelector('[f=f]').textContent = r.fakoj
-    eM.querySelector('[f=v]').textContent = r.vidu
-    eM.querySelector('[f=a]').textContent = r.en
-    eM.hidden = false
-    montru(eM)
-  }
-
-  function metuFakoj(fj) {
-    let l = document.createElement('ul')
-    for (let f of fj) {
-      let e = document.createElement('li')
-      e.textContent = f.nomo
-      e.title = f.pri
-      e.addEventListener('click', () => montruFako(e, f.nomo, f.pri))
-      l.appendChild(e)
+    if (trovata.length > 0) {
+      let l = document.createElement('ul')
+      for (let t of trovata) {
+        let ero = document.createElement('li')
+        ero.textContent = `${t.radiko} - ${t.en} - ${t.fakoj.join(', ')}`
+        l.appendChild(ero)
+      }
+      eR.appendChild(l)
+    } else {
+      eR.textContent = 'nenio'
     }
-    eF.appendChild(l)
   }
 
   function metuRadikoj(rj) {
     radikoj = rj
+
+    eF.hidden = false
+    eR.hidden = false
     montruTeksto(eS, '')
   }
 
   const fonto = '{{ print .Site.Params.VortaroURL }}'
-
-  fetch(fonto + '/fakoj.json').
-  then(
-    rez => rez.json(),
-    montruEraro).
-  then(
-    metuFakoj,
-    montruEraro)
 
   fetch(fonto + '/radikoj.json').
   then(

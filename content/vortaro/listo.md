@@ -1,8 +1,8 @@
 ---
-title: Vortoj
+title: Listo
 weight: 10
 ---
 
 # Vortoj (radikoj)
 
-{{< serĉilo >}}
+{{< vortoj >}}
