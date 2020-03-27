@@ -5,16 +5,21 @@
     pretiĝanta
   </div>
 
-  <h2>Fakoj</h2>
+  <div class="tuto" hidden>
 
-  <div class="fakoj">
-  </div>
+    <h2>Fakoj</h2>
 
-  <h2>Radikoj</h2>
+    <div class="fakoj">
+    </div>
 
-  <p class="pri"></p>
+    <h2>Radikoj</h2>
 
-  <div class="radikoj">
+    <p class="pri"></p>
+
+    <div class="radikoj">
+      elektu fakon
+    </div>
+
   </div>
 
   <div class="lavorto" hidden>
@@ -26,31 +31,27 @@
 
 </div>
 
-<script defer>
-(function() {
-  let radikoj = null
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  let ilo = null
   let elektitaFako = null
 
   let e0 = document.querySelector('.vortaro')
   let eS = e0.querySelector('.stato')
+  let eT = e0.querySelector('.tuto')
   let eF = e0.querySelector('.fakoj')
   let eP = e0.querySelector('.pri')
   let eR = e0.querySelector('.radikoj')
   let eM = e0.querySelector('.lavorto')
 
-  function montruEraro(e) {
-    console.log(e)
-    montruTeksto(eS, 'err: ' + e)
-  }
-
-  function montruTeksto(e, t) {
-    e.textContent = t
+  function pretigu(o) {
+    ilo = o
+    montruTeksto(eS)
+    montruFakoj(ilo.fakoj)
+    eT.hidden = false
   }
 
   function montruFako(e, n, p) {
-    if (radikoj == null) {
-      return
-    }
     if (elektitaFako) {
       elektitaFako.classList.remove('active')
     }
@@ -58,11 +59,10 @@
     elektitaFako = e
 
     montruTeksto(eP, p)
-
-    eR.removeChild(eR.firstChild)
+    malplenigu(eR)
 
     let l = document.createElement('ul')
-    for (let r of radikoj) {
+    for (let r of ilo.radikoj) {
       if (r.fakoj.includes(n)) {
         let ero = document.createElement('li')
         ero.textContent = r.radiko
@@ -72,10 +72,10 @@
         }
         ero.title = titolo
         ero.addEventListener('click', () => montruRadiko(r))
-        l.appendChild(ero)
+        l.append(ero)
       }
     }
-    eR.appendChild(l)
+    eR.append(l)
   }
 
   function montruRadiko(r) {
@@ -87,39 +87,21 @@
     montru(eM)
   }
 
-  function metuFakoj(fj) {
+  function montruFakoj(fj) {
     let l = document.createElement('ul')
     for (let f of fj) {
       let e = document.createElement('li')
       e.textContent = f.nomo
       e.title = f.pri
       e.addEventListener('click', () => montruFako(e, f.nomo, f.pri))
-      l.appendChild(e)
+      l.append(e)
     }
-    eF.appendChild(l)
+    eF.append(l)
   }
 
-  function metuRadikoj(rj) {
-    radikoj = rj
-    montruTeksto(eS, '')
-  }
-
-  const fonto = '{{ print .Site.Params.VortaroURL }}'
-
-  fetch(fonto + '/fakoj.json').
+  eo('{{ print .Site.Params.VortaroURL }}').
   then(
-    rez => rez.json(),
-    montruEraro).
-  then(
-    metuFakoj,
-    montruEraro)
-
-  fetch(fonto + '/radikoj.json').
-  then(
-    rez => rez.json(),
-    montruEraro).
-  then(
-    metuRadikoj,
-    montruEraro)
-})()
+    o => pretigu(o),
+    e => montruEraro(eS, e))
+})
 </script>

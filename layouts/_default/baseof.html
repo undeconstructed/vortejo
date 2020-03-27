@@ -13,8 +13,11 @@
 
   <link rel="icon" href="icon.png">
 
-  {{- $mainJS := resources.Get "main.js" | resources.ExecuteAsTemplate "main.js" . | resources.Minify | resources.Fingerprint }}
-  <script defer src="{{ $mainJS.RelPermalink }}" integrity="{{ $mainJS.Data.Integrity }}"></script>
+  {{- $eoJS := resources.Get "eo.js" | resources.ExecuteAsTemplate "eo.js" . | resources.Fingerprint }}
+  <script src="{{ $eoJS.RelPermalink }}" integrity="{{ $eoJS.Data.Integrity }}"></script>
+
+  {{- $mainJS := resources.Get "main.js" | resources.ExecuteAsTemplate "main.js" . | resources.Fingerprint }}
+  <script src="{{ $mainJS.RelPermalink }}" integrity="{{ $mainJS.Data.Integrity }}"></script>
 
 </head>
 

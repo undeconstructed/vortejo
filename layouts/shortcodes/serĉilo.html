@@ -11,7 +11,7 @@
     <button type="button" name="mp">malplenigi</button>
   </form>
 
-  <div class="rezulto">
+  <div class="rezulto" hidden>
   </div>
 
   <!--div class="ekz">
@@ -19,11 +19,18 @@
     <p class="pri">detalo</p>
   </div-->
 
+  <div class="lavorto" hidden>
+    <p>Radiko: <span f="r"></span></p>
+    <p>Fakoj: <span f="f"></span></p>
+    <p>Vidu: <span f="v"></span></p>
+    <p>Angle: <span f="a"></span></p>
+  </div>
+
 </div>
 
-<script defer>
-(function() {
-  let radikoj = null
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  let ilo = null
   let elektitaFako = null
 
   let e0 = document.querySelector('.serĉilo')
@@ -31,67 +38,112 @@
   let eF = e0.querySelector('form')
   let eT = eF.querySelector('[name=teksto]')
   let eR = e0.querySelector('.rezulto')
+  let eM = e0.querySelector('.lavorto')
 
-  function montruEraro(e) {
-    console.log(e)
-    montruTeksto(eS, 'err: ' + e)
+  function pretigu(o) {
+    ilo = o
+    montruTeksto(eS)
+
+    eF.addEventListener('submit', e  => {
+      e.preventDefault()
+      serĉu(eT.value)
+    })
+    eF.querySelector("[name=mp]").addEventListener('click', e  => {
+      eT.value = ''
+    })
+
+    eF.hidden = false
   }
-
-  function montruTeksto(e, t) {
-    e.textContent = t
-  }
-
-  eF.addEventListener('submit', e  => {
-    e.preventDefault()
-    serĉu(eT.value)
-  })
-  eF.querySelector("[name=mp]").addEventListener('click', e  => {
-    eT.value = ''
-  })
-  // eT.addEventListener('keyup', e => {
-  //   serĉu(eT.value)
-  // })
 
   function serĉu(teksto) {
     if (teksto.length == 0) {
       return
     }
-    eR.removeChild(eR.firstChild)
+    malplenigu(eR)
+
+    if (teksto.endsWith('.')) {
+      serĉuDividante(teksto.slice(0, -1))
+    } else {
+      if (serĉuTrovante(teksto)) {
+        // trovata ion
+      } else {
+        serĉuDividante(teksto)
+      }
+    }
+    eR.hidden = false
+  }
+
+  function serĉuTrovante(teksto) {
     let trovata = []
-    for (let r of radikoj) {
+    for (let r of ilo.radikoj) {
       if (r.radiko.startsWith(teksto)) {
         trovata.push(r)
       }
     }
-    if (trovata.length > 0) {
-      let l = document.createElement('ul')
-      for (let t of trovata) {
-        let ero = document.createElement('li')
-        ero.textContent = `${t.radiko} - ${t.en} - ${t.fakoj.join(', ')}`
-        l.appendChild(ero)
-      }
-      eR.appendChild(l)
-    } else {
-      eR.textContent = 'nenio'
+    if (trovata.length == 0) {
+      return false
     }
+    let l = document.createElement('ul')
+    for (let t of trovata) {
+      let ero = document.createElement('li')
+      let s = document.createElement('span')
+      s.textContent = t.radiko
+      s.addEventListener('click', e => {
+        montruRadiko(t)
+      })
+      ero.append(s)
+      ero.append(` (${t.fakoj.join(', ')})`)
+      l.append(ero)
+    }
+    eR.append(l)
+    return true
   }
 
-  function metuRadikoj(rj) {
-    radikoj = rj
-
-    eF.hidden = false
-    eR.hidden = false
-    montruTeksto(eS, '')
+  function serĉuDividante(teksto) {
+    let dividita = ilo.komprenuVorton(teksto)
+    let l = document.createElement('ul')
+    for (let d of dividita) {
+      let ero = document.createElement('li')
+      let unua = true
+      if (d.eroj) {
+        for (let r of d.eroj) {
+          if (unua) {
+            unua = false
+          } else {
+            ero.append('/')
+          }
+          let s = document.createElement('span')
+          s.textContent = r.radiko
+          s.addEventListener('click', e => {
+            montruRadiko(r.o)
+          })
+          ero.append(s)
+        }
+      } else {
+        let s = document.createElement('span')
+        s.textContent = d.vorto
+        ero.append(s)
+      }
+      if (d.eraro) {
+        ero.append(` (${d.eraro.join(', ')})`)
+      }
+      l.append(ero)
+    }
+    eR.append(l)
   }
 
-  const fonto = '{{ print .Site.Params.VortaroURL }}'
+  function montruRadiko(r) {
+    eM.querySelector('[f=r]').textContent = r.radiko
+    eM.querySelector('[f=f]').textContent = r.fakoj.join(', ')
+    eM.querySelector('[f=v]').textContent = r.vidu
+    eM.querySelector('[f=a]').textContent = r.en
+    eM.hidden = false
+    montru(eM)
+  }
 
-  fetch(fonto + '/radikoj.json').
+  eo('{{ print .Site.Params.VortaroURL }}').
   then(
-    rez => rez.json(),
-    montruEraro).
-  then(
-    metuRadikoj,
-    montruEraro)
-})()
+    o => pretigu(o),
+    e => montruEraro(eS, e))
+})
 </script>
