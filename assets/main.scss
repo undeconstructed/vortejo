@@ -3,6 +3,8 @@
 
 $background: rgb(0, 153, 0) !default;
 
+/* monda */
+
 body {
   background-color: $background;
 }
@@ -28,6 +30,20 @@ body > {
     color: inherit;
     text-decoration: underline;
   }
+}
+
+textarea, input[type=text] {
+  border-radius: .3em;
+  border: 1px solid $background;
+  padding: .4em;
+}
+
+button {
+  border-radius: .3em;
+  border: 1px solid $background;
+  background: $background;
+  color: white;
+  padding: .4em;
 }
 
 .home > {
@@ -88,7 +104,25 @@ body > {
   border-radius: .3em;
 }
 
-/* 888888888 */
+.ekz {
+  border: 1px solid $background;
+  margin-bottom: 1rem;
+  .teksto {
+    margin: 0;
+    padding: .5em;
+    background-color: #eee;
+  }
+  .pri {
+    margin: 0;
+    padding: .5em;
+  }
+}
+.ekz.warn {
+  border: 1px solid orange;
+}
+
+
+/* ŝirmilo */
 
 #ŝirmilo {
   position: fixed;
@@ -109,54 +143,21 @@ body > {
   }
 }
 
-/* 888888888 */
-
-.ekz {
-  border: 1px solid $background;
-  margin-bottom: 1rem;
-  .teksto {
-    margin: 0;
-    padding: .5em;
-    background-color: #eee;
-  }
-  .pri {
-    margin: 0;
-    padding: .5em;
-  }
-}
-.ekz.warn {
-  border: 1px solid orange;
-}
-
-/* 888888888 */
-
-textarea, input[type=text] {
-  border-radius: .3em;
-  border: 1px solid $background;
-  padding: .4em;
-}
-
-button {
-  border-radius: .3em;
-  border: 1px solid $background;
-  background: $background;
-  color: white;
-  padding: .4em;
-}
-
-/* 888888888 */
+/* serĉilo */
 
 .serĉilo {
   margin-bottom: 1em;
   .rezulto {
-    margin: 1em 0;
-    border-left: .2em solid $background;
-    border-radius: .3em;
-    padding: .4em;
     ul {
+      margin: 1em 0 0 0;
+      border-left: .2em solid $background;
+      border-radius: .3em;
+      padding: .4em;
       list-style: none;
       padding: 0;
-      margin: 0;
+    }
+    ul.warn {
+      border-color: orange;
     }
     li {
       line-height: 2.4em;
@@ -172,7 +173,7 @@ button {
   }
 }
 
-/* 888888888 */
+/* vortaro */
 
 .vortaro {
   .pri {
@@ -222,7 +223,7 @@ button {
   }
 }
 
-/* 888888888 */
+/* kontrolilo */
 
 .kontrolilo {
   form {
@@ -254,6 +255,14 @@ button {
 
 // XXX - devus esti en .kontrolilo, sed dum ĝi estas videbla ĝi ne estas en tio
 .lavorto ol {
-  padding: 1em 1em 1em 2em;
+  padding: .4em .4em .4em 2em;
   margin: 0;
+  border-left: .2em solid $background;
+  border-radius: .3em;
+}
+.lavorto ol.warn {
+  border-color: orange;
+}
+.lavorto li {
+  line-height: 2.4em;
 }

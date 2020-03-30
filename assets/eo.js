@@ -41,6 +41,9 @@ class Dividulo {
         kj.xxx = true
         kj.vidu = e.vidu
       }
+      if (e.fakoj.includes('prefikso') || e.fakoj.includes('sufikso')) {
+        kj.afikso = true
+      }
 
       // kuniĝis erojn kun sama radiko
       let x = m.get(kj.radiko)
@@ -59,15 +62,15 @@ class Dividulo {
     let vj = this.provuDividi(teksto)
 
     if (vj.length == 0) {
-      return ([{
+      return { bonaj: [], malbonaj: [{
         vorto: teksto,
         eraro: [ 'ne komprenebla' ],
         poentoj: -100
-      }])
+      }] }
     }
 
     let altj = vj.map((a) => {
-      let pj = 0
+      let pj = 10
       let l = a.length
       let eraro = []
       let estAk = false
@@ -121,19 +124,35 @@ class Dividulo {
         }
       }
       // kontrolu antaŭ finaĵoj
+      let finaĵo = null
       for (let i = 0; i < a.length - finoj; i++) {
         let ero = a[i]
-        if (ero.litero) {
-          eraro.push('uzo de liternomo: ' + ero.radiko)
-          pj -= 10
-        } else if (ero.radiko === 'a' || ero.radiko === 'e' || ero.radiko === 'o') {
-          // XXX - kontrolu ke estas nur unu kaj estas malantaŭ io
-        } else if (ero.finaĵo) {
-          eraro.push('neatenda finaĵo en vorto: ' + ero.radiko)
-          pj -= 10
+        if (ero.finaĵo) {
+          if (ero.radiko === 'a' || ero.radiko === 'e' || ero.radiko === 'o') {
+            // XXX - kontrolu ke estas nur unu kaj estas malantaŭ io
+            if (!finaĵo) {
+              finaĵo = ero.radiko
+            } else {
+              eraro.push('neatenda finaĵo en vorto: ' + ero.radiko)
+            }
+          } else {
+            eraro.push('neatenda finaĵo en vorto: ' + ero.radiko)
+            pj -= 10
+          }
+        } else {
+          finaĵo = null
+          if (ero.litero) {
+            // t.e. litero kiu ne estas ankaŭ finaĵo
+            eraro.push('uzo de liternomo: ' + ero.radiko)
+            pj -= 10
+          }
         }
         if (ero.xxx) {
           eraro.push(`xxx vorto: ${ero.radiko}, vidu: ${ero.vidu}`)
+        }
+        if (!ero.afikso) {
+          // afikso estas pli probable ol ĉio alia
+          pj -= 1
         }
         if (!tipo && ero.tipo) {
           tipo = ero.tipo
@@ -171,7 +190,10 @@ class Dividulo {
       return a.eroj.length - b.eroj.length
     })
 
-    return altj
+    let bonaj = altj.filter(e => e.poentoj > 0)
+    let malbonaj = altj.filter(e => e.poentoj <= 0)
+
+    return { bonaj, malbonaj }
   }
 
   provuDividi(teksto) {

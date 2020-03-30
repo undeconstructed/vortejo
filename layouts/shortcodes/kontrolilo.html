@@ -56,17 +56,18 @@ document.addEventListener('DOMContentLoaded', () => {
         continue
       }
       let vs = document.createElement('span')
-      let altj = ilo.komprenuVorton(v.toLowerCase())
-      let unua = altj[0]
+      let divRez = ilo.komprenuVorton(v.toLowerCase())
+      let bonaj = divRez.bonaj
+      let unua = bonaj[0]
       vs.textContent = unua.vorto
-      if (altj.length > 1) {
-        vs.textContent += ` (${altj.length})`
+      if (bonaj.length > 1) {
+        vs.textContent += ` (${bonaj.length})`
       }
       if (unua.eraro) {
         vs.title = unua.eraro.join(', ')
         vs.classList.add('warn')
       }
-      vs.addEventListener('click', () => montruVorto(altj))
+      vs.addEventListener('click', () => montruVorto(bonaj, divRez.malbonaj))
       e.append(vs)
       e.append(' ')
     }
@@ -74,19 +75,35 @@ document.addEventListener('DOMContentLoaded', () => {
     eR.hidden = false
   }
 
-  function montruVorto(altj) {
+  function montruVorto(bonaj, malbonaj) {
     malplenigu(eM)
 
-    let l = document.createElement('ol')
-    for (let a of altj) {
-      let ero = document.createElement('li')
-      ero.textContent = a.vorto
-      if (a.eraro) {
-        ero.title = a.eraro.join(', ')
+    if (bonaj.length > 0) {
+      let l = document.createElement('ol')
+      for (let a of bonaj) {
+        let ero = document.createElement('li')
+        ero.textContent = a.vorto
+        if (a.eraro) {
+          ero.title = a.eraro.join(', ')
+        }
+        l.append(ero)
       }
-      l.append(ero)
+      eM.append(l)
     }
-    eM.append(l)
+
+    if (malbonaj.length > 0) {
+      let l = document.createElement('ol')
+      l.classList.add('warn')
+      for (let a of malbonaj) {
+        let ero = document.createElement('li')
+        ero.textContent = a.vorto
+        if (a.eraro) {
+          ero.title = a.eraro.join(', ')
+        }
+        l.append(ero)
+      }
+      eM.append(l)
+    }
 
     eM.hidden = false
     montru(eM)

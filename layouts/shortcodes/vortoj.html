@@ -66,7 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (r.fakoj.includes(n)) {
         let ero = document.createElement('li')
         ero.textContent = r.radiko
-        let titolo = `${r.fakoj} - ${r.en}`
+        let titolo = `${r.en}`
         if (r.vidu) {
           titolo += ' - vidu: ' + r.vidu
         }
@@ -80,7 +80,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function montruRadiko(r) {
     eM.querySelector('[f=r]').textContent = r.radiko
-    eM.querySelector('[f=f]').textContent = r.fakoj
+    eM.querySelector('[f=f]').textContent = r.fakoj.join(', ')
     eM.querySelector('[f=v]').textContent = r.vidu
     eM.querySelector('[f=a]').textContent = r.en
     eM.hidden = false

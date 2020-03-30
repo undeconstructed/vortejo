@@ -99,35 +99,51 @@ document.addEventListener('DOMContentLoaded', () => {
     return true
   }
 
-  function serĉuDividante(teksto) {
-    let dividita = ilo.komprenuVorton(teksto)
-    let l = document.createElement('ul')
-    for (let d of dividita) {
-      let ero = document.createElement('li')
-      let unua = true
-      if (d.eroj) {
-        for (let r of d.eroj) {
-          if (unua) {
-            unua = false
-          } else {
-            ero.append('/')
-          }
-          let s = document.createElement('span')
-          s.textContent = r.radiko
-          s.addEventListener('click', e => {
-            montruRadiko(r.o)
-          })
-          ero.append(s)
+  function kreuDivLinio(d) {
+    let ero = document.createElement('li')
+    let unua = true
+    if (d.eroj) {
+      let fakoj = new Set()
+      for (let r of d.eroj) {
+        r.o.fakoj.forEach(e => fakoj.add(e))
+        if (unua) {
+          unua = false
+        } else {
+          ero.append('/')
         }
-      } else {
         let s = document.createElement('span')
-        s.textContent = d.vorto
+        s.textContent = r.radiko
+        s.addEventListener('click', e => {
+          montruRadiko(r.o)
+        })
         ero.append(s)
       }
-      if (d.eraro) {
-        ero.append(` (${d.eraro.join(', ')})`)
-      }
-      l.append(ero)
+      ero.append(` (${[...fakoj.values()].filter(e => !e.endsWith('o')).sort().join(', ')})`)
+      // ero.append(` (${d.tipo} ${d.pluralo ? 'plur' : 'unu'}nombra ${d.akuzativo ? 'akuzativa' : 'nominativa'})`)
+    } else {
+      let s = document.createElement('span')
+      s.textContent = d.vorto
+      ero.append(s)
+    }
+    if (d.eraro) {
+      ero.append(` (${d.eraro.join(', ')})`)
+    }
+    return ero
+  }
+
+  function serĉuDividante(teksto) {
+    let divRez = ilo.komprenuVorton(teksto)
+
+    let l = document.createElement('ul')
+    for (let d of divRez.bonaj) {
+      l.append(kreuDivLinio(d))
+    }
+    eR.append(l)
+
+    l = document.createElement('ul')
+    l.classList.add('warn')
+    for (let d of divRez.malbonaj) {
+      l.append(kreuDivLinio(d))
     }
     eR.append(l)
   }
