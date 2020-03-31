@@ -9,10 +9,10 @@
 
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link rel="stylesheet" href="/vortejo/main.min.14e609075cfaa313ac31bd7d03f6c8b6a8098a1cf2e68da46d6c8cc12ea18eeb.css" integrity="sha256-FOYJB1z6oxOsMb19A/bItqgJihzy5o2kbWyMwS6hjus=">
+  <link rel="stylesheet" href="/vortejo/main.min.7b40862d34707868f84fa9cd44f414e3f13a751cf25211acd6c1170335bf7bc0.css" integrity="sha256-e0CGLTRweGj4T6nNRPQU4/E6dRzyUhGs1sEXAzW/e8A=">
 
   <link rel="icon" href="icon.png">
-  <script src="/vortejo/eo.56c17781a32d6c139c013be2ad8cd57d33b78f126970cc429827aaf93f358619.js" integrity="sha256-VsF3gaMtbBOcATvirYzVfTO3jxJpcMxCmCeq&#43;T81hhk="></script>
+  <script src="/vortejo/eo.2cec24fc72adbfed844898654887233f6c74a1babc5208d843889d53b4f5436f.js" integrity="sha256-LOwk/HKtv&#43;2ESJhlSIcjP2x0obq8UgjYQ4idU7T1Q28="></script>
   <script src="/vortejo/main.8118dd44192b835c7b008ed5abb256c83e1590b90645d213924489cdb4719c7e.js" integrity="sha256-gRjdRBkrg1x7AI7Vq7JWyD4VkLkGRdITkkSJzbRxnH4="></script>
 
 </head>
@@ -99,17 +99,25 @@ document.addEventListener('DOMContentLoaded', () => {
         continue
       }
       let vs = document.createElement('span')
-      let altj = ilo.komprenuVorton(v.toLowerCase())
-      let unua = altj[0]
+
+      let divRez = ilo.komprenuVorton(v.toLowerCase())
+      let bonaj = divRez.bonaj
+      let malbonaj = divRez.malbonaj
+
+      let unua = bonaj[0]
+      if (!unua) {
+        unua = malbonaj[0]
+      }
+
       vs.textContent = unua.vorto
-      if (altj.length > 1) {
-        vs.textContent += ` (${altj.length})`
+      if (bonaj.length > 1) {
+        vs.textContent += ` (${bonaj.length})`
       }
       if (unua.eraro) {
         vs.title = unua.eraro.join(', ')
         vs.classList.add('warn')
       }
-      vs.addEventListener('click', () => montruVorto(altj))
+      vs.addEventListener('click', () => montruVorto(bonaj, divRez.malbonaj))
       e.append(vs)
       e.append(' ')
     }
@@ -117,19 +125,35 @@ document.addEventListener('DOMContentLoaded', () => {
     eR.hidden = false
   }
 
-  function montruVorto(altj) {
+  function montruVorto(bonaj, malbonaj) {
     malplenigu(eM)
 
-    let l = document.createElement('ol')
-    for (let a of altj) {
-      let ero = document.createElement('li')
-      ero.textContent = a.vorto
-      if (a.eraro) {
-        ero.title = a.eraro.join(', ')
+    if (bonaj.length > 0) {
+      let l = document.createElement('ol')
+      for (let a of bonaj) {
+        let ero = document.createElement('li')
+        ero.textContent = a.vorto
+        if (a.eraro) {
+          ero.title = a.eraro.join(', ')
+        }
+        l.append(ero)
       }
-      l.append(ero)
+      eM.append(l)
     }
-    eM.append(l)
+
+    if (malbonaj.length > 0) {
+      let l = document.createElement('ol')
+      l.classList.add('warn')
+      for (let a of malbonaj) {
+        let ero = document.createElement('li')
+        ero.textContent = a.vorto
+        if (a.eraro) {
+          ero.title = a.eraro.join(', ')
+        }
+        l.append(ero)
+      }
+      eM.append(l)
+    }
 
     eM.hidden = false
     montru(eM)
