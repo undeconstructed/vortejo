@@ -233,11 +233,13 @@ button {
     }
   }
   .rezulto {
-    margin: 1em 0;
-    line-height: 2.4em;
-    border-left: .2em solid $background;
-    border-radius: .3em;
-    padding: .4em;
+    div {
+      margin: 1em 0;
+      line-height: 2.4em;
+      border-left: .2em solid $background;
+      border-radius: .3em;
+      padding: .4em;
+    }
     span {
       padding: .3em;
       border-radius: .3em;

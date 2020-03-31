@@ -119,7 +119,6 @@ document.addEventListener('DOMContentLoaded', () => {
         ero.append(s)
       }
       ero.append(` (${[...fakoj.values()].filter(e => !e.endsWith('o')).sort().join(', ')})`)
-      // ero.append(` (${d.tipo} ${d.pluralo ? 'plur' : 'unu'}nombra ${d.akuzativo ? 'akuzativa' : 'nominativa'})`)
     } else {
       let s = document.createElement('span')
       s.textContent = d.vorto

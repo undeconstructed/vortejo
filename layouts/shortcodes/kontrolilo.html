@@ -17,6 +17,13 @@
   <div class="lavorto" hidden>
   </div>
 
+  <div class="lavortoXXX" hidden>
+    <p>Radiko: <span f="r"></span></p>
+    <p>Fakoj: <span f="f"></span></p>
+    <p>Vidu: <span f="v"></span></p>
+    <p>Angle: <span f="a"></span></p>
+  </div>
+
 </div>
 
 <script>
@@ -29,6 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let eT = eF.querySelector('[name=teksto]')
   let eR = e0.querySelector('.rezulto')
   let eM = e0.querySelector('.lavorto')
+  let eMXXX = e0.querySelector('.lavortoXXX')
 
   function pretigu(o) {
     ilo = o
@@ -50,6 +58,8 @@ document.addEventListener('DOMContentLoaded', () => {
   function komprenu(teksto) {
     malplenigu(eR)
 
+    let s = new Set()
+
     let e = document.createElement('div')
     for (v of teksto.split(dividŜablono)) {
       if (v.length == 0) {
@@ -66,6 +76,12 @@ document.addEventListener('DOMContentLoaded', () => {
         unua = malbonaj[0]
       }
 
+      if (unua.eroj) {
+        for (let x of unua.eroj) {
+          s.add(x.o)
+        }
+      }
+
       vs.textContent = unua.vorto
       if (bonaj.length > 1) {
         vs.textContent += ` (${bonaj.length})`
@@ -75,10 +91,21 @@ document.addEventListener('DOMContentLoaded', () => {
         vs.classList.add('warn')
       }
       vs.addEventListener('click', () => montruVorto(bonaj, divRez.malbonaj))
-      e.append(vs)
-      e.append(' ')
+      e.append(vs, ' ')
     }
     eR.append(e)
+
+    let e2 = document.createElement('div')
+    for (let x of [...s.values()].sort((a, b) => a.radiko > b.radiko)) {
+      let vs = document.createElement('span')
+      vs.append(x.radiko)
+      vs.addEventListener('click', e => {
+        montruRadiko(x)
+      })
+      e2.append(vs, ' ')
+    }
+    eR.append(e2)
+
     eR.hidden = false
   }
 
@@ -114,6 +141,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
     eM.hidden = false
     montru(eM)
+  }
+
+  function montruRadiko(r) {
+    eMXXX.querySelector('[f=r]').textContent = r.radiko
+    eMXXX.querySelector('[f=f]').textContent = r.fakoj.join(', ')
+    eMXXX.querySelector('[f=v]').textContent = r.vidu
+    eMXXX.querySelector('[f=a]').textContent = r.en
+    eMXXX.hidden = false
+    montru(eMXXX)
   }
 
   eo('{{ print .Site.Params.VortaroURL }}').
