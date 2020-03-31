@@ -56,9 +56,16 @@ document.addEventListener('DOMContentLoaded', () => {
         continue
       }
       let vs = document.createElement('span')
+
       let divRez = ilo.komprenuVorton(v.toLowerCase())
       let bonaj = divRez.bonaj
+      let malbonaj = divRez.malbonaj
+
       let unua = bonaj[0]
+      if (!unua) {
+        unua = malbonaj[0]
+      }
+
       vs.textContent = unua.vorto
       if (bonaj.length > 1) {
         vs.textContent += ` (${bonaj.length})`

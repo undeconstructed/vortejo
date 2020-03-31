@@ -1,4 +1,25 @@
 
+// Kodo:
+// k kerna
+// f finaĵo
+// p prefikso
+// s sufikso
+// r (normala) radiko
+// t tabelvorto
+// k kerna
+// n pronomo
+
+const normoj = [
+  /^p+([rtnksp]f*)+f+$/,
+  /^([rtnksp]f*)+s+f+$/,
+  /^([rtnksp]f*)+f+$/,
+  /^([rtnksp]f*)*k$/
+]
+
+// XXX j, n, jn nur validas post tiu, tio ktp
+const enajFinaĵoj = /^(([ao]j?n?)|e)$/
+const finajFinaĵoj = /^(i|([iaou]s)|u|j|jn|n)$/
+
 class Dividulo {
   constructor(radikoj) {
     this.radikoj = this._umuRadikoj(radikoj)
@@ -8,51 +29,49 @@ class Dividulo {
     let m = new Map()
     for (let e of rj) {
       if (e.fakoj.includes('litera')) {
+        // liternomoj estas maloftaj ke nekonvenaj
         continue
       }
-      let r = e.radiko
-
-      let streko = r.indexOf('/')
-      let dashĈeKomenco = r.startsWith('-')
-      let dashĈeFino = r.endsWith('-')
 
       let kj = {
-        o: e
+        r: e.radiko,
+        o: e,
+        t: 'r'
       }
-      if (streko >= 0) {
-        kj.radiko = r.slice(0, streko)
-      } else if (dashĈeKomenco && !dashĈeFino) {
-        kj.radiko = r.slice(1)
-        kj.finaĵo = true
-      } else if (dashĈeKomenco && dashĈeFino) {
-        kj.radiko = r.slice(1).slice(0, -1)
-        kj.enfikso = true
+
+      if (kj.r.endsWith('/')) {
+        kj.r = kj.r.slice(0, -1)
+        if (e.fakoj.includes('sufikso')) {
+          kj.t = 's'
+        } else if (e.fakoj.includes('prefikso')) {
+          kj.t = 'p'
+        }
+      } else if (kj.r.startsWith('-')) {
+        kj.r = kj.r.slice(1)
+        kj.t = 'f'
+      // } else if (e.fakoj.includes('pronomo')) {
+      //   kj.t = 'n'
+      // } else if (e.fakoj.includes('tabela')) {
+      //   kj.t = 't'
       } else {
-        kj.radiko = r
-        kj.fina = true
+        kj.t = 'k'
       }
-      if (e.fakoj.includes('litera')) {
-        kj.litero = true
-      }
-      if (e.fakoj.includes('pronomo') || e.fakoj.includes('tabela')) {
-        kj.tipo = 'o'
-      }
+
       if (e.fakoj.includes('xxx')) {
         kj.xxx = true
         kj.vidu = e.vidu
       }
-      if (e.fakoj.includes('prefikso') || e.fakoj.includes('sufikso')) {
-        kj.afikso = true
-      }
 
-      // kuniĝis erojn kun sama radiko
-      let x = m.get(kj.radiko)
+      // se radiko jam ekzistas, aldoni al listo
+      let x = m.get(kj.r)
       if (x) {
-        for (let p in x) {
-          kj[p] = x[p]
+        while (x.s) {
+          x = x.s
         }
+        x.s = kj
+      } else {
+        m.set(kj.r, kj)
       }
-      m.set(kj.radiko, kj)
     }
 
     return m
@@ -62,123 +81,73 @@ class Dividulo {
     let vj = this.provuDividi(teksto)
 
     if (vj.length == 0) {
-      return { bonaj: [], malbonaj: [{
-        vorto: teksto,
-        eraro: [ 'ne komprenebla' ],
-        poentoj: -100
-      }] }
+      return {
+        bonaj: [],
+        malbonaj: [{
+          vorto: teksto,
+          eraro: [ 'ne komprenebla' ]
+        }]
+      }
     }
 
     let altj = vj.map((a) => {
-      let pj = 10
-      let l = a.length
-      let eraro = []
-      let estAk = false
-      let estPl = false
-      let tipo = null
-      // kontrolu finaĵojn
-      let finoj = 0
-      for (let i = l-1; i >= 0; i--) {
-        let ero = a[i]
-        if (!ero.finaĵo) {
-          break
+      let poentoj = -a.length
+      let eraroj = []
+
+      let skemo = ''
+      let finaĵoj = ''
+      for (let e of a) {
+        skemo += e.t
+        if (e.t != 'f') {
+          if (finaĵoj && !enajFinaĵoj.test(finaĵoj)) {
+            eraroj.push('ne eblaj enaj finaĵoj: ' + finaĵoj)
+            poentoj--
+          }
+          finaĵoj = ''
+          continue
         }
-        finoj++
-        if (ero.radiko === 'n') {
-          if (estAk || estPl || tipo) {
-            eraro.push('n ne ĉe la fino')
-            pj -= 10
-          } else {
-            estAk = true
-          }
-        } else if (ero.radiko === 'j') {
-          if (tipo) {
-            eraro.push('j antaŭ tipo')
-            pj -= 10
-          } else {
-            estPl = true
-          }
-        } else if (ero.radiko === 'a' || ero.radiko === 'o') {
-          if (tipo) {
-            eraro.push('duobla tipo: ' + ero.radiko)
-            pj -= 10
-          } else {
-            tipo = ero.radiko
-          }
-        } else if (ero.radiko === 'e') {
-          if (estAk || estPl || tipo) {
-            eraro.push('e finaĵo ne ĉe la fino')
-            pj -= 10
-          } else {
-            tipo = ero.radiko
-          }
-        } else if (ero.radiko === 'i' || ero.radiko === 'u' || ero.radiko === 'as' || ero.radiko === 'os' || ero.radiko === 'is' || ero.radiko === 'us') {
-          if (estAk || estPl || tipo) {
-            eraro.push('problema finaĵo: ' + ero.radiko)
-            pj -= 10
-          } else {
-            tipo = 'verbo'
-          }
-        } else {
-          console.log(ero)
+        finaĵoj += e.r
+      }
+
+      if (finaĵoj) {
+        if (!enajFinaĵoj.test(finaĵoj) && !finajFinaĵoj.test(finaĵoj)) {
+          eraroj.push('ne eblaj finaj finaĵoj: ' + finaĵoj)
+          poentoj--
+        }
+      } else {
+        let lt = a[a.length-1].t
+        if (lt == 'r') {
+          eraroj.push('finaĵo mankas')
+          poentoj--
         }
       }
-      // kontrolu antaŭ finaĵoj
-      let finaĵo = null
-      for (let i = 0; i < a.length - finoj; i++) {
-        let ero = a[i]
-        if (ero.finaĵo) {
-          if (ero.radiko === 'a' || ero.radiko === 'e' || ero.radiko === 'o') {
-            // XXX - kontrolu ke estas nur unu kaj estas malantaŭ io
-            if (!finaĵo) {
-              finaĵo = ero.radiko
-            } else {
-              eraro.push('neatenda finaĵo en vorto: ' + ero.radiko)
-            }
-          } else {
-            eraro.push('neatenda finaĵo en vorto: ' + ero.radiko)
-            pj -= 10
-          }
-        } else {
-          finaĵo = null
-          if (ero.litero) {
-            // t.e. litero kiu ne estas ankaŭ finaĵo
-            eraro.push('uzo de liternomo: ' + ero.radiko)
-            pj -= 10
+
+      if (a[0].t == 'f') {
+        eraroj.push('finaĵo ĉe komenco')
+        poentoj--
+      }
+
+      if (eraroj.length == 0) {
+        for (let e of a) {
+          // if (e.t == 's') {
+          //   // ĉiu amas sufiksojn
+          //   poentoj++
+          // }
+        }
+        for (let n of normoj) {
+          if (n.test(skemo)) {
+            poentoj++
           }
         }
-        if (ero.xxx) {
-          eraro.push(`xxx vorto: ${ero.radiko}, vidu: ${ero.vidu}`)
-        }
-        if (!ero.afikso) {
-          // afikso estas pli probable ol ĉio alia
-          pj -= 1
-        }
-        if (!tipo && ero.tipo) {
-          tipo = ero.tipo
-        }
       }
-      let lasta = a[a.length-1]
-      if (!tipo && !lasta.fina) {
-        eraro.push('nekonata tipo')
-        pj -= 20
-      }
-      if (!lasta.finaĵo && !lasta.fina) {
-        eraro.push('ne havas finaĵon')
-        pj -= 20
-      }
-      if (lasta.finaĵo) {
-        pj += 1
-      }
+
       // ...
       return {
-        vorto: a.map(e => e.radiko).join('/'),
+        vorto: a.map(e => e.r).join('/'),
+        skemo: skemo,
+        poentoj: poentoj,
         eroj: a,
-        akuzativo: estAk,
-        pluralo: estPl,
-        tipo: tipo,
-        poentoj: pj,
-        eraro: eraro.length > 0 ? eraro : null
+        eraro: eraroj.length > 0 ? eraroj : null
       }
     })
 
@@ -190,8 +159,8 @@ class Dividulo {
       return a.eroj.length - b.eroj.length
     })
 
-    let bonaj = altj.filter(e => e.poentoj > 0)
-    let malbonaj = altj.filter(e => e.poentoj <= 0)
+    let bonaj = altj.filter(e => e.eraro == null)
+    let malbonaj = altj.filter(e => e.eraro != null)
 
     return { bonaj, malbonaj }
   }
@@ -206,7 +175,7 @@ class Dividulo {
     for (let i = 1; i <= cetero.length; i++) {
       let s = cetero.slice(0, i)
       let r = this.radikoj.get(s)
-      if (r) {
+      while (r) {
         let k = komenco.slice(0)
         k.push(r)
         let c = cetero.slice(s.length)
@@ -215,6 +184,7 @@ class Dividulo {
         } else {
           metejo.push(k)
         }
+        r = r.s
       }
     }
   }
