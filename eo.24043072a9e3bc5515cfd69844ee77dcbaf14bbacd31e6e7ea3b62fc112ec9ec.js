@@ -1,24 +1,74 @@
 
 // Kodo:
 // k kerna
-// f finaĵo
 // p prefikso
 // s sufikso
-// r (normala) radiko
 // t tabelvorto
-// k kerna
 // n pronomo
+// x prepozicio
+// r (normala) radiko
+// f finaĵo
 
-const normoj = [
-  /^p+([rtnksp]f*)+f+$/,
-  /^([rtnksp]f*)+s+f+$/,
-  /^([rtnksp]f*)+f+$/,
-  /^([rtnksp]f*)*k$/
-]
+const normoj = function() {
+  const tabelFinaĵoj = /^(j|jn|n)$/
+  const pronomFinaĵoj = /^((aj?n?)|n)$/
+  const vortajFinaĵoj = /^(([ao]j?n?)|en?)$/
+  const verbajFinaĵoj = /^(i|([iaou]s)|u)$/
 
-// XXX j, n, jn nur validas post tiu, tio ktp
-const enajFinaĵoj = /^(([ao]j?n?)|e)$/
-const finajFinaĵoj = /^(i|([iaou]s)|u|j|jn|n)$/
+  function kontroluFinaĵoj(t, f1, f2) {
+    let finaĵoj = ''
+    for (let e of t) {
+      if (e.t == 'f') {
+        finaĵoj += e.r
+      } else {
+        if (finaĵoj && !f1(finaĵoj)) {
+          return false
+        }
+        finaĵoj = ''
+      }
+    }
+    if (finaĵoj && !f2(finaĵoj)) {
+      return false
+    }
+    return true
+  }
+
+  function kontroluĜeneralFinaĵoj(t) {
+    return kontroluFinaĵoj(t,
+      f => vortajFinaĵoj.test(f),
+      f => vortajFinaĵoj.test(f) || verbajFinaĵoj.test(f))
+  }
+
+  function kontroluTabelFinaĵoj(t) {
+    return kontroluFinaĵoj(t,
+      f => false,
+      f => tabelFinaĵoj.test(f))
+  }
+
+  function kontroluPronomFinaĵoj(t) {
+    return kontroluFinaĵoj(t,
+      f => false,
+      f => pronomFinaĵoj.test(f))
+  }
+
+  // eble, la plej uzata vortoj konformas al pli da skemoj?
+  let l = [
+    { skemo: /^p*[k|t|n|x]$/ },
+    { skemo: /^p*[k|x]f*$/, kaj: kontroluĜeneralFinaĵoj },
+    { skemo: /^[n]f*$/, kaj: kontroluPronomFinaĵoj },
+    { skemo: /^[t]f*$/, kaj: kontroluTabelFinaĵoj },
+    { skemo: /^([kpstnxr])+f+$/, kaj: kontroluĜeneralFinaĵoj },
+  ]
+
+  return l.map(e => (t, s) => {
+    if (e.skemo.test(s)) {
+      if (!e.kaj || e.kaj(t)) {
+        return true
+      }
+    }
+    return false
+  })
+}()
 
 class Dividulo {
   constructor(radikoj) {
@@ -49,14 +99,19 @@ class Dividulo {
       } else if (kj.r.startsWith('-')) {
         kj.r = kj.r.slice(1)
         kj.t = 'f'
-      // } else if (e.fakoj.includes('pronomo')) {
-      //   kj.t = 'n'
-      // } else if (e.fakoj.includes('tabela')) {
-      //   kj.t = 't'
+      } else if (e.fakoj.includes('pronomo')) {
+        kj.t = 'n'
+      } else if (e.fakoj.includes('tabela')) {
+        kj.t = 't'
+      } else if (e.fakoj.includes('prepozicio')) {
+        kj.t = 'x'
       } else {
         kj.t = 'k'
       }
 
+      if (e.fakoj.includes('ĝenerala')) {
+        kj.ĝenerala = true
+      }
       if (e.fakoj.includes('xxx')) {
         kj.xxx = true
         kj.vidu = e.vidu
@@ -91,53 +146,27 @@ class Dividulo {
     }
 
     let altj = vj.map((a) => {
-      let poentoj = -a.length
+      let poentoj = 0
       let eraroj = []
 
       let skemo = ''
-      let finaĵoj = ''
       for (let e of a) {
         skemo += e.t
-        if (e.t != 'f') {
-          if (finaĵoj && !enajFinaĵoj.test(finaĵoj)) {
-            eraroj.push('ne eblaj enaj finaĵoj: ' + finaĵoj)
-            poentoj--
-          }
-          finaĵoj = ''
-          continue
-        }
-        finaĵoj += e.r
       }
 
-      if (finaĵoj) {
-        if (!enajFinaĵoj.test(finaĵoj) && !finajFinaĵoj.test(finaĵoj)) {
-          eraroj.push('ne eblaj finaj finaĵoj: ' + finaĵoj)
-          poentoj--
-        }
-      } else {
-        let lt = a[a.length-1].t
-        if (lt == 'r') {
-          eraroj.push('finaĵo mankas')
-          poentoj--
+      for (let n of normoj) {
+        if (n(a, skemo)) {
+          poentoj = 1
         }
       }
-
-      if (a[0].t == 'f') {
-        eraroj.push('finaĵo ĉe komenco')
-        poentoj--
+      if (poentoj == 0) {
+        eraroj.push('ne konformas al iu skemo')
       }
 
-      if (eraroj.length == 0) {
-        for (let e of a) {
-          // if (e.t == 's') {
-          //   // ĉiu amas sufiksojn
-          //   poentoj++
-          // }
-        }
-        for (let n of normoj) {
-          if (n.test(skemo)) {
-            poentoj++
-          }
+      for (let e of a) {
+        // eble ĝeneralaj vortoj estas pli verŝajne? ĝenerale?
+        if (e.ĝenerala) {
+          poentoj++
         }
       }
 
