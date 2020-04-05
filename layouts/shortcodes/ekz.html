@@ -2,5 +2,5 @@
 
 <div class="ekz {{ .Get 1 }}">
   <p class="teksto">&#x00AB; {{ .Get 0 }} &#x00BB;</p>
-  <p class="pri">{{ .Inner }}</p>
+  <p class="pri">{{ .Inner | markdownify }}</p>
 </div>

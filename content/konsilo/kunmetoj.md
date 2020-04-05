@@ -21,10 +21,6 @@ Kelkaj sufiksoj helpas al ni ŝanĝi la sencon kaj ankaŭ la specon de vorton.
 "-ad-" emfazas ion verban, "-aĵ-" emfazas ion substantivan.
 {{< /ekz >}}
 
-{{< ekz `mi kuraĝigis lin; kaj ankaŭ li kuraĝiĝis` >}}
-"-ig-" enhavas la ideon de io fare de ekstero, dum "-iĝ-" enhavas la ideon de io fare de interno.
-{{< /ekz >}}
-
 {{< ekz `li estas instruisto, kaj ankaŭ bonulo, sed li nun ne havas postenon` >}}
 "-ist-" ĝenerale signifas homo kiu faras ion aŭ profesie, aŭ bone, sed ne estas preciza. "-ul-" estas ankoraŭ malpli preciza, kaj nur indikas homo kiu estis iel karakteriza per io.
 {{< /ekz >}}
@@ -32,6 +28,8 @@ Kelkaj sufiksoj helpas al ni ŝanĝi la sencon kaj ankaŭ la specon de vorton.
 {{< ekz `ne estas krokodilo, sed certe estas ia krokodilulo` >}}
 Fakte, ne ĉiu ulo estas homo.
 {{< /ekz >}}
+
+Vidu ankaŭ [pri verboj](../verboj#ĉu-transitiva)
 
 ## Kunmetado
 

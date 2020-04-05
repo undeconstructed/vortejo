@@ -7,29 +7,59 @@ weight: 40
 
 Eble aparta diskuto de verboj kaj verbaj formoj estos utila? Estas multo ke oni povas fari por ŝanĝi verbojn ..
 
-## Tempoj, ktp
+## Ĉu transitiva?
 
-"Veraj" verboj estas tiuj kiuj povas esti la kerno de propozicio. Ili havas la finaĵojn: "-i", "-as", "-os", "-is", "-us", "-u".
+Ne facilas memori ĉu la baza formo de verbo estas transitiva aŭ ne. Mi pensas ke kiel ĝenerala regulo, se verbo povas esti netransitiva, ĝi estas. Tiu funkcias ĉar la plej simpla signfo de verbo ofte estas nur "io okazas", ne "iu kaŭzas ion".
 
-La verbaj tempoj donas nur ĝenerala ideo de tempo, kaj oni devas aldnoni pli da informo por esti preciza.
+{{< ekz `ĝi bonas, kaj mi volas ĝin` >}}
+Eblas "boni" netransitive, sed "voli" postulas ion por esti volata.
+{{< /ekz >}}
 
-{{< ekz `mi kuras` >}}
+{{< ekz `mi kuraĝigis lin; kaj ankaŭ li kuraĝiĝis` >}}
+"-ig-" enhavas la ideon de io fare de ekstero, dum "-iĝ-" enhavas la ideon de io fare de interno.
+{{< /ekz >}}
+
+## Formoj
+
+La verbaj formoj kiuj povas esti la kerno de propozicio havas la finaĵojn: "-as", "-is", "-os", "-us", "-u".
+
+La tempaj formoj ("-as", "-is", "-os") donas ĝenerala ideo de tempo, kaj oni devas aldoni pli da informo por esti preciza.
+
+{{< ekz `mi kuras` `warn` >}}
 Eble mi kuras dum la nuna momento, aŭ eble kutime.
 {{< /ekz >}}
 
-{{< ekz `mi kuris` >}}
+{{< ekz `mi kuris` `warn` >}}
 Iam en la estinto. Eble unufoje, eble ofte?
 {{< /ekz >}}
 
 {{< ekz `mi kuros ĉiutage dum la venonta jaro` >}}
-Ĉi tiu estas preciza plano, sed estas nur plano.
+Ĉi tiu estas preciza plano, sed estas nur plano ĉar ĝi ankoraŭ ne okazas.
 {{< /ekz >}}
 
-La "-us" kaj "-u" formoj estas pri eĉ pli neprecizaj ideoj.
+La "-us" kaj" "-u" indikas ke la verbo ne rilatas al ĉi tiu mondo, sed alia.
 
-La "-i" formo, nu, ...
+{{< ekz `mi estus tie, se mi povus` >}}
+La "-us" formo indikas ke io ne estas aŭ vera aŭ malvera en ĉi tiu mondo, sed ni povas imagi alian.
+{{< /ekz >}}
+
+{{< ekz `haltu! mi volas ke vi ne faru tion!` >}}
+La "-u" formo signifas ke oni volas ke io estu vera aŭ malvera.
+{{< /ekz >}}
 
 ## Inifinitivoj
+
+La "-i" formoj estas la pli ĝeneralaj ideoj, ne havanta nek tempon nek alian difninon. Ili do ne povas esti kernoj de propozicioj, ĉar oni ne neniel povas diri ĉu ili estas "vera".
+
+{{< ekz `fari estas bone` >}}
+La "-i" formoj signifas la plej ĝenerala, malplej difinita ideo de verbo.
+{{< /ekz >}}
+
+{{< ekz `mi devas lavi min` >}}
+Kun aliaj verbo oni povas uzi infinitivon kvazaŭ substantivon, sed ĝi ankoraŭ estas verbo kaj povas havi rektan komplementon.
+{{< /ekz >}}
+
+Vidu ankaŭ [en la fraza paĝo](../frazoj#infinitivoj).
 
 ## Participoj
 
@@ -43,9 +73,19 @@ Estis tempo, dum kiu mi intencis lerni.
 Estos tempo, dum kiu mi intencis ke la lernado estos finita.
 {{< /ekz >}}
 
+Dum la pasivaj participoj ebligas al ni diri de la starpunkto de la rekta komplemento de la verbo.
+
+{{< ekz `tio estas lernota de mi` >}}
+Estos tempo, dum kiu mi intencis ke la lernado estos finita.
+{{< /ekz >}}
+
+{{< ekz `tio estas prenata de mi` `warn` >}}
+Atentu! Kutime oni uzas "de" por enkonduki la aganto de la pasiva verbo, sed tio povas kaŭzi neklaraĵojn. Ĉu mi estas la prenanto, aŭ ĉu mi estas la antaŭe havanto de tio?
+{{< /ekz >}}
+
 ## Verbecaj vortoj
 
-Aliaj vortojn povis agi kiel verboj, havante adverbojn, prepoziciojn ktp, sed ili ne estas "veraj" verboj. Ili inkluzivas la aktivaj kaj pasivaj particpojn.
+Aliaj vortoj povis agi kiel verboj, havante adverbojn, prepoziciojn ktp, sed ili ne estas verboj. Ili inkluzivas la aktivaj kaj pasivaj particpojn.
 
 {{< ekz `mi estis farinta la taskon` >}}
 Ĉiu "verba" formo agas kiel verbo, ekz. pri la akuzativo.
