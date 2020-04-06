@@ -73,6 +73,22 @@ Prepozicioj ebligas ke oni aldonu pli da informo ol aliaj vorto.
 La adjektivo "plena" ne precizas kio estas la plenanto, do ni uzas prepozicio por enkoduki pli detalojn.
 {{< /ekz >}}
 
+# Inoj kaj Iĉoj
+
+Oficiale, se oni ne uzas la sufikson "-in-", oni devas diveni ĉu homo estas ina aŭ ne. Tradicie oni supozas ke ĉiu estas ne ina, sed tio ne estas regulo de la lingvo, nur kutimo.
+
+{{< ekz `nia klaso havas instruiston` >}}
+Ĉu la intruisto estas ina au ne? Ne gravas.
+{{< /ekz >}}
+
+{{< ekz `miaj patroj estas unu patrinoj kaj unu patriĉoj` `warn` >}}
+Ĉi tiu frazo uzas neoficialan sukfikson "-iĉ-", kaj ignoras la kutimon ke patro estas iĉa. Mi pensas ke tio ne rompas iun regulon.
+{{< /ekz >}}
+
+{{< ekz `nia instruisto? ri estas tre bona` `warn` >}}
+La pronomo "ri" estas ankaŭ ne oficiala, sed povas esti utila.
+{{< /ekz >}}
+
 ## Um
 
 Dum uzado de "um" eble ne estas tre dezirinda en skribita lingvo, ĝi povas esti tre utila parole.

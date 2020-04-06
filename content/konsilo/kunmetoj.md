@@ -29,6 +29,26 @@ Kelkaj sufiksoj helpas al ni ŝanĝi la sencon kaj ankaŭ la specon de vorton.
 Fakte, ne ĉiu ulo estas homo.
 {{< /ekz >}}
 
+{{< ekz `mi laboras pri teo, do mi estas teisto, sed mi ne sekvas teismon` >}}
+"-ist-" kaj "-ism" foje iras kune, sed ne kiam "-ist-" pli verŝajne signifas laboron.
+{{< /ekz >}}
+
+{{< ekz `mi estas leganto, ĉar mi legas` >}}
+Participo kiel substantivo povas signifi homo, sed ne ĉiam.
+{{< /ekz >}}
+
+{{< ekz `eblas legi tiun libron, do ĝi estas legebla. ĝi ankaŭ estas leginda, eble legenda` >}}
+Se io povas esti la rekta komplemento de verbo, oni povas priskribi ĝin per la "-ebl-", "-ind-" kaj "-end-" sufiksoj.
+{{< /ekz >}}
+
+{{< ekz `li legas - li estas legema` >}}
+Se io povas esti la subjekto de verbo, oni povas priskribi ĝin per la "-em-" sufikso.
+{{< /ekz >}}
+
+{{< ekz `la ministro laboras ĉe la ministrejo` >}}
+"-ej-" signifas loko, sed ankaŭ povas esti metafora loko.
+{{< /ekz >}}
+
 Vidu ankaŭ [pri verboj](../verboj#ĉu-transitiva)
 
 ## Kunmetado
