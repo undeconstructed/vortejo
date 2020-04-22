@@ -19,6 +19,12 @@ Ne estas klare ĉu mi volas diri pri la ejo, aŭ la aĵo, sed ĝenerale oni dive
 Eble mi parolas pri la ago de kolekti, aŭ eble pri la rezulto. Ĝenerele, tio ne gravas, ĉar oni komprenus de kion mi dirus sekve. Se mi volas esti pli klara, mi dirus "mia kolektado" aŭ eble "mia kolektaĵo", sed tio estas mia elekto.
 {{< /ekz >}}
 
+## Komprenebleco
+
+{{< ekz `mi parolas pri speco de birdoj: akcipitroj` >}}
+Uzo de neoftaj vortoj povas konfuzi. Oni povas eviti tion iulingve per uzo de enkonduka frazo. Kaj, parole, iom paŭzi por pli klare marki la finojn de la neofta vorto.
+{{< /ekz >}}
+
 ## Vortspecoj
 
 Oni povas kunstrui substantivoj, adjektivoj, adverboj, kaj verboj el radikoj per nur la aldono de finaĵo. La ĝenerala senco de la vortoj estas ĉiam same, sed kun apartaj nuancoj ĉar ili devas rilati malsame al la aliaj vortoj.

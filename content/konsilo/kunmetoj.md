@@ -84,3 +84,9 @@ Efektive, ĉiu probable komprenos ĉi tiun vorton. Fakte, ne estas klare ĉu ĝi
 {{< ekz `nelaŭtigebla` `warn` >}}
 Mi trovis ĉi tiun kunmetaĵon en libro, kaj ĝi konfuzis min. Ĉu la "ne" rilatas al "laŭt" aŭ al la tuto? Mi povis diveni de la kunteksto, sed ĝi plimalfaciligis mian legadon.
 {{< /ekz >}}
+
+## Komprenebleco
+
+{{< ekz `ĝi estas papersako - sako fare el papero` >}}
+Povas esti utile aldoni priskribon ĉe la unua uzo de kunmetaĵo en teksto.
+{{< /ekz >}}
