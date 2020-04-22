@@ -15,6 +15,10 @@ Ne facilas memori ĉu la baza formo de verbo estas transitiva aŭ ne. Mi pensas 
 Eblas "boni" netransitive, sed "voli" postulas ion por esti volata.
 {{< /ekz >}}
 
+{{< ekz `mi ne movis ĝin, sed ĝi moviĝis` >}}
+Kiam la verbo enhavas ideon pri forto aŭ enmeto de energio, kutime ĝi estas transitiva.
+{{< /ekz >}}
+
 {{< ekz `mi kuraĝigis lin; kaj ankaŭ li kuraĝiĝis` >}}
 "-ig-" enhavas la ideon de io fare de ekstero, dum "-iĝ-" enhavas la ideon de io fare de interno.
 {{< /ekz >}}
