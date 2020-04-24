@@ -5,7 +5,7 @@ weight: 30
 
 # Pri frazoj
 
-La kerno de frazo estas "propozicio", tio estas io kiu povas esti vera aŭ nevera. Por fari tion, oni uzas verbon. De la verbo oni pendigas aliajn vortojn, sed kiel klarigi kiel la aliaj vortoj rilatas as la verbo?
+La kerno de frazo estas "propozicio", tio estas io kiu povas esti vera aŭ nevera. Por fari tion, oni uzas verbon. De la verbo oni pendigas aliajn vortojn, sed kiel klarigi kiel la aliaj vortoj rilatas al la verbo?
 
 ## Propozicioj
 
@@ -16,7 +16,7 @@ Verbo povas esti frazo sole.
 ## Substantivoj
 
 {{< ekz `mi kuras` >}}
-Nominativa substantivo estas la agulo, tiu kiu faras la verbon.
+Nominativa substantivo estas la aganto - tiu kiu faras aŭ kaŭzas la verbon.
 {{< /ekz >}}
 
 {{< ekz `tason mi havas` >}}
@@ -26,7 +26,7 @@ Akuzativa substantivo estas tiel klare ligita al la verbo, ke oni ne bezonas pre
 ## Adjektivoj
 
 {{< ekz `mi havas bonan tason` >}}
-Adjektivo donas informon substantivo. Kiu? Oni devas pensi pri la kazo, kaj pri ĉu ĝi estas post prepozicio.
+Adjektivo donas informon al substantivo. Kiu substantivo? Oni devas pensi pri la kazo, kaj pri ĉu ĝi estas post prepozicio.
 {{< /ekz >}}
 
 {{< ekz `malrapida kato muson rapidan ne kaptas` >}}
@@ -40,7 +40,7 @@ Adverboj donas informon pri kiel verbo okazas.
 {{< /ekz >}}
 
 {{< ekz `mi havas tre bonan tason` >}}
-Adverbo povas ankaŭ priskribi adjektivon, se ĝi estas rekte antaŭ la adjektivon.
+Adverbo povas ankaŭ priskribi adjektivon, se ĝi estas rekte antaŭ la adjektivo.
 {{< /ekz >}}
 
 {{< ekz `mi havus vole bonan tason` `warn` >}}
@@ -48,7 +48,7 @@ Se estas adverbo proksime de kaj adjektivo kaj substantivo? Estu zorgema.
 {{< /ekz >}}
 
 {{< ekz `mi kuras en la parko rapide` `warn` >}}
-Se estas adverbo kiu estas for de ĉio? Probable estas pri la verbo, sed estu zorgema.
+Se estas adverbo kiu estas for de ĉio? Probable estas pri la verbo.
 {{< /ekz >}}
 
 ## Ne
@@ -61,7 +61,7 @@ Se estas adverbo kiu estas for de ĉio? Probable estas pri la verbo, sed estu zo
 Oni povas uzi "ne" en kunmetaĵo por esti pli klare en skriba uzo.
 {{< /ekz >}}
 
-{{< ekz `neruĝa objecto` `warn` >}}
+{{< ekz `neruĝa objekto` `warn` >}}
 Kiam "ne" estas antaŭ adjektivo, ne estas ĉiam klara ĉu ĝi rilatas al la adjektivo aŭ al ties substantivo.
 {{< /ekz >}}
 
@@ -72,7 +72,7 @@ La substantivo post prepozicio rilatas al la verbo laŭ la signifo de la prepozi
 {{< /ekz >}}
 
 {{< ekz `mi kuras rapide en parko` `warn` >}}
-Prepozicio ankaŭ povas ligi vorton al adverbo. Ĉu ĉi tiu ekzemplo estas klara? Probable, ĉar ne tro gravas ĉu "en parko" rilatas al "kuras" aŭ al "rapide", la senco estas klara.
+Prepozicio ankaŭ povas ligi vorton al adverbo. Ĉu ĉi tiu ekzemplo estas klara? Probable, ĉar ne tro gravas ĉu "en parko" rilatas al "kuras" aŭ al "rapide", la senco estas simila.
 {{< /ekz >}}
 
 {{< ekz `mi kuras en parko por ekzerco de arbo al fontano je lundo` >}}
@@ -101,12 +101,12 @@ Foje konjunkcio ligis du propoziciojn.
 Se oni volas, oni povas eviti rediri aferojn. Ĉu la aŭdanto komprenos ke ambaŭ verboj ĉi tie rilatas al la sama persono? Probable, sed estu zorgema.
 {{< /ekz >}}
 
-{{< ekz `mi ne havas sed volas teleron por uzi` >}}
-Ĉi tie ni havas du propoziciojn, kaj ambaŭ rilatas al la samaj aferoj. Probable. Ĉu ĝi estas sufiĉe klara?
+{{< ekz `mi ne havas sed volas teleron por uzi` `warn` >}}
+Ĉi tie ni havas du propoziciojn. Ĉu estas sufiĉe klara ĉu la akuzitivo kaj la prepozicio ambaŭ rilatas al ambaŭ propozicioj?
 {{< /ekz >}}
 
 {{< ekz `mi estas malseka ĉar pluvas forte` >}}
-Kelkaj konjunkcioj ligas du propoziciojn kaj ankaŭ difinias kiel unu rilatas al la alia. La propozicio post "ĉar" estas la kialo por la alia.
+Kelkaj konjunkcioj ligas du propoziciojn kaj ankaŭ difinas kiel unu rilatas al la alia. La propozicio post "ĉar" estas la kialo por la alia.
 {{< /ekz >}}
 
 {{< ekz `ĉar pluvas forte, mi estas malseka` `warn` >}}
@@ -136,7 +136,7 @@ Oficiale oni devas uzi adverbojn por priskribi infinitivo, ĉar ĝi estas verbo,
 {{< /ekz >}}
 
 {{< ekz `ŝi volas helpi al li movi sin` `warn` >}}
-Kiam oni uzas infinitivon kiel objeckton, oni povas elekti alia subjekto, kaj tio ŝanĝas la signifon de "si".
+Kiam oni uzas infinitivon kiel objekton, oni povas elekti alia subjekto, kaj tio ŝanĝas la signifon de "si".
 {{< /ekz >}}
 
 ## Korelativoj
@@ -144,7 +144,7 @@ Kiam oni uzas infinitivon kiel objeckton, oni povas elekti alia subjekto, kaj ti
 Korelativoj permasas ke oni uzas novan propozicion por priskribi ion. Ofte oni uzas ilin en parojn, por indiki kaj la rolon en la ĉefa propozicio, kaj la rolon en la alia.
 
 {{< ekz `mi volas (tion,) kion vi havas` >}}
-La "tion" ne estas tre grava ĉar estas oni povas kompreni ke la tuta dua parto de la frazo agas kiel la objekto de la unua. Eble estas bone uzi la "tion" por esti klare, sed ebla ĝi ne sonas tiel bone?
+La "tion" ne estas tre grava ĉar oni povas kompreni ke la tuta dua parto de la frazo agas kiel la objekto de la unua. Eble estas bone uzi la "tion" por esti klare, sed ebla ĝi ne sonas tiel bone?
 {{< /ekz >}}
 
 {{< ekz `(tio,) kion vi havas, estas bona` >}}
@@ -153,14 +153,14 @@ Oni eble elektus uzi la "tio" ĉi tie ĉar ĝi helpas emfazi pri kio oni parolas
 
 # Neplenaj frazoj
 
-Ofte ni diras ion kiun ne perfekte sekvas la regulojn de la lingvo, sed la rezulto estas tute komprenabla. Ofte estas ĉar ni ne diras vortojn kiam ni atendas ke la aŭdanto povas dinveni ilin.
+Ofte ni diras ion, kio ne perfekte sekvas la regulojn de la lingvo, sed la rezulto estas tute komprenabla. Ofte estas ĉar ni ne diras vortojn kiam ni atendas ke la aŭdanto povas diveni ilin.
 
 {{< ekz `mi volas la grandan (aferon)` >}}
-"la grandan" ne estas substantivo, do ne fakte ne povas esti la objekto de la verbo, sed la substantivo ne estas tre grava ĉi tie, do ne estas problemo por la aŭdanto.
+"la grandan" ne estas substantivo, do fakte ne povas esti la objekto de la verbo, sed la substantivo ne estas tre grava ĉi tie, do ne estas problemo por la aŭdanto.
 {{< /ekz >}}
 
 {{< ekz `ĉu vi volas daŭri (esti ludanta)? / ĉu vi volas daŭrigi (la ludon)?` >}}
-Ne multe gravas ĉu uzi la "-ig-" formon, dum la aŭdanto povas diveni taŭgan finon de la frazo.
+Ne multe gravas ĉu oni uzas la "-ig-" formon, dum la aŭdanto povas diveni taŭgan finon de la frazo.
 {{< /ekz >}}
 
 {{< ekz `vi devas moviĝi / vi devas movi (vin)` >}}

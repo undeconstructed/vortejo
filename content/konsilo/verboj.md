@@ -16,11 +16,11 @@ Eblas "boni" netransitive, sed "voli" postulas ion por esti volata.
 {{< /ekz >}}
 
 {{< ekz `mi ne movis ĝin, sed ĝi moviĝis` >}}
-Kiam la verbo enhavas ideon pri forto aŭ enmeto de energio, kutime ĝi estas transitiva.
+Kiam la baza verbo enhavas ideon pri forto aŭ enmeto de energio, kutime ĝi estas transitiva.
 {{< /ekz >}}
 
 {{< ekz `mi kuraĝigis lin; kaj ankaŭ li kuraĝiĝis` >}}
-"-ig-" enhavas la ideon de io fare de ekstero, dum "-iĝ-" enhavas la ideon de io fare de interno.
+"-ig-" enhavas la ideon de io fare de ekstera, dum "-iĝ-" enhavas la ideon de io fare de ena.
 {{< /ekz >}}
 
 ## Formoj
@@ -48,26 +48,26 @@ La "-us" formo indikas ke io ne estas aŭ vera aŭ malvera en ĉi tiu mondo, sed
 {{< /ekz >}}
 
 {{< ekz `haltu! mi volas ke vi ne faru tion!` >}}
-La "-u" formo signifas ke oni volas ke io estu vera aŭ malvera.
+La "-u" formo signifas ke oni volas (aŭ ne volas) ke io estu vera aŭ malvera.
 {{< /ekz >}}
 
 ## Inifinitivoj
 
-La "-i" formoj estas la pli ĝeneralaj ideoj, ne havanta nek tempon nek alian difninon. Ili do ne povas esti kernoj de propozicioj, ĉar oni ne neniel povas diri ĉu ili estas "vera".
+La "-i" formoj estas la plej ĝeneralaj ideoj, havanta nek tempon nek alian difinon. Ili do ne povas esti kernoj de propozicioj, ĉar oni neniel povas diri ĉu ili estas "vera".
 
 {{< ekz `fari estas bone` >}}
 La "-i" formoj signifas la plej ĝenerala, malplej difinita ideo de verbo.
 {{< /ekz >}}
 
 {{< ekz `mi devas lavi min` >}}
-Kun aliaj verbo oni povas uzi infinitivon kvazaŭ substantivon, sed ĝi ankoraŭ estas verbo kaj povas havi rektan komplementon.
+Per alia verbo oni povas uzi infinitivon kvazaŭ substantivon, sed ĝi ankoraŭ estas verbo kaj povas havi objekton.
 {{< /ekz >}}
 
 Vidu ankaŭ [en la fraza paĝo](../frazoj#infinitivoj).
 
 ## Participoj
 
-La frazo havas ĝian propran tempon, kaj la uzo de particpo ebligas al ni paroli pri evento rilate de tiu tempo.
+Ĉiu frazo havas ĝian propran tempon, kaj uzi participon ebligas al ni paroli pri evento rilate de tiu tempo.
 
 {{< ekz `pasintjare mi estis lernonta tion` >}}
 Estis tempo, dum kiu mi intencis lerni.
@@ -77,19 +77,19 @@ Estis tempo, dum kiu mi intencis lerni.
 Estos tempo, dum kiu mi intencis ke la lernado estos finita.
 {{< /ekz >}}
 
-Dum la pasivaj participoj ebligas al ni diri de la starpunkto de la rekta komplemento de la verbo.
+La pasivaj participoj ebligas al ni diri de la starpunkto de la objekto de la verbo.
 
 {{< ekz `tio estas lernota de mi` >}}
-Estos tempo, dum kiu mi intencis ke la lernado estos finita.
+Nun, mi intencas lerni tion.
 {{< /ekz >}}
 
 {{< ekz `tio estas prenata de mi` `warn` >}}
-Atentu! Kutime oni uzas "de" por enkonduki la aganto de la pasiva verbo, sed tio povas kaŭzi neklaraĵojn. Ĉu mi estas la prenanto, aŭ ĉu mi estas la antaŭe havanto de tio?
+Atentu! Kutime oni uzas "de" por enkonduki la aganto de pasiva verbo, sed tio povas kaŭzi neklaraĵojn. Ĉu mi estas la prenanto, aŭ ĉu mi estas la antaŭe havanto?
 {{< /ekz >}}
 
 ## Verbecaj vortoj
 
-Aliaj vortoj povis agi kiel verboj, havante adverbojn, prepoziciojn ktp, sed ili ne estas verboj. Ili inkluzivas la aktivaj kaj pasivaj particpojn.
+Aliaj vortoj povis agi kiel verboj, havante adverbojn, prepoziciojn ktp, sed ili ne estas verboj. Ili inkluzivas la aktivaj kaj pasivaj particpoj, kiu povas havi objektojn.
 
 {{< ekz `mi estis farinta la taskon` >}}
 Ĉiu "verba" formo agas kiel verbo, ekz. pri la akuzativo.
@@ -103,8 +103,8 @@ Kiam estas du verbaj vortoj en frazo, oni devas esti klare pri kiuj adverboj ktp
 Tiuj ĉi adverboj (nun, plene) povas rilati al la verbo "esti" aŭ la verbo "legi". Ĉu estas klare? Verŝajne aŭ jes, aŭ ne estas grava. Sed estu zorgema.
 {{< /ekz >}}
 
-Ankaŭ aliaj vortformoj povas enhavi la ideon de verbo.
+Ankaŭ aliaj vortformoj povas enhavi la ideon de verbo, sed ne povas havi objektojn.
 
 {{< ekz `mi ŝatis vian agadon pri tio` warn >}}
-La prepozicio "pri" rilatas al la verbeca vorto "agado", sed fakte tio funkcias ĉar oni povas ankaŭ uzi prepoziciojn por ligi substantivojn.
+La prepozicio "pri" rilatas al la verbeca vorto "agado", sed fakte tio funkcias ĉar oni povas ankaŭ uzi prepoziciojn por ligi substantivojn - "agado" neniel estas verbo.
 {{< /ekz >}}
