@@ -19,12 +19,6 @@ Ne estas klare ĉu mi volas diri pri la ejo, aŭ la aĵo, sed ĝenerale oni dive
 Eble mi parolas pri la ago de kolekti, aŭ eble pri la rezulto. Ĝenerale, tio ne gravas, ĉar oni komprenus de kion mi dirus sekve. Se mi volas esti pli klara, mi povus diri "mia kolektado" aŭ eble "mia kolektaĵo".
 {{< /ekz >}}
 
-## Komprenebleco
-
-{{< ekz `mi parolas pri speco de birdoj: akcipitroj` >}}
-Uzo de neofta vorto povas konfuzi. Oni povas eviti tion iulingve per uzo de enkonduka frazo. Kaj, parole, iom paŭzi por pli klare marki la finojn de la neofta vorto.
-{{< /ekz >}}
-
 ## Vortspecoj
 
 Oni povas kunstrui substantivoj, adjektivoj, adverboj, kaj verboj el radikoj per nur la aldono de finaĵo. La ĝenerala senco de la vortoj estas ĉiam sama, sed kun apartaj nuancoj ĉar ili devas rilati malsame al la aliaj vortoj.
@@ -43,6 +37,29 @@ Efektive, ĝi estas turo.
 
 {{< ekz `ĝi turas` >}}
 Ĝi faras kiel turo, kaj tiu estas tiom grava ke mi volas ke ĝi estu la centro de mia frazo.
+{{< /ekz >}}
+
+## Radikoj
+
+Ofte ne estas klara kio estas la "natura" speco por ĉiu radiko, kaj bedaŭrinde kelkaj radikoj estis kreitaj sen penso pri tio. Jen ĝeneralaj reguloj:
+
+* La plej uzeblaj radikoj estas la plej abstraktaj, kaj la plej abstrakta vortspeco estas verbo.
+* Pli specialaj vortoj ofte estas nomoj de specialaj aferoj, kaj la plej noma vortspeco estas substantivo.
+
+{{< ekz `ĝi bluas - ĝi estas blua - ĝi blue brilas - mi ŝatas bluon` >}}
+Multaj radikoj, facile kaj kompreneble, iĝas ia ajn speca.
+{{< /ekz >}}
+
+{{< ekz `mi havas ĝin - mi estas havulo - ĝi estas havebla` >}}
+Oftaj afiksoj ŝanĝas abstraktajn konceptojn en solidajn formojn.
+{{< /ekz >}}
+
+{{< ekz `mia amiko estas tajlor(ist)o, ĉar li tajloras (faras vestojn)` `warn` >}}
+Oficiale, "tajloro" estas persono. Tiu estas malutila, ĉar tiam oni devas lerni du informojn: kio estas tajloro, kaj kion tiu faras. La radiko povas ankaŭ esti verba, kiu estas pli uzebla.
+{{< /ekz >}}
+
+{{< ekz `la lupo lupe sekvas la kuniklon` >}}
+Nomoj de aferoj estas difinitaj laŭ tiuj aferoj, kaj do estas iom substantiva, sed oni povas uzi tiajn radikojn alimaniere.
 {{< /ekz >}}
 
 ## Pronomoj
@@ -105,4 +122,10 @@ Dum uzado de "um" eble ne estas tre dezirinda en skribita lingvo, ĝi povas esti
 
 {{< ekz `donu al mi la umon - ne, la plej uman - mi devas umi la umon` >}}
 Sed tute ne atendu ke iu ekster la konversacio komprenus ion ajn.
+{{< /ekz >}}
+
+## Komprenebleco
+
+{{< ekz `mi parolas pri speco de birdoj: akcipitroj` >}}
+Uzo de neofta vorto povas konfuzi. Oni povas eviti tion iulingve per uzo de enkonduka frazo. Kaj, parole, iom paŭzi por pli klare marki la finojn de la neofta vorto.
 {{< /ekz >}}
