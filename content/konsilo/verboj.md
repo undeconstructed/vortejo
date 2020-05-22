@@ -63,7 +63,7 @@ La "-i" formoj signifas la plej ĝenerala, malplej difinita ideo de verbo.
 Per alia verbo oni povas uzi infinitivon kvazaŭ substantivon, sed ĝi ankoraŭ estas verbo kaj povas havi objekton.
 {{< /ekz >}}
 
-Vidu ankaŭ [en la fraza paĝo](../frazoj#infinitivoj).
+Vidu ankaŭ [en la fraza paĝo](../frazoj/#infinitivoj).
 
 ## Participoj
 

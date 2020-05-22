@@ -49,7 +49,7 @@ Se io povas esti la subjekto de verbo, oni povas priskribi ĝin per la "-em-" su
 "-ej-" signifas loko, sed ankaŭ povas esti metafora loko.
 {{< /ekz >}}
 
-Vidu ankaŭ [pri verboj](../verboj#ĉu-transitiva)
+Vidu ankaŭ [pri verboj](../verboj/#ĉu-transitiva)
 
 ## Kunmetado
 

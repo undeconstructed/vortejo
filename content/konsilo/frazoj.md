@@ -151,7 +151,7 @@ La "tion" ne estas tre grava ĉar oni povas kompreni ke la tuta dua parto de la 
 Oni eble elektus uzi la "tio" ĉi tie ĉar ĝi helpas emfazi pri kio oni parolas.
 {{< /ekz >}}
 
-# Neplenaj frazoj
+## Neplenaj frazoj
 
 Ofte ni diras ion, kio ne perfekte sekvas la regulojn de la lingvo, sed la rezulto estas tute komprenabla. Ofte estas ĉar ni ne diras vortojn kiam ni atendas ke la aŭdanto povas diveni ilin.
 
