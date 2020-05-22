@@ -17,6 +17,19 @@ document.addEventListener('DOMContentLoaded', () => {
   window.montru = montru
 })
 
+document.addEventListener('DOMContentLoaded', () => {
+  let hj = document.querySelector('main').querySelectorAll('h1,h2,h3,h4,h5,h6')
+  for (let h of hj) {
+    if (h.id) {
+      let a = document.createElement('a')
+      a.href = '#' + h.id
+      a.classList.add('para')
+      a.textContent = '¶'
+      h.append(a)
+    }
+  }
+})
+
 // document.addEventListener('DOMContentLoaded', () => {
 //   document.addEventListener('selectionchange', () => {
 //     console.log(document.getSelection());
