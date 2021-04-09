@@ -78,7 +78,7 @@ class Dividulo {
   _umuRadikoj(rj) {
     let m = new Map()
     for (let e of rj) {
-      if (e.fakoj.includes('litera')) {
+      if (e.fakoj.includes('litero')) {
         // liternomoj estas maloftaj ke nekonvenaj
         continue
       }
@@ -89,7 +89,7 @@ class Dividulo {
         t: 'r'
       }
 
-      if (kj.r.endsWith('/')) {
+      if (kj.r.endsWith('\'')) {
         kj.r = kj.r.slice(0, -1)
         if (e.fakoj.includes('sufikso')) {
           kj.t = 's'

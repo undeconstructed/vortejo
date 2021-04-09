@@ -16,11 +16,15 @@ Eblas "boni" netransitive, sed "voli" postulas ion por esti volata.
 {{< /ekz >}}
 
 {{< ekz `mi ne movis ĝin, sed ĝi moviĝis` >}}
-Kiam la baza verbo enhavas ideon pri forto aŭ enmeto de energio, kutime ĝi estas transitiva.
+Kiam la baza signifo enhavas ideon pri forto aŭ enmeto de energio, kutime ĝi estas transitiva.
 {{< /ekz >}}
 
-{{< ekz `mi kuraĝigis lin; kaj ankaŭ li kuraĝiĝis` >}}
-"-ig-" enhavas la ideon de io fare de ekstera, dum "-iĝ-" enhavas la ideon de io fare de ena.
+{{< ekz `li timas hundojn, do la hundo timigis lin` >}}
+"-ig-" enhavas la ideon de io kaŭzita de la subjekto, anstataŭ farita.
+{{< /ekz >}}
+
+{{< ekz `tio interesas min, do mi interesiĝas pri tio` >}}
+"-iĝ-" enhavas la ideon de io kaŭzita ena de la subjekto.
 {{< /ekz >}}
 
 ## Formoj

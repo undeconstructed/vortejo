@@ -50,6 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
       eT.value = ''
     })
 
+    komprenu(eT.value)
     eF.hidden = false
   }
 
@@ -97,7 +98,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let e2 = document.createElement('div')
     for (let x of [...s.values()].sort((a, b) => a.radiko > b.radiko)) {
-      let vs = document.createElement('span')
+      let vs = mkel('span', { classes: [ 'nivelo-' + x.nivelo ] })
       vs.append(x.radiko)
       vs.addEventListener('click', e => {
         montruRadiko(x)
@@ -147,7 +148,7 @@ document.addEventListener('DOMContentLoaded', () => {
     eMXXX.querySelector('[f=r]').textContent = r.radiko
     eMXXX.querySelector('[f=f]').textContent = r.fakoj.join(', ')
     eMXXX.querySelector('[f=v]').textContent = r.vidu
-    eMXXX.querySelector('[f=a]').textContent = r.en
+    eMXXX.querySelector('[f=a]').textContent = r.tradukoj['en']
     eMXXX.hidden = false
     montru(eMXXX)
   }

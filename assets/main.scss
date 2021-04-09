@@ -3,6 +3,11 @@
 
 $background: rgb(0, 153, 0) !default;
 
+$nivelo-0: #fff;
+$nivelo-1: #fcc;
+$nivelo-2: #f99;
+$nivelo-3: #f88;
+
 /* monda */
 
 body {
@@ -184,51 +189,53 @@ button {
 
 /* vortaro */
 
+.nivelo-0 {
+  background-color: $nivelo-0;
+}
+.nivelo-1 {
+  background-color: $nivelo-1;
+}
+.nivelo-2 {
+  background-color: $nivelo-2;
+}
+.nivelo-3 {
+  background-color: $nivelo-3;
+}
+
 .vortaro {
+  .tuto {
+    flex-grow: 10;
+    display: flex;
+    flex-direction: column;
+    max-height: 98vh;
+    margin-bottom: 1em;
+    padding-top: 1em;
+  }
+  .filtro {
+    margin-bottom: 1em;
+  }
+  .rezulto {
+    border: 1px solid #eee;
+    overflow-y: auto;
+    table {
+      width: 100%;
+      thead {
+        position: sticky;
+        top: 0;
+        background-color: #ddd;
+        font-weight: bold;
+      }
+      tr:nth-child(even) {
+        background-color: #eee;
+      }
+      tr.malbona td:not(:first-child) {
+        color: #777;
+      }
+    }
+  }
   .pri {
     font-weight: bold;
     text-align: center;
-  }
-  .fakoj ul {
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: space-between;
-    align-content: space-between;
-    padding: 0;
-    li {
-      display: block;
-      padding: .2em 1em;
-      border-radius: .3em;
-    }
-    li:hover {
-      cursor: pointer;
-      background-color: #eee;
-    }
-    li.active {
-      background-color: $background;
-      color: white;
-    }
-  }
-  .radikoj {
-    margin: 1em 0;
-  }
-  .radikoj ul {
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: center;
-    align-content: space-between;
-    padding: 0;
-    li {
-      text-align: center;
-      flex: 0 0 30%;
-      display: block;
-      border-radius: .3em;
-      padding: 0.2em;
-    }
-    li:hover {
-      cursor: pointer;
-      background-color: #eee;
-    }
   }
 }
 
