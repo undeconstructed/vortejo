@@ -135,6 +135,18 @@ button {
   border: 1px solid orange;
 }
 
+.nivelo-0 {
+  background-color: $nivelo-0;
+}
+.nivelo-1 {
+  background-color: $nivelo-1;
+}
+.nivelo-2 {
+  background-color: $nivelo-2;
+}
+.nivelo-3 {
+  background-color: $nivelo-3;
+}
 
 /* ŝirmilo */
 
@@ -189,19 +201,6 @@ button {
 
 /* vortaro */
 
-.nivelo-0 {
-  background-color: $nivelo-0;
-}
-.nivelo-1 {
-  background-color: $nivelo-1;
-}
-.nivelo-2 {
-  background-color: $nivelo-2;
-}
-.nivelo-3 {
-  background-color: $nivelo-3;
-}
-
 .vortaro {
   .tuto {
     flex-grow: 10;
@@ -213,10 +212,15 @@ button {
   }
   .filtro {
     margin-bottom: 1em;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
   }
   .rezulto {
-    border: 1px solid #eee;
-    overflow-y: auto;
+    border-radius: .3em;
+    border: 1px solid $background;
+    overflow: auto;
     table {
       width: 100%;
       thead {
@@ -231,11 +235,10 @@ button {
       tr.malbona td:not(:first-child) {
         color: #777;
       }
+      td:first-child {
+        width: 1em;
+      }
     }
-  }
-  .pri {
-    font-weight: bold;
-    text-align: center;
   }
 }
 
@@ -266,6 +269,9 @@ button {
     }
     span:hover {
       cursor: pointer;
+      background-color: #eee;
+    }
+    .markita {
       background-color: #eee;
     }
   }

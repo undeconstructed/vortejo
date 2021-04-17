@@ -8,29 +8,40 @@
   <div class="tuto" hidden id="#tuto">
 
     <div class="filtro">
-      Fako: <select class="fako" name="">
-        <option value=""></option>
-      </select>
-      Fonto: <select class="fonto" name="">
-        <option value=""></option>
-        <option value="f">fundamenta</option>
-        <option value="a">aldona</option>
-        <option value="n">neoficiala</option>
-      </select>
-      Speco: <select class="speco" name="">
-        <option value=""></option>
-        <option value="a">abstrakta</option>
-        <option value="k">konkreta</option>
-        <option value="e">esperanta</option>
-        <option value="n">nomo</option>
-      </select>
-      Nivelo: <select class="nivelo" name="">
-        <option value=""></option>
-        <option value="0" class="nivelo-0">0</option>
-        <option value="1" class="nivelo-0">1</option>
-        <option value="2" class="nivelo-0">2</option>
-        <option value="3" class="nivelo-0">3</option>
-      </select>
+      <div>
+        Fako: <select class="fako" name="">
+          <option value=""></option>
+        </select>
+      </div>
+      <div>
+        Fonto: <select class="fonto" name="">
+          <option value=""></option>
+          <option value="f">fundamenta</option>
+          <option value="a">aldona</option>
+          <option value="n">neoficiala</option>
+        </select>
+      </div>
+      <div>
+        Speco: <select class="speco" name="">
+          <option value=""></option>
+          <option value="a">abstrakta</option>
+          <option value="k">konkreta</option>
+          <option value="e">esperanta</option>
+          <option value="n">nomo</option>
+        </select>
+      </div>
+      <div>
+        Nivelo: <select class="nivelo" name="">
+          <option value=""></option>
+          <option value="0" class="nivelo-0">0</option>
+          <option value="1" class="nivelo-0">1</option>
+          <option value="2" class="nivelo-0">2</option>
+          <option value="3" class="nivelo-0">3</option>
+        </select>
+      </div>
+      <div>
+        Nombro: <span class="nombro"></span>
+      </div>
     </div>
 
     <div class="rezulto">
@@ -51,13 +62,6 @@
 
   </div>
 
-  <div class="lavorto" hidden>
-    <p>Radiko: <span f="r"></span></p>
-    <p>Fakoj: <span f="f"></span></p>
-    <p>Vidu: <span f="v"></span></p>
-    <p>Angle: <span f="a"></span></p>
-  </div>
-
 </div>
 
 <script>
@@ -68,10 +72,6 @@ document.addEventListener('DOMContentLoaded', () => {
   let e0 = document.querySelector('.vortaro')
   let eS = e0.querySelector('.stato')
   let eT = e0.querySelector('.tuto')
-  // let eF = e0.querySelector('.fakoj')
-  // let eP = e0.querySelector('.pri')
-  // let eR = e0.querySelector('.radikoj')
-  // let eM = e0.querySelector('.lavorto')
   let linioj = []
 
   function pretigu(o) {
@@ -87,6 +87,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let fontListo = eT.querySelector('.filtro select.fonto')
   let specListo = eT.querySelector('.filtro select.speco')
   let nivelListo = eT.querySelector('.filtro select.nivelo')
+  let nombro = eT.querySelector('.filtro .nombro')
 
   function montruFiltrilo() {
     for (let f of ilo.fakoj) {
@@ -114,7 +115,7 @@ document.addEventListener('DOMContentLoaded', () => {
       let n = parseInt(nivelListo.value)
       filtroj.push(r => r.nivelo == n)
     }
-    filtri(r => {
+    let n = filtri(r => {
       for (let f of filtroj) {
         if (!f(r)) {
           return false
@@ -122,6 +123,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
       return true
     })
+    nombro.textContent = n
     eT.scrollIntoView(true)
   }
 
@@ -160,6 +162,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let tgt = eT.querySelector('.rezulto table tbody')
     tgt.replaceChildren(...taŭgaj)
+    return taŭgaj.length
   }
 
   eo('{{ print .Site.Params.VortaroURL }}').

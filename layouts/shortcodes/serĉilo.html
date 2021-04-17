@@ -14,18 +14,6 @@
   <div class="rezulto" hidden>
   </div>
 
-  <!--div class="ekz">
-    <p class="teksto">&#x00AB; ekzemplo &#x00BB;</p>
-    <p class="pri">detalo</p>
-  </div-->
-
-  <div class="lavorto" hidden>
-    <p>Radiko: <span f="r"></span></p>
-    <p>Fakoj: <span f="f"></span></p>
-    <p>Vidu: <span f="v"></span></p>
-    <p>Angle: <span f="a"></span></p>
-  </div>
-
 </div>
 
 <script>
@@ -38,7 +26,6 @@ document.addEventListener('DOMContentLoaded', () => {
   let eF = e0.querySelector('form')
   let eT = eF.querySelector('[name=teksto]')
   let eR = e0.querySelector('.rezulto')
-  let eM = e0.querySelector('.lavorto')
 
   function pretigu(o) {
     ilo = o
@@ -52,6 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
       eT.value = ''
     })
 
+    serĉu(eT.value)
     eF.hidden = false
   }
 
@@ -113,6 +101,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         let s = document.createElement('span')
         s.textContent = r.r
+        s.className = 'nivelo-' + r.o.nivelo
         s.addEventListener('click', e => {
           montruRadiko(r.o)
         })
@@ -145,15 +134,6 @@ document.addEventListener('DOMContentLoaded', () => {
       l.append(kreuDivLinio(d))
     }
     eR.append(l)
-  }
-
-  function montruRadiko(r) {
-    eM.querySelector('[f=r]').textContent = r.radiko
-    eM.querySelector('[f=f]').textContent = r.fakoj.join(', ')
-    eM.querySelector('[f=v]').textContent = r.vidu
-    eM.querySelector('[f=a]').textContent = r.tradukoj['en']
-    eM.hidden = false
-    montru(eM)
   }
 
   eo('{{ print .Site.Params.VortaroURL }}').

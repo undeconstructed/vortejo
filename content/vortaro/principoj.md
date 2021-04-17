@@ -5,12 +5,21 @@ weight: 5
 
 # Principoj
 
-La ĉefaj principoj:
+Ĉi tiu vortaro estas precipe nur vortoj de la Akademia Vortaro, kune kun alia informo. La vortoj estas apartigitaj laŭ kelkaj kriterioj.
 
-* Ĝeneralaj vortoj estu uzebla por ĝenerala parolo. Eble ili ne havas tute precizajn signifojn, sed tio ne gravas ĉar ili estas por komuniki ideojn. Foje oni devos kunmeti vortojn, aŭ uzi pli ol unu, sed tio estas per la spirito de Esperanto.
+* La fonto. Ĉiu vorto estas:
+  * de la fundamento ("f")
+  * de la oficialaj aldonoj ("a")
+  * neoficiala ("n").
+* La speco. Ĉiu vorto estas:
+  * kernaj partoj de la esperanta ("e") lingvo
+  * nomoj ("n"), de unu el kelkaj similaj aferoj
+  * abstraktaj ("a") konceptoj, kiuj estas larĝe uzeblaj
+  * konkretaj ("k") aferoj - vortoj kiuj ĉefe priskribas unu specon da afero.
+* La (subjektiva) nivelo. Oni povas interpreti la nivelojn laŭ:
+  * 0 ĉiuj komprenos, ekz. "sub"
+  * 1 ofta vorto, ĝenerale komprenebla, ekz. "striki"
+  * 2 faka vorto, kiu eble ne estas ĝenerale konata, ekz. "sturgo"
+  * 3 neniu komprenus sen speciala intereso, ekz. "stofo", "stupo"
 
-* Fakaj vortoj havu precizajn signifojn, kiujn ĉiu en la fako devas antaŭe scii por bone kompreni. Ofte ili havos pli de precizecon ol estas bezonata por ĝenerala parolo, sed oni povas uzi ilin se ĉiu en la konversacio komprenos.
-
-Pli ĝenerale, se vi aŭdus vorton de la ĝenerala grupo vi pripensus ion, kiun vi vortigus tiel. Se vi aŭdus vorton de la faka grupo vi pripensus la saman aferon kiun pripensas la parolanta.
-
-Mi esperas ke la pli multo de ofte uzataj vortoj estu de la ĝenerala grupo, kaj ke tiu grupo estu sufiĉe malgranda por ke ĉiu povas lerni ĝin facile. Kiam oni volas paroli pri pli precizaj ideoj, oni povas serĉi la ĝustajn vortojn de la faka grupo.
+Se la ideo de abstraktaj kaj konkretaj ne estas klara, eble konsideru ĝin tiel. Se tempo subite haltus, konkretaj aferoj plu ekzistus, sed abstraktaj aferoj ne plu ekzistus. La plej ofta formo de konkreta vorto estas substantivo, kiu priskribas solidan aĵon. La aliaj formoj de konkreta vorto signifas "kiel" aŭ "kvazaŭ" la aĵo. Abstraktaj vortoj pli ofte estas verboj, adjektivoj, adverboj - vortoj por kio okazas, kaj kiel. La substantiva formo de abstrakta vorto ofte estas la ago mem, aŭ la rezulto de tiu ago - ofte tiuj du estas preskaŭ ne-distingeblaj.

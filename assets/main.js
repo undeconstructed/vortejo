@@ -40,6 +40,20 @@ function malplenigu(e) {
   e.replaceChildren()
 }
 
+function montruRadiko(r) {
+  let eM = document.querySelector('#unuvorto')
+  let ra = eM.querySelector('[f=ra]')
+  ra.textContent = r.radiko
+  ra.className = 'nivelo-' + r.nivelo
+  eM.querySelector('[f=fo]').textContent = r.fonto
+  eM.querySelector('[f=sp]').textContent = r.speco
+  eM.querySelector('[f=fa]').textContent = r.fakoj.join(', ')
+  eM.querySelector('[f=vi]').textContent = r.vidu
+  eM.querySelector('[f=an]').textContent = r.tradukoj['en']
+  eM.hidden = false
+  montru(eM)
+}
+
 function mkel(tag, opts) {
   opts = opts || {}
   let e = document.createElement(tag)

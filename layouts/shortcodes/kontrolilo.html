@@ -17,13 +17,6 @@
   <div class="lavorto" hidden>
   </div>
 
-  <div class="lavortoXXX" hidden>
-    <p>Radiko: <span f="r"></span></p>
-    <p>Fakoj: <span f="f"></span></p>
-    <p>Vidu: <span f="v"></span></p>
-    <p>Angle: <span f="a"></span></p>
-  </div>
-
 </div>
 
 <script>
@@ -36,7 +29,6 @@ document.addEventListener('DOMContentLoaded', () => {
   let eT = eF.querySelector('[name=teksto]')
   let eR = e0.querySelector('.rezulto')
   let eM = e0.querySelector('.lavorto')
-  let eMXXX = e0.querySelector('.lavortoXXX')
 
   function pretigu(o) {
     ilo = o
@@ -54,19 +46,38 @@ document.addEventListener('DOMContentLoaded', () => {
     eF.hidden = false
   }
 
-  const dividŜablono = /[^A-Za-zĉĝĥĵŝŭĈĜĤĴŜŬ]/
+  const dividŜablono = /[^-A-Za-zĉĝĥĵŝŭĈĜĤĴŜŬ]/
 
   function komprenu(teksto) {
     malplenigu(eR)
 
-    let s = new Set()
+    if (!teksto) {
+      eR.hidden = true
+      eM.hidden = true
+      return
+    }
+
+    let uzatajRadikoj = new Map()
+
+    let lasteMarkita = null
+    function markuUzoj(radiko) {
+      if (lasteMarkita) {
+        for (let v of lasteMarkita.vortoj) {
+          v.classList.remove('markita')
+        }
+      }
+      for (let v of radiko.vortoj) {
+        v.classList.add('markita')
+      }
+      lasteMarkita = radiko
+    }
 
     let e = document.createElement('div')
     for (v of teksto.split(dividŜablono)) {
       if (v.length == 0) {
         continue
       }
-      let vs = document.createElement('span')
+      let vs = mkel('span')
 
       let divRez = ilo.komprenuVorton(v.toLowerCase())
       let bonaj = divRez.bonaj
@@ -77,12 +88,7 @@ document.addEventListener('DOMContentLoaded', () => {
         unua = malbonaj[0]
       }
 
-      if (unua.eroj) {
-        for (let x of unua.eroj) {
-          s.add(x.o)
-        }
-      }
-
+      // kio estas la entuta nivelo?
       vs.textContent = unua.vorto
       if (bonaj.length > 1) {
         vs.textContent += ` (${bonaj.length})`
@@ -90,18 +96,37 @@ document.addEventListener('DOMContentLoaded', () => {
       if (unua.eraro) {
         vs.title = unua.eraro.join(', ')
         vs.classList.add('warn')
+      } else {
+        vs.classList.add('nivelo-' + unua.nivelo)
       }
       vs.addEventListener('click', () => montruVorto(bonaj, divRez.malbonaj))
       e.append(vs, ' ')
+
+      if (unua.eroj) {
+        for (let x of unua.eroj) {
+          let r = uzatajRadikoj.get(x.r)
+          if (!r) {
+            r = {
+              radiko: x.o,
+              vortoj: []
+            }
+            uzatajRadikoj.set(x.r, r)
+          }
+          r.vortoj.push(vs)
+        }
+      }
     }
     eR.append(e)
 
     let e2 = document.createElement('div')
-    for (let x of [...s.values()].sort((a, b) => a.radiko > b.radiko)) {
-      let vs = mkel('span', { classes: [ 'nivelo-' + x.nivelo ] })
-      vs.append(x.radiko)
+    for (let x of [...uzatajRadikoj.values()].sort((a, b) => eoCompare(a.radiko.radiko, b.radiko.radiko))) {
+      let vs = mkel('span', { classes: [ 'nivelo-' + x.radiko.nivelo ] })
+      vs.append(x.radiko.radiko)
+      vs.addEventListener('mouseover', e => {
+        markuUzoj(x)
+      })
       vs.addEventListener('click', e => {
-        montruRadiko(x)
+        montruRadiko(x.radiko)
       })
       e2.append(vs, ' ')
     }
@@ -142,15 +167,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     eM.hidden = false
     montru(eM)
-  }
-
-  function montruRadiko(r) {
-    eMXXX.querySelector('[f=r]').textContent = r.radiko
-    eMXXX.querySelector('[f=f]').textContent = r.fakoj.join(', ')
-    eMXXX.querySelector('[f=v]').textContent = r.vidu
-    eMXXX.querySelector('[f=a]').textContent = r.tradukoj['en']
-    eMXXX.hidden = false
-    montru(eMXXX)
   }
 
   eo('{{ print .Site.Params.VortaroURL }}').
