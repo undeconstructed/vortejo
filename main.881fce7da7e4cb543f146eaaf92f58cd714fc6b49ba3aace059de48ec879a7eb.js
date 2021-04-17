@@ -37,9 +37,39 @@ document.addEventListener('DOMContentLoaded', () => {
 // })
 
 function malplenigu(e) {
-  while (e.firstChild) {
-    e.removeChild(e.firstChild)
+  e.replaceChildren()
+}
+
+function montruRadiko(r) {
+  let eM = document.querySelector('#unuvorto')
+  let ra = eM.querySelector('[f=ra]')
+  ra.textContent = r.radiko
+  ra.className = 'nivelo-' + r.nivelo
+  eM.querySelector('[f=fo]').textContent = r.fonto
+  eM.querySelector('[f=sp]').textContent = r.speco
+  eM.querySelector('[f=fa]').textContent = r.fakoj.join(', ')
+  eM.querySelector('[f=vi]').textContent = r.vidu
+  eM.querySelector('[f=an]').textContent = r.tradukoj['en']
+  eM.hidden = false
+  montru(eM)
+}
+
+function mkel(tag, opts) {
+  opts = opts || {}
+  let e = document.createElement(tag)
+  for (let opt in opts) {
+    switch (opt) {
+      case 'classes':
+        e.classList.add(...opts.classes)
+        break
+      case 'text':
+        e.textContent = opts.text
+        break
+      default:
+        e[opt] = opts[opt]
+    }
   }
+  return e
 }
 
 function montruEraro(e, eraro) {
@@ -70,6 +100,22 @@ const eo = (function() {
   }
 
   function kreuObj(radikoj, fakoj) {
+    // normala ordigo ne kongruas kun esperantaj literoj!
+    // radikoj.sort((a, b) => a.radiko > b.radiko)
+
+    for (let r of radikoj) {
+      for (let f of r.fakoj) {
+        if (fakoj.findIndex(e => e.nomo == f) < 0) {
+          fakoj.push({
+            nomo: f
+          })
+        }
+      }
+    }
+
+    // normala ordigo ne kongruas kun esperantaj literoj!
+    // fakoj.sort((a, b) => a.nomo > b.nomo)
+
     return eo = {
       radikoj: radikoj,
       r2: null,
