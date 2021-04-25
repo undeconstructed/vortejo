@@ -57,8 +57,6 @@ document.addEventListener('DOMContentLoaded', () => {
       return
     }
 
-    let uzatajRadikoj = new Map()
-
     let lasteMarkita = null
     function markuUzoj(radiko) {
       if (lasteMarkita) {
@@ -72,37 +70,38 @@ document.addEventListener('DOMContentLoaded', () => {
       lasteMarkita = radiko
     }
 
-    let e = document.createElement('div')
+    let nivelajNombroj = new Map()
+    let uzatajRadikoj = new Map()
+    let malbonajVortoj = new Map()
+
+    let eNombroj = mkel('div', { classes: [ 'nombroj' ] })
+    let eTeksto = mkel('div', { classes: [ 'teksto' ] })
+    let eRadikoj = mkel('div', { classes: [ 'radikoj' ] })
+    let eMalbonaj = mkel('div', { classes: [ 'malbonaj' ] })
+
+    // po unu vorto el la teksto
     for (v of teksto.split(dividŜablono)) {
       if (v.length == 0) {
         continue
       }
       let vs = mkel('span')
 
-      let divRez = ilo.komprenuVorton(v.toLowerCase())
-      let bonaj = divRez.bonaj
-      let malbonaj = divRez.malbonaj
+      let eblaVorto = ilo.komprenuVorton(v.toLowerCase())
+      let unua = eblaVorto.ebloj[0]
 
-      let unua = bonaj[0]
-      if (!unua) {
-        unua = malbonaj[0]
-      }
-
-      // kio estas la entuta nivelo?
       vs.textContent = unua.vorto
-      if (bonaj.length > 1) {
-        vs.textContent += ` (${bonaj.length})`
-      }
-      if (unua.eraro) {
-        vs.title = unua.eraro.join(', ')
-        vs.classList.add('warn')
-      } else {
-        vs.classList.add('nivelo-' + unua.nivelo)
-      }
-      vs.addEventListener('click', () => montruVorto(bonaj, divRez.malbonaj))
-      e.append(vs, ' ')
 
-      if (unua.eroj) {
+      if (!unua.eraro) {
+        let bonaj = eblaVorto.ebloj.reduce((a, e) => a + (e.eraro ? 0 : 1), 0)
+        if (bonaj > 1) {
+          vs.textContent += ` (${bonaj})`
+        }
+
+        vs.classList.add('nivelo-' + unua.nivelo)
+
+        let nombro = nivelajNombroj.get(unua.nivelo) || 0
+        nivelajNombroj.set(unua.nivelo, nombro + 1)
+
         for (let x of unua.eroj) {
           let r = uzatajRadikoj.get(x.r)
           if (!r) {
@@ -114,56 +113,78 @@ document.addEventListener('DOMContentLoaded', () => {
           }
           r.vortoj.push(vs)
         }
-      }
-    }
-    eR.append(e)
+      } else {
+        vs.textContent = unua.vorto
+        vs.title = unua.eraro.join(', ')
+        vs.classList.add('warn')
 
-    let e2 = document.createElement('div')
+        let nombro = nivelajNombroj.get('x') || 0
+        nivelajNombroj.set('x', nombro + 1)
+
+        malbonajVortoj.set(eblaVorto.teksto, eblaVorto)
+      }
+
+      vs.addEventListener('click', () => montruVorto(eblaVorto))
+      eTeksto.append(vs, ' ')
+    }
+
+    // po unu radiko uzata
     for (let x of [...uzatajRadikoj.values()].sort((a, b) => eoCompare(a.radiko.radiko, b.radiko.radiko))) {
       let vs = mkel('span', { classes: [ 'nivelo-' + x.radiko.nivelo ] })
       vs.append(x.radiko.radiko)
-      vs.addEventListener('mouseover', e => {
-        markuUzoj(x)
-      })
+      // vs.addEventListener('mouseover', e => {
+      //   markuUzoj(x)
+      // })
       vs.addEventListener('click', e => {
+        markuUzoj(x)
         montruRadiko(x.radiko)
       })
-      e2.append(vs, ' ')
+      eRadikoj.append(vs, ' ')
     }
-    eR.append(e2)
+
+    // po unu nekonata vorto
+    for (let x of [...malbonajVortoj.values()].sort((a, b) => eoCompare(a.teksto, b.teksto))) {
+      let vs = mkel('span')
+      vs.textContent = x.teksto
+      vs.addEventListener('click', () => montruVorto(x))
+      eMalbonaj.append(vs, ' ')
+    }
+
+    // po unu nivelo/nombro
+    for (let x of [...nivelajNombroj].sort()) {
+      let vs = mkel('span')
+      vs.textContent = x[1]
+      vs.style.flexGrow = x[1]
+      if (x[0] != 'x') {
+        vs.classList.add('nivelo-' + x[0])
+        vs.title = 'nivelo ' + x[0]
+      } else {
+        vs.classList.add('warn')
+      }
+      eNombroj.append(vs)
+    }
+
+    eR.append(eNombroj, eTeksto, eRadikoj, eMalbonaj)
 
     eR.hidden = false
   }
 
-  function montruVorto(bonaj, malbonaj) {
+  function montruVorto(eblaVorto) {
     malplenigu(eM)
 
-    if (bonaj.length > 0) {
-      let l = document.createElement('ol')
-      for (let a of bonaj) {
-        let ero = document.createElement('li')
-        ero.textContent = a.vorto
-        if (a.eraro) {
-          ero.title = a.eraro.join(', ')
-        }
-        l.append(ero)
+    let l = document.createElement('ol')
+    for (let x of eblaVorto.ebloj) {
+      let ero = document.createElement('li')
+      ero.textContent = `${x.vorto} (${x.poentoj})`
+      if (!x.eraro) {
+        ero.classList.add('nivelo-' + x.nivelo)
+      } else {
+        ero.classList.add('warn')
+        ero.title = x.eraro.join(', ')
       }
-      eM.append(l)
+      l.append(ero)
     }
-
-    if (malbonaj.length > 0) {
-      let l = document.createElement('ol')
-      l.classList.add('warn')
-      for (let a of malbonaj) {
-        let ero = document.createElement('li')
-        ero.textContent = a.vorto
-        if (a.eraro) {
-          ero.title = a.eraro.join(', ')
-        }
-        l.append(ero)
-      }
-      eM.append(l)
-    }
+    eM.append(l)
 
     eM.hidden = false
     montru(eM)

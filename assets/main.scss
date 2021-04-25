@@ -259,34 +259,73 @@ button {
       border-radius: .3em;
       padding: .4em;
     }
+    div.nombroj {
+      border: 1px solid $background;
+      display: flex;
+      padding: 0;
+      span {
+        text-align: center;
+        border-radius: 0;
+      }
+      span:first-child {
+        border-top-left-radius: .3em;
+        border-bottom-left-radius: .3em;
+      }
+      span:last-child {
+        border-top-right-radius: .3em;
+        border-bottom-right-radius: .3em;
+      }
+    }
+    div.teksto {
+      border-left-color: $background;
+      span:hover {
+        cursor: pointer;
+        background-color: #eee;
+      }
+    }
+    div.radikoj {
+      border-left-color: $background;
+      span:hover {
+        cursor: pointer;
+        background-color: #eee;
+      }
+    }
+    div.malbonaj {
+      border-left-color: orange;
+      span:hover {
+        cursor: pointer;
+        background-color: #eee;
+      }
+    }
     span {
       padding: .3em;
       border-radius: .3em;
       white-space: nowrap;
     }
     span.warn {
-      border: 1px solid orange;
-    }
-    span:hover {
-      cursor: pointer;
-      background-color: #eee;
+      background-color: orange;
     }
     .markita {
-      background-color: #eee;
+      // background-color: #eee;
+      outline: 1px solid $background;
     }
   }
 }
 
 // XXX - devus esti en .kontrolilo, sed dum ĝi estas videbla ĝi ne estas en tio
-.lavorto ol {
-  padding: .4em .4em .4em 2em;
-  margin: 0;
-  border-left: .2em solid $background;
-  border-radius: .3em;
-}
-.lavorto ol.warn {
-  border-color: orange;
-}
-.lavorto li {
-  line-height: 2.4em;
+.lavorto {
+  ol {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  li {
+    border-radius: .3em;
+    // line-height: 2.4em;
+    margin: .3em;
+    padding: .3em;
+  }
+  li.warn {
+    background-color: orange;
+  }
 }

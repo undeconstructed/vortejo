@@ -49,15 +49,17 @@ function eoCompare(a, b) {
 }
 
 // Kodo:
-// k kerna
-// t tabelvorto
-// n pronomo
-// x prepozicio
-// r (normala) radiko
 // f finaĵo
+// a artikolo
+// n pronomo
+// t tabelvorto
+// x prepozicio
+// k konjunkcio
+// 0 nombro
+// e alia esperanta aĵo
+// r (normala) radiko
 
 const normoj = function() {
-  const tabelFinaĵoj = /^(j|jn|n)$/
   const pronomFinaĵoj = /^((aj?n?)|n)$/
   const vortFinaĵoj = /^(([ao]j?n?)|en?)$/
   const verbFinaĵoj = /^(i|([iaou]s)|u)$/
@@ -71,7 +73,7 @@ const normoj = function() {
   function kontroluFinaĵoj(t, f1, f2) {
     let finaĵoj = ''
     for (let e of t) {
-      if (e.t == 'f') {
+      if (e.skemo == 'f') {
         finaĵoj += e.r
       } else {
         if (finaĵoj && !f1(finaĵoj)) {
@@ -86,48 +88,49 @@ const normoj = function() {
     return true
   }
 
-  function kunNormalFinaĵoj(t) {
+  function kunNormalFinaĵoj(teksto, t) {
     return kontroluFinaĵoj(t,
       f => vortFinaĵoj.test(f),
       f => vortFinaĵoj.test(f) || verbFinaĵoj.test(f))
   }
 
-	function ebleNormalFinaĵoj(t) {
+	function ebleNormalFinaĵoj(teksto, t) {
     return kontroluFinaĵoj(t,
       f => vortFinaĵoj.test(f),
       f => vortFinaĵoj.test(f) || verbFinaĵoj.test(f) || neniuFinaĵoj.test(f))
 	}
 
-  function kunTabelFinaĵoj(t) {
-    return kontroluFinaĵoj(t,
-      f => false,
-      f => tabelFinaĵoj.test(f))
-  }
-
-  function kunPronomFinaĵoj(t) {
+  function kunPronomFinaĵoj(teksto, t) {
     return kontroluFinaĵoj(t,
       f => false,
       f => pronomFinaĵoj.test(f))
   }
 
+  const tabelFinaĵoj = /(i|ĉi|ki|ti|neni)((((a|o|u)j?n?))|(al|am|e|el|es|om))$/
+  function kunTabelFinaĵoj(teksto, t) {
+    return tabelFinaĵoj.test(teksto)
+  }
+
   let ŝablonoj = [
-    // konjunkcio ..
-    { skemo: /^k$/ },
+    // plej oftaj aferoj ..
+    { skemo: /^[ntxk0ea]$/ },
+    // tabelvorto, eble kun finaĵo
+    { skemo: /^[t]f*$/, kaj: kunTabelFinaĵoj },
     // kio ne bezonas finaĵon
-    { skemo: /^r*[e|t|n|x]+f*$/, kaj: ebleNormalFinaĵoj },
+    { skemo: /^([etnxr0]f?)*[etxk]+f*$/, kaj: ebleNormalFinaĵoj },
     // numerojn
     { skemo: /^[0]+f*$/, kaj: ebleNormalFinaĵoj },
     // pronomo, eble kun finaĵo
     { skemo: /^[n]f*$/, kaj: kunPronomFinaĵoj },
-    // tabelvorto, eble kun finaĵo
-    { skemo: /^r*[t]f*$/, kaj: kunTabelFinaĵoj },
+    // normalaj vortoj
+    { skemo: /^([r]f?)+f+$/, kaj: kunNormalFinaĵoj },
     // ĝenerala miksaĵo de ĉio
-    { skemo: /^([etnxr0]f?)+f+$/, kaj: kunNormalFinaĵoj },
+    { skemo: /^([ketnxr0]f?)+f+$/, kaj: kunNormalFinaĵoj },
   ]
 
-  return ŝablonoj.map(e => (eblaVorto, s) => {
-    if (e.skemo.test(s)) {
-      if (!e.kaj || e.kaj(eblaVorto)) {
+  return ŝablonoj.map(e => (teksto, eblaVorto, skemo) => {
+    if (e.skemo.test(skemo)) {
+      if (!e.kaj || e.kaj(teksto, eblaVorto)) {
         return true
       }
     }
@@ -151,32 +154,29 @@ class Dividulo {
       let kj = {
         r: e.radiko,
         o: e,
-        t: 'r',
-        bona: true
+				speco: e.speco,
+        skemo: 'r'
       }
 
       if (kj.r.endsWith('\'')) {
         kj.r = kj.r.slice(0, -1)
       } else if (kj.r.startsWith('-')) {
         kj.r = kj.r.slice(1)
-        kj.t = 'f'
-      } else if (e.fakoj.includes('pronomo')) {
-        kj.t = 'n'
+        kj.skemo = 'f'
+      } else if (e.fakoj.includes('artikolo')) {
+        kj.skemo = 'a'
+      }  else if (e.fakoj.includes('pronomo')) {
+        kj.skemo = 'n'
       } else if (e.fakoj.includes('tabelvorto')) {
-        kj.t = 't'
+        kj.skemo = 't'
       } else if (e.fakoj.includes('prepozicio')) {
-        kj.t = 'x'
+        kj.skemo = 'x'
       } else if (e.fakoj.includes('nombro')) {
-        kj.t = '0'
+        kj.skemo = '0'
       } else if (e.fakoj.includes('konjunkcio')) {
-        kj.t = 'k'
+        kj.skemo = 'k'
       } else {
-        kj.t = 'e'
-      }
-
-      if (!e.bona) {
-        kj.bona = false
-        kj.vidu = e.vidu
+        kj.skemo = 'e'
       }
 
       // se radiko jam ekzistas, aldoni al listo
@@ -199,43 +199,60 @@ class Dividulo {
 
     if (vj.length == 0) {
       return {
-        bonaj: [],
-        malbonaj: [{
-          vorto: teksto,
+				teksto: teksto,
+        ebloj: [{
+					vorto: teksto,
           eraro: [ 'ne komprenebla' ]
         }]
       }
     }
 
     vj = vj.map(eblaVorto => {
+			// konstrui skemo de vorto
 			let skemo = ''
 			for (let parto of eblaVorto) {
-				skemo += parto.t
+				skemo += parto.skemo
 			}
 
 			let nivelo = 0
       let poentoj = 0
       let eraroj = []
 
+			// kompari skemo kontraŭ normoj
       for (let n of normoj) {
-        if (n(eblaVorto, skemo)) {
-          poentoj = 1
+        if (n(teksto, eblaVorto, skemo)) {
+          poentoj += 1
         }
       }
-      if (poentoj == 0) {
-        eraroj.push('ne konformas al iu skemo')
+			if (poentoj > 0) {
+				poentoj += 100
+			} else {
+				poentoj -= 100
+        eraroj.push('ne konformas al iu normo')
       }
 
+			// kalkuli poentojn kaj tutan nivelon
+			let plejlonga = 0
       for (let parto of eblaVorto) {
 				let partNivelo = parto.o.nivelo
-				if (parto.t != 'f') {
-					poentoj -= 1
+				if (parto.skemo == 'f') {
+					// ne havu efekton
+				} else if (parto.speco == 'e') {
+					poentoj += 1
+				} else {
+					poentoj -= partNivelo
 				}
-        poentoj -= partNivelo
+				if (parto.r.length > plejlonga) {
+					plejlonga = parto.r.length
+				}
 				if (partNivelo > nivelo) {
 					nivelo = partNivelo
 				}
       }
+			poentoj += plejlonga
+			// if (eblaVorto[eblaVorto.length-1].skemo == 'f') {
+			// 	poentoj++
+			// }
 
       // ...
       return {
@@ -249,17 +266,13 @@ class Dividulo {
     })
 
     vj.sort((a, b) => {
-      let d = b.poentoj - a.poentoj
-      if (d) {
-        return d
-      }
-      return a.eroj.length - b.eroj.length
+      return b.poentoj - a.poentoj
     })
 
-    let bonaj = vj.filter(e => e.eraro == null)
-    let malbonaj = vj.filter(e => e.eraro != null)
-
-    return { bonaj, malbonaj }
+    return {
+			teksto: teksto,
+			ebloj: vj
+		}
   }
 
   provuDividi(teksto) {
