@@ -9,11 +9,11 @@
 
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link rel="stylesheet" href="/vortejo/main.min.9a24e4e1e095cb6466fb36afb8b2cc88bbc81cfd6365454759fb0c24ea184a0b.css" integrity="sha256-miTk4eCVy2Rm&#43;zavuLLMiLvIHP1jZUVHWfsMJOoYSgs=">
+  <link rel="stylesheet" href="/vortejo/main.min.9e5d150549c46467befcce0030a4a2c558fc4b65a224c2c11d21d39d1270d0c6.css" integrity="sha256-nl0VBUnEZGe&#43;/M4AMKSixVj8S2WiJMLBHSHTnRJw0MY=">
 
   <link rel="icon" href="icon.png">
-  <script src="/vortejo/eo.fe0024a94b6c3650bffb0bc50622a44991a56218058e7658c295a1442370ea5d.js" integrity="sha256-/gAkqUtsNlC/&#43;wvFBiKkSZGlYhgFjnZYwpWhRCNw6l0="></script>
-  <script src="/vortejo/main.881fce7da7e4cb543f146eaaf92f58cd714fc6b49ba3aace059de48ec879a7eb.js" integrity="sha256-iB/Ofafky1Q/FG6q&#43;S9YzXFPxrSbo6rOBZ3kjsh5p&#43;s="></script>
+  <script src="/vortejo/eo.92344117ce3016df895c4413cae5596c5a5edb7f4c1ff5aeb896fe2af825ba0f.js" integrity="sha256-kjRBF84wFt&#43;JXEQTyuVZbFpe239MH/WuuJb&#43;Kvglug8="></script>
+  <script src="/vortejo/main.1031c88d4cd33b30b0e9ee374a887e59fcdafef6cc3c4f6469dd4a7dd957d0fe.js" integrity="sha256-EDHIjUzTOzCw6e43Soh&#43;Wfza/vbMPE9kad1KfdlX0P4="></script>
 
 </head>
 
@@ -49,7 +49,7 @@
   <h1 id="kontrolilo">Kontrolilo</h1>
 <p>Eta kaj iom stulta ilo por kontroli ĉu teksto enhavas neoficialajn vortojn. Enmetu la tekston sube, premu la &ldquo;ek&rdquo; butonon. La rezulto estas la teksto, kun la vortoj partigitaj en subvortojn, laŭ la radikoj de la vortaro.</p>
 <p>Estas ofte multaj kieloj laŭ kiu oni povas partigi vorton, inkluzive de tiuj kiuj ne estas tute laŭregulaj, do la sistemo trovas ĉiujn kaj tiam elektas la plej verŝajne. La nombro post ĉiu vorto estas la kiomo de eblaj partigoj - alklaku vorton por vidi tiujn. Eblas ke la elektita ne estas la intenca.</p>
-<p>Vorto kun oranĝkolora bordo estas nekomprenebla uzanta la vortaron.</p>
+<p>Vorto kun oranĝkolora fono estas nekomprenebla uzanta la vortaron.</p>
 
 <div class="kontrolilo">
 
@@ -109,8 +109,6 @@ document.addEventListener('DOMContentLoaded', () => {
       return
     }
 
-    let uzatajRadikoj = new Map()
-
     let lasteMarkita = null
     function markuUzoj(radiko) {
       if (lasteMarkita) {
@@ -124,98 +122,121 @@ document.addEventListener('DOMContentLoaded', () => {
       lasteMarkita = radiko
     }
 
-    let e = document.createElement('div')
+    let nivelajNombroj = new Map()
+    let uzatajRadikoj = new Map()
+    let malbonajVortoj = new Map()
+
+    let eNombroj = mkel('div', { classes: [ 'nombroj' ] })
+    let eTeksto = mkel('div', { classes: [ 'teksto' ] })
+    let eRadikoj = mkel('div', { classes: [ 'radikoj' ] })
+    let eMalbonaj = mkel('div', { classes: [ 'malbonaj' ] })
+
+    
     for (v of teksto.split(dividŜablono)) {
       if (v.length == 0) {
         continue
       }
       let vs = mkel('span')
 
-      let divRez = ilo.komprenuVorton(v.toLowerCase())
-      let bonaj = divRez.bonaj
-      let malbonaj = divRez.malbonaj
+      let eblaVorto = ilo.komprenuVorton(v.toLowerCase())
+      let unua = eblaVorto.ebloj[0]
 
-      let unua = bonaj[0]
-      if (!unua) {
-        unua = malbonaj[0]
-      }
-
-      
       vs.textContent = unua.vorto
-      if (bonaj.length > 1) {
-        vs.textContent += ` (${bonaj.length})`
-      }
-      if (unua.eraro) {
-        vs.title = unua.eraro.join(', ')
-        vs.classList.add('warn')
-      } else {
-        vs.classList.add('nivelo-' + unua.nivelo)
-      }
-      vs.addEventListener('click', () => montruVorto(bonaj, divRez.malbonaj))
-      e.append(vs, ' ')
 
-      if (unua.eroj) {
+      if (!unua.eraro) {
+        let bonaj = eblaVorto.ebloj.reduce((a, e) => a + (e.eraro ? 0 : 1), 0)
+        if (bonaj > 1) {
+          vs.textContent += ` (${bonaj})`
+        }
+
+        vs.classList.add('nivelo-' + unua.nivelo)
+
+        let nombro = nivelajNombroj.get(unua.nivelo) || 0
+        nivelajNombroj.set(unua.nivelo, nombro + 1)
+
         for (let x of unua.eroj) {
-          let r = uzatajRadikoj.get(x.r)
+          let r = uzatajRadikoj.get(x.origino.nomo)
           if (!r) {
             r = {
-              radiko: x.o,
+              radiko: x.origino,
               vortoj: []
             }
-            uzatajRadikoj.set(x.r, r)
+            uzatajRadikoj.set(r.radiko.radiko, r)
           }
           r.vortoj.push(vs)
         }
-      }
-    }
-    eR.append(e)
+      } else {
+        vs.textContent = unua.vorto
+        vs.title = unua.eraro.join(', ')
+        vs.classList.add('warn')
 
-    let e2 = document.createElement('div')
+        let nombro = nivelajNombroj.get('x') || 0
+        nivelajNombroj.set('x', nombro + 1)
+
+        malbonajVortoj.set(eblaVorto.teksto, eblaVorto)
+      }
+
+      vs.addEventListener('click', () => montruVorto(eblaVorto))
+      eTeksto.append(vs, ' ')
+    }
+
+    
     for (let x of [...uzatajRadikoj.values()].sort((a, b) => eoCompare(a.radiko.radiko, b.radiko.radiko))) {
       let vs = mkel('span', { classes: [ 'nivelo-' + x.radiko.nivelo ] })
       vs.append(x.radiko.radiko)
-      vs.addEventListener('mouseover', e => {
-        markuUzoj(x)
-      })
+      
+      
+      
       vs.addEventListener('click', e => {
+        markuUzoj(x)
         montruRadiko(x.radiko)
       })
-      e2.append(vs, ' ')
+      eRadikoj.append(vs, ' ')
     }
-    eR.append(e2)
+
+    
+    for (let x of [...malbonajVortoj.values()].sort((a, b) => eoCompare(a.teksto, b.teksto))) {
+      let vs = mkel('span')
+      vs.textContent = x.teksto
+      vs.addEventListener('click', () => montruVorto(x))
+      eMalbonaj.append(vs, ' ')
+    }
+
+    
+    for (let x of [...nivelajNombroj].sort()) {
+      let vs = mkel('span')
+      vs.textContent = x[1]
+      vs.style.flexGrow = x[1]
+      if (x[0] != 'x') {
+        vs.classList.add('nivelo-' + x[0])
+        vs.title = 'nivelo ' + x[0]
+      } else {
+        vs.classList.add('warn')
+      }
+      eNombroj.append(vs)
+    }
+
+    eR.append(eNombroj, eTeksto, eRadikoj, eMalbonaj)
 
     eR.hidden = false
   }
 
-  function montruVorto(bonaj, malbonaj) {
+  function montruVorto(eblaVorto) {
     malplenigu(eM)
 
-    if (bonaj.length > 0) {
-      let l = document.createElement('ol')
-      for (let a of bonaj) {
-        let ero = document.createElement('li')
-        ero.textContent = a.vorto
-        if (a.eraro) {
-          ero.title = a.eraro.join(', ')
-        }
-        l.append(ero)
+    let l = document.createElement('ol')
+    for (let x of eblaVorto.ebloj) {
+      let ero = document.createElement('li')
+      ero.textContent = `${x.vorto} - ${x.speco} (${x.poentoj})`
+      if (!x.eraro) {
+        ero.classList.add('nivelo-' + x.nivelo)
+      } else {
+        ero.classList.add('warn')
+        ero.title = x.eraro.join(', ')
       }
-      eM.append(l)
+      l.append(ero)
     }
-
-    if (malbonaj.length > 0) {
-      let l = document.createElement('ol')
-      l.classList.add('warn')
-      for (let a of malbonaj) {
-        let ero = document.createElement('li')
-        ero.textContent = a.vorto
-        if (a.eraro) {
-          ero.title = a.eraro.join(', ')
-        }
-        l.append(ero)
-      }
-      eM.append(l)
-    }
+    eM.append(l)
 
     eM.hidden = false
     montru(eM)
