@@ -175,15 +175,8 @@ button {
   margin-bottom: 1em;
   .rezulto {
     ul {
-      margin: 1em 0 0 0;
-      border-left: .2em solid $background;
-      border-radius: .3em;
-      padding: .4em;
       list-style: none;
       padding: 0;
-    }
-    ul.warn {
-      border-color: orange;
     }
     li {
       line-height: 2.4em;
@@ -249,6 +242,7 @@ button {
     margin-bottom: 1em;
     textarea {
       width: 100%;
+      height: 12em;
     }
   }
   .rezulto {

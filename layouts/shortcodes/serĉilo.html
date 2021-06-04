@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
       serĉuDividante(teksto.slice(0, -1))
     } else {
       if (serĉuTrovante(teksto)) {
-        // trovata ion
+        // trovis ion
       } else {
         serĉuDividante(teksto)
       }
@@ -87,6 +87,16 @@ document.addEventListener('DOMContentLoaded', () => {
     return true
   }
 
+  function serĉuDividante(teksto) {
+    let divRez = ilo.komprenuVorton(teksto)
+
+    let l = document.createElement('ul')
+    for (let d of divRez.ebloj) {
+      l.append(kreuDivLinio(d))
+    }
+    eR.append(l)
+  }
+
   function kreuDivLinio(d) {
     let ero = document.createElement('li')
     let unua = true
@@ -99,7 +109,7 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
           ero.append('/')
         }
-        let s = document.createElement('span')
+        let s = mkel('span')
         s.textContent = r.r
         s.className = 'nivelo-' + r.o.nivelo
         s.addEventListener('click', e => {
@@ -117,23 +127,6 @@ document.addEventListener('DOMContentLoaded', () => {
       ero.append(` (${d.eraro.join(', ')})`)
     }
     return ero
-  }
-
-  function serĉuDividante(teksto) {
-    let divRez = ilo.komprenuVorton(teksto)
-
-    let l = document.createElement('ul')
-    for (let d of divRez.bonaj) {
-      l.append(kreuDivLinio(d))
-    }
-    eR.append(l)
-
-    l = document.createElement('ul')
-    l.classList.add('warn')
-    for (let d of divRez.malbonaj) {
-      l.append(kreuDivLinio(d))
-    }
-    eR.append(l)
   }
 
   eo('{{ print .Site.Params.VortaroURL }}').

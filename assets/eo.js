@@ -74,7 +74,7 @@ const normoj = function() {
     let finaĵoj = ''
     for (let e of t) {
       if (e.skemo == 'f') {
-        finaĵoj += e.r
+        finaĵoj += e.nomo
       } else {
         if (finaĵoj && !f1(finaĵoj)) {
           return false
@@ -140,64 +140,88 @@ const normoj = function() {
 
 class Dividulo {
   constructor(radikoj) {
-    this.radikoj = this._umuRadikoj(radikoj)
+    this.radikoj = new Map()
+		this._umuRadikoj(radikoj)
   }
 
   _umuRadikoj(rj) {
-    let m = new Map()
     for (let e of rj) {
-      if (e.fakoj.includes('litero')) {
+      if (e.fakoj.includes('litera')) {
         // liternomoj estas maloftaj kaj nekonvenaj
         continue
       }
 
-      let kj = {
-        r: e.radiko,
-        o: e,
-				speco: e.speco,
-        skemo: 'r'
+      if (e.radiko.endsWith('\'')) {
+				// normala radiko
+				this._konserviRadikon(e.radiko.slice(0, -1), e, 'r')
+				continue
       }
 
-      if (kj.r.endsWith('\'')) {
-        kj.r = kj.r.slice(0, -1)
-      } else if (kj.r.startsWith('-')) {
-        kj.r = kj.r.slice(1)
-        kj.skemo = 'f'
-      } else if (e.fakoj.includes('artikolo')) {
-        kj.skemo = 'a'
-      }  else if (e.fakoj.includes('pronomo')) {
-        kj.skemo = 'n'
-      } else if (e.fakoj.includes('tabelvorto')) {
-        kj.skemo = 't'
-      } else if (e.fakoj.includes('prepozicio')) {
-        kj.skemo = 'x'
-      } else if (e.fakoj.includes('nombro')) {
-        kj.skemo = '0'
-      } else if (e.fakoj.includes('konjunkcio')) {
-        kj.skemo = 'k'
-      } else {
-        kj.skemo = 'e'
+			if (e.radiko.startsWith('-')) {
+				// finaĵo
+				this._konserviRadikon(e.radiko.slice(1), e, 'f')
+				continue
       }
 
-      // se radiko jam ekzistas, aldoni al listo
-      let x = m.get(kj.r)
-      if (x) {
-        while (x.s) {
-          x = x.s
-        }
-        x.s = kj
-      } else {
-        m.set(kj.r, kj)
+			if (e.fakoj.includes('artikolo')) {
+				this._konserviRadikon(e.radiko, e, 'a')
+				continue
       }
+
+			let trovisSpecon = false
+			if (e.fakoj.includes('pronomo')) {
+				trovisSpecon = true
+				this._konserviRadikon(e.radiko, e, 'n')
+      }
+			if (e.fakoj.includes('tabelvorto')) {
+				trovisSpecon = true
+				this._konserviRadikon(e.radiko, e, 't')
+      }
+			if (e.fakoj.includes('prepozicio')) {
+				trovisSpecon = true
+				this._konserviRadikon(e.radiko, e, 'x')
+      }
+		 	if (e.fakoj.includes('nombro')) {
+ 				trovisSpecon = true
+ 				this._konserviRadikon(e.radiko, e, '0')
+      }
+			if (e.fakoj.includes('konjunkcio')) {
+				trovisSpecon = true
+				this._konserviRadikon(e.radiko, e, 'k')
+      }
+			if (!trovisSpecon) {
+				// la kelkaj ordinaraj vortojn kiuj ne bezonas finaĵon
+				this._konserviRadikon(e.radiko, e, 'e')
+			}
+
+			// oni povas imagi ke la plimulto da vorto estas nur ordinaraj vortoj
+			this._konserviRadikon(e.radiko, e, 'r')
     }
-
-    return m
   }
 
-  komprenuVorton(teksto) {
-    let vj = this.provuDividi(teksto)
+	_konserviRadikon(nomo, origino, skemo) {
+		let r = {
+			nomo: nomo,
+			origino: origino,
+			skemo: skemo
+		}
 
-    if (vj.length == 0) {
+    // se radiko jam ekzistas, aldoni al listo
+    let x = this.radikoj.get(r.nomo)
+    if (x) {
+      while (x.s) {
+        x = x.s
+      }
+      x.s = r
+    } else {
+      this.radikoj.set(r.nomo, r)
+    }
+	}
+
+  komprenuVorton(teksto) {
+    let ebloj = this.provuDividi(teksto)
+
+    if (ebloj.length == 0) {
       return {
 				teksto: teksto,
         ebloj: [{
@@ -207,7 +231,7 @@ class Dividulo {
       }
     }
 
-    vj = vj.map(eblaVorto => {
+    ebloj = ebloj.map(eblaVorto => {
 			// konstrui skemo de vorto
 			let skemo = ''
 			for (let parto of eblaVorto) {
@@ -234,29 +258,32 @@ class Dividulo {
 			// kalkuli poentojn kaj tutan nivelon
 			let plejlonga = 0
       for (let parto of eblaVorto) {
-				let partNivelo = parto.o.nivelo
+				let partNivelo = parto.origino.nivelo
 				if (parto.skemo == 'f') {
-					// ne havu efekton
-				} else if (parto.speco == 'e') {
-					poentoj += 1
+					// ne havu efikon
+				} else if (parto.origino.speco == 'e') {
+					// poentoj += 1
 				} else {
 					poentoj -= partNivelo
 				}
-				if (parto.r.length > plejlonga) {
-					plejlonga = parto.r.length
+				if (parto.nomo.length > plejlonga) {
+					plejlonga = parto.nomo.length
 				}
 				if (partNivelo > nivelo) {
 					nivelo = partNivelo
 				}
       }
 			poentoj += plejlonga
-			// if (eblaVorto[eblaVorto.length-1].skemo == 'f') {
-			// 	poentoj++
-			// }
+
+			let speco = null
+			if (poentoj > 0) {
+				speco = this.analizu(eblaVorto)
+			}
 
       // ...
       return {
-        vorto: eblaVorto.map(e => e.r).join('/'),
+        vorto: eblaVorto.map(e => e.nomo).join('/'),
+				speco: speco,
 				nivelo: nivelo,
         skemo: skemo,
         poentoj: poentoj,
@@ -265,13 +292,13 @@ class Dividulo {
       }
     })
 
-    vj.sort((a, b) => {
+    ebloj.sort((a, b) => {
       return b.poentoj - a.poentoj
     })
 
     return {
 			teksto: teksto,
-			ebloj: vj
+			ebloj: ebloj
 		}
   }
 
@@ -310,4 +337,17 @@ class Dividulo {
       }
     }
   }
+
+	analizu(vorterojn) {
+		let t = null
+		for (let i = vorterojn.length -1; i >= 0 && !t; i--) {
+			let ero = vorterojn[i]
+			t = ero.origino.fakoj.find(e => e.endsWith('o'))
+		}
+		return t
+	}
+
+	viduRadikon(t) {
+		return this.radikoj.get(t)
+	}
 }

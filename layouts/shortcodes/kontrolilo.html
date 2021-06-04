@@ -103,13 +103,13 @@ document.addEventListener('DOMContentLoaded', () => {
         nivelajNombroj.set(unua.nivelo, nombro + 1)
 
         for (let x of unua.eroj) {
-          let r = uzatajRadikoj.get(x.r)
+          let r = uzatajRadikoj.get(x.origino.nomo)
           if (!r) {
             r = {
-              radiko: x.o,
+              radiko: x.origino,
               vortoj: []
             }
-            uzatajRadikoj.set(x.r, r)
+            uzatajRadikoj.set(r.radiko.radiko, r)
           }
           r.vortoj.push(vs)
         }
@@ -175,7 +175,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let l = document.createElement('ol')
     for (let x of eblaVorto.ebloj) {
       let ero = document.createElement('li')
-      ero.textContent = `${x.vorto} (${x.poentoj})`
+      ero.textContent = `${x.vorto} - ${x.speco} (${x.poentoj})`
       if (!x.eraro) {
         ero.classList.add('nivelo-' + x.nivelo)
       } else {

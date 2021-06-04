@@ -86,23 +86,29 @@ function montruTeksto(e, t) {
   }
 }
 
-let _eo = null;
+// por debugado
+let EO = null
 
 const eo = (function() {
-  let eo = null
-  let dulo = null
+  let obj = null
+  let dilo = null
+
+  function dividilon() {
+    if (!dilo) {
+      dilo = new Dividulo(obj.radikoj)
+    }
+    return dilo
+  }
 
   function komprenuVorton(teksto) {
-    if (!dulo) {
-      dulo = new Dividulo(eo.radikoj)
-    }
-    return dulo.komprenuVorton(teksto)
+    return dividilon().komprenuVorton(teksto)
+  }
+
+  function viduRadikon(teksto) {
+    return dividilon().viduRadikon(teksto)
   }
 
   function kreuObj(radikoj, fakoj) {
-    // normala ordigo ne kongruas kun esperantaj literoj!
-    // radikoj.sort((a, b) => a.radiko > b.radiko)
-
     for (let r of radikoj) {
       for (let f of r.fakoj) {
         if (fakoj.findIndex(e => e.nomo == f) < 0) {
@@ -113,28 +119,24 @@ const eo = (function() {
       }
     }
 
-    // normala ordigo ne kongruas kun esperantaj literoj!
-    // fakoj.sort((a, b) => a.nomo > b.nomo)
+    fakoj.sort((a, b) => eoCompare(a.nomo, b.nomo))
 
-    return eo = {
+    return obj = {
       radikoj: radikoj,
-      r2: null,
       fakoj: fakoj,
       komprenuVorton: komprenuVorton,
-      thing: function() {
-        console.log('thing')
-      }
+      viduRadikon: viduRadikon,
     }
   }
 
   function get(fonto) {
-    if (!eo) {
+    if (!obj) {
       let fr = fetch(fonto + '/radikoj.json').then(rez => rez.json())
       let ff = fetch(fonto + '/fakoj.json').then(rez => rez.json())
-      eo = Promise.all([fr, ff]).then(([r, f]) => kreuObj(r, f))
+      obj = Promise.all([fr, ff]).then(([r, f]) => kreuObj(r, f))
     }
-    eo.then(e => { _eo = e; })
-    return eo
+    obj.then(e => { EO = e; })
+    return obj
   }
 
   return get
